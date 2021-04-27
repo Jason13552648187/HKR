@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jason.mapper.EvaluateMapper">
+    <resultMap id="evaluateMapper" type="cn.jason.bean.Evaluate">
+        <id property="id" column="id"  javaType="String"></id>
+        <result property="username" column="username" javaType="String"></result>
+        <result property="tname" column="tname" javaType="String"></result>
+        <result property="classname" column="classname" javaType="String"></result>
+        <result property="lesson" column="lesson" javaType="int"></result>
+        <result property="understand" column="understand" javaType="String"></result>
+        <result property="helpful" column="helpful" javaType="String"></result>
+        <result property="enterpriseNeed" column="enterpriseNeed" javaType="String"></result>
+        <result property="langClear" column="langClear" javaType="String"></result>
+        <result property="isSystem" column="isSystem" javaType="String"></result>
+        <result property="studyAgain" column="studyAgain" javaType="String"></result>
+        <result property="satis" column="satis" javaType="String"></result>
+        <result property="purpose" column="purpose" javaType="String"></result>
+        <result property="suggestion" column="suggestion" javaType="String"></result>
+        <result property="submitDate" column="submitDate" javaType="String"></result>
+
+    </resultMap>
+
+    <sql id="base_column">
+        id,username,tname,classname,lesson,understand,helpful,enterpriseNeed,langClear,isSystem,studyAgain,satis,purpose,suggestion,submitDate
+    </sql>
+
+    <!--工具，抓日志分析-->
+
+    <select id="getAllEvaluate" resultMap="evaluateMapper">
+        select
+        <include refid="base_column"></include>
+        from t_evaluate
+    </select>
+
+
+
+
+</mapper>

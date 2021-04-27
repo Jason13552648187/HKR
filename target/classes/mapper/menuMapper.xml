@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jason.mapper.MenuMapper">
+    <resultMap id="menuMapper" type="cn.jason.bean.Menu">
+        <id property="id" column="id"  javaType="String"></id>
+        <result property="text" column="text" javaType="String"></result>
+        <result property="url" column="url" javaType="String"></result>
+        <result property="pid" column="pid" javaType="String"></result>
+    </resultMap>
+
+    <sql id="base_column">
+        id,text,url,pid
+    </sql>
+
+    <!--工具，抓日志分析-->
+
+    <select id="getAllMenu" resultMap="menuMapper">
+        select
+        <include refid="base_column"></include>
+        from t_menu
+    </select>
+
+    <select id="getMenuById" resultMap="menuMapper" parameterType="String">
+        select <include refid="base_column"></include>
+        from t_menu
+        where id = #{id}
+    </select>
+
+    <select id="getParentMenu" resultMap="menuMapper">
+        select <include refid="base_column"></include>
+        from t_menu
+        where pid is null
+    </select>
+
+    <select id="getChilrenById" resultMap="menuMapper" parameterType="string">
+        select <include refid="base_column"></include>
+        from t_menu
+        where pid =  #{id}
+    </select>
+
+
+
+</mapper>

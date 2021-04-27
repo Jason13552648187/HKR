@@ -1,0 +1,76 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>[HKR.LT]-综合办公系统</title>
+
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="icon" href="/favicon.ico">
+    <script charset="utf-8" type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+    <script charset="UTF-8" type="text/javascript" src="/layui/layui.all.js"></script>
+    <script charset="utf-8" type="text/javascript" src="/js/login/login.js"></script>
+
+</head>
+
+<body>
+<div class="dowebok">
+    <div class="container">
+        <div class="left">
+            <div class="login">汉科.狼腾综合系统-学生端</div>
+            <div class="eula">欢迎来到狼腾测试员评价系统,请用你的用户名/手机号和密码进行登录!
+                <br/>
+                <a href="/register" style="color:#00f;">新来的童鞋来这里注册一下哦</a>
+                <br/>
+                <!--<a th:href="@{/admin_jsps/login.html}" style="color:#00f;">教师登录</a>-->
+            </div>
+        </div>
+        <div  class="right">
+            <svg viewBox="0 0 320 300">
+                <defs>
+                    <linearGradient inkscape:collect="always" id="linearGradient" x1="13" y1="193.49992" x2="307"
+                                    y2="193.49992" gradientUnits="userSpaceOnUse">
+                        <stop style="stop-color:#ff00ff;" offset="0" id="stop876" />
+                        <stop style="stop-color:#ff0000;" offset="1" id="stop878" />
+                    </linearGradient>
+                </defs>
+                <path d="m 40,120.00016 239.99984,-3.2e-4 c 0,0 24.99263,0.79932 25.00016,35.00016 0.008,34.20084 -25.00016,35 -25.00016,35 h -239.99984 c 0,-0.0205 -25,4.01348 -25,38.5 0,34.48652 25,38.5 25,38.5 h 215 c 0,0 20,-0.99604 20,-25 0,-24.00396 -20,-25 -20,-25 h -190 c 0,0 -20,1.71033 -20,25 0,24.00396 20,25 20,25 h 168.57143" />
+            </svg>
+            <form action="/UserLogin" method="post"  onsubmit="return login_check()">
+                <div class="form" >
+                    <label for="loginname" id="msg_uname" style="color:red;" th:text="${msg}"></label>
+                    <input type="text" placeholder="请输入登录名/手机" onfocus="$('#msg_uname').text('');" id="loginname" name="loginname" onblur="loginname_check()">
+                    <label for="password" id="msg_pwd"></label>
+                    <input type="password" placeholder="请输入密码" id="password" name="password" onfocus="$('#msg_pwd').text('');" onblur="login_check()">
+                    <input type="submit" id="submit" value="登陆">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="/js/login/anime.min.js"></script>
+<script src="/js/login/index.js"></script>
+<script type="text/javascript">
+    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+    var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1; //判断是否IE<11浏览器
+    var isEdge = userAgent.indexOf("Edge") > -1 && !isIE; //判断是否IE的Edge浏览器
+    var isIE11 = userAgent.indexOf("Trident") > -1 || userAgent.indexOf("rv:11.0") > -1;
+    if(isIE11){
+        window.location = "/error/browser.html";
+    }
+    if(isIE) {
+        var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
+        reIE.test(userAgent);
+        var fIEVersion = parseFloat(RegExp["$1"]);
+        if(fIEVersion == 7 || fIEVersion == 8 || fIEVersion == 9 || fIEVersion == 10 || fIEVersion < 7) {
+            window.location = "../error/browser.html";
+        }
+    }
+</script>
+</body>
+</html>

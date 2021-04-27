@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>  
+    <html>  
+    <head>  
+        <title>html5调用摄像头实现拍照</title>  
+        <meta charset="utf-8">  
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+    </head>  
+    <body>  
+    <video id="video" autoplay=""style='width:640px;height:480px'></video>  
+    <button id="paizhao">拍照</button>   
+    <canvas id="canvas" width="640" height="480"></canvas>  
+    <script type="text/javascript">
+        $scope.photoErr = false;
+        $scope.photoBtnDiable = true;
+        var mediaStream = null,track = null;
+
+        navigator.getMedia = (navigator.getUserMedia ||
+                              navigator.webkitGetUserMedia || navigator.mozGetUserMedia ||
+                              navigator.msGetUserMedia);
+                if (navigator.getMedia) {
+                    navigator.getMedia(
+                   {
+                       video: true
+                   },
+                   // successCallback
+                   function (stream) {
+                       var s = window.URL.createObjectURL(stream);
+                       var video = document.getElementById('video');
+                       video.src = window.URL.createObjectURL(stream);
+                       mediaStream = stream;
+                       track = stream.getTracks()[0];
+                       $scope.photoBtnDiable = false;               $scope.$apply();
+                   },
+                   // errorCallback
+                   function (err) {
+                       $scope.errorPhoto();
+                       console.log("The following error occured:" + err);
+                   });
+                      } else {
+                    $scope.errorPhoto();
+                }
+            $scope.snap = function () {
+                    var canvas = document.createElement('canvas');
+                        canvas.width = "400";
+                        canvas.height = "304";
+
+                        var ctx = canvas.getContext('2d');
+                        ctx.drawImage(video, 0, 0, 400, 304);
+                        $scope.closeCamera();
+                        $uibModalInstance.close(canvas.toDataURL("image/png"));
+            };
+    </script>  
+    </body>  
+    </html>

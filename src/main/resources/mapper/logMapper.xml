@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jason.mapper.LogMapper">
+    <resultMap id="logMapper" type="cn.jason.bean.Log">
+
+        <result property="id" javaType="int" column="id"></result>
+        <result property="username" javaType="String" column="username"></result>
+        <result column="operation" property="operation" javaType="String"></result>
+        <result property="opera_time" column="opera_time" javaType="String"></result>
+
+    </resultMap>
+
+    <sql id="base_column">
+        role,username,operation,opera_time
+    </sql>
+
+    <select id="findAll" resultMap="logMapper">
+        select
+        <include refid="base_column"></include>
+        from t_log
+
+    </select>
+
+</mapper>

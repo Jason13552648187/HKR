@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.alibaba.com/schema/stat"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.alibaba.com/schema/stat
+       http://www.alibaba.com/schema/stat.xsd">
+
+        <!--导入配置文件-->
+        <context:property-placeholder location="classpath*:db.properties"/>
+
+        <!--启动事务注解-->
+        <tx:annotation-driven/>
+
+        <!--配置数据源-->
+        <bean id="datasource" class="com.alibaba.druid.pool.DruidDataSource">
+            <property name="password" value="${database.password}"/>
+            <property name="username" value="${database.username}"/>
+            <property name="driverClassName" value="${database.driver}"/>
+            <property name="url" value="${database.url}"/>
+        </bean>
+
+        <!--配置sqlsessionfactorybeans-->
+        <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+            <property name="dataSource" ref="datasource"></property>
+
+            <!--
+                configLocation:导入配置类,导入mybatis的配置类，然后可以由mybatis配置类来加载mapper文件
+                mapperLocatons:可以直接导入mapper配置文件
+            -->
+            <!--<property name="configLocation" value="classpath:mybatis-config.xml"></property>-->
+            <property name="mapperLocations" value="classpath*:mapper/*.xml"></property>
+        </bean>
+
+        <!--mybatis的mapper文件扫描-->
+        <bean id="mapperScannerConfigurer"  class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+            <property name="basePackage" value="cn.jason.mapper"></property>
+        </bean>
+
+        <!--事务管理-->
+        <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="dataSourceTransactionManager">
+            <property name="dataSource" ref="datasource"></property>
+        </bean>
+
+</beans>

@@ -1,0 +1,416 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="/layui/css/layui.css">
+      <script src="/js/jquery-3.2.1.min.js"></script>
+      <script src="/page/js/welcome.js"></script>
+      <script src="/layui/layui.all.js"></script>
+
+      <script src="/js/cookie.js"></script>
+      <style>
+          body{
+              font-family: "PingFang SC", "Lantinghei SC", "Microsoft YaHei", "HanHei SC", "Helvetica Neue", "Open Sans", Arial, "Hiragino Sans GB", 微软雅黑, STHeiti, "WenQuanYi Micro Hei", SimSun, sans-serif;;
+          }
+      </style>
+
+  </head>
+  
+  <body style="margin: 20px 20px 0 20px;">
+
+  <script>
+      var lo = layer.load(3,{
+          shade:[0.5],
+          content:"<span class='loadtip'>正在加载中...</span>",
+          success:function(layer){
+              layer.find(".layui-layer-content").css({
+                  'padding-top':'40px',
+                  'width':'100px'
+              });
+              layer.find('.loadtip').css({
+                  'font-size':'20px',
+                  'margin-left':'-18px'
+              });
+          }
+      });
+
+      $(document).ready(function() {
+
+          showTeacher();
+
+          showClassName();
+
+          layui.form.render("select");
+
+      });
+
+      layer.close(lo);
+
+  </script>
+<style type="text/css">
+			td{
+				border-top:none;
+				border-left:none;
+			}
+
+			.ul_box>li {
+				padding:10px 10px 0 10px;
+				overflow:hidden;
+				border-bottom:#e5e5e5 solid 1px;
+			}
+			.ul_box>li:last-child {
+				border-bottom:none;
+			}
+			.ul_box>li>div {
+				float:left;
+			}
+			.ul_box>li>div:nth-child(1) {
+				width:100px;
+			}
+			.ul_box>li>div:nth-child(2) {
+				width:480px;
+				overflow:hidden;
+			}
+			.label_box>label {
+				display:block;
+				float:left;
+				margin:7px 10px 6px 28px;
+				position:relative;
+				overflow:hidden;
+			}
+			.label_box>label>input {
+				position:absolute;
+				top:0;
+				left:-20px;
+			}
+			.label_box>label>div {
+				width:86px;
+				text-align:center;
+				border:#dddddd solid 1px;
+				height:33px;
+				line-height:33px;
+				color:#666666;
+				user-select:none;
+				overflow:hidden;
+				position:relative;
+			}
+			.label_box>label>input:checked + div {
+				border:#d51917 solid 1px;
+				color:#d51917;
+			}
+			.label_box>label>input:checked + div:after {
+				content:'';
+				display:block;
+				width:20px;
+				height:20px;
+				background-color:#d51917;
+				transform:skewY(-45deg);
+				position:absolute;
+				bottom:-10px;
+				right:0;
+				z-index:1;
+			}
+			.label_box>label>input:checked + div:before {
+				content:'';
+				display:block;
+				width:3px;
+				height:8px;
+				border-right:#ffffff solid 2px;
+				border-bottom:#ffffff solid 2px;
+				transform:rotate(35deg);
+				position:absolute;
+				bottom:2px;
+				right:4px;
+				z-index:2;
+			}
+			
+			
+			/*边框*/
+  			.border-fade{
+  				border-left:none;
+  				/*border-right:none;*/
+  				border-top:none;
+  			}
+  			
+  			
+  			/*提交按钮*/
+			  			
+			.login-button { /* 按钮美化 */
+				width: 270px; /* 宽度 */
+				height: 40px; /* 高度 */
+				border-width: 0px; /* 边框宽度 */
+				border-radius: 3px; /* 边框半径 */
+				background: #1E90FF; /* 背景颜色 */
+				cursor: pointer; /* 鼠标移入按钮范围时出现手势 */
+				outline: none; /* 不显示轮廓线 */
+				font-family: Microsoft YaHei; /* 设置字体 */
+				color: white; /* 字体颜色 */
+				font-size: 17px; /* 字体大小 */
+			}
+			.login-button:hover { /* 鼠标移入按钮范围时改变颜色 */
+				background: #5599FF;
+			}
+			 
+			 #textarea{
+			 	color:#555555;
+			 	padding:8px;
+			 	font-size:18px;
+			 	font-family:微软雅黑;
+			 }
+  	</style>
+
+     <div id="form" >
+	 <form id="eval" name="form" class="layui-form">
+	 	<input type="hidden" name="username" th:text="${session.username}"/>
+         <input type="hidden" name="uid" th:text="${session.uid}">
+		<table name="formtable" id="form_table" cellspacing="0" border="1" bordercolor="#993399" width="100%">
+			<tr>
+				<td width="150px">课程</td>
+				<td colspan="5">
+                    <span name="classname" id="classname" th:text="${classname}" class="bg">测试</span>
+				</td>
+			</tr>
+
+			<tr>
+				<td>培训时间</td>
+				<td colspan="5">
+                    <div class="layui-form">
+                        <div class="layui-input-inline">
+                            <select name="time" l
+									ay-filter="select_time">
+                                <option value="7"  selected="selected">7学时(没有晚自习)</option>
+                                <option value="9">9学时(上晚自习)</option>
+                            </select>
+                        </div>
+                    </div>
+				</td>
+			</tr>
+			<tr>
+				<td>今日授课讲师</td>
+				<td colspan="5" id="tea_td">
+                    <div class="layui-form" lay-filter="tnamerender">
+                        <div class="layui-input-inline">
+                            <select name="tname" id="tname">
+
+                            </select>
+                        </div>
+                    </div>
+				</td>
+			</tr>
+			
+
+			<!-- 评价项 -->
+			<tr  align="center">
+				<td colspan="3">评价内容</td>
+			</tr>
+
+			<!-- 培训内容 -->
+			<tr>
+				<td rowspan="2">培训内容</td>
+				<td class="border-fade">本次学习都理解了么？</td>
+				<td colspan="4" class="border-fade">
+					<div class="label_box">
+						<label>
+							<input type="radio" checked="checked" name="understand" value="完全" />
+							<div>完全</div>
+						</label>
+						<label>
+							<input type="radio" name="understand" value="大部分"/>
+							<div>大部分</div>
+						</label>
+						<label>
+							<input type="radio" name="understand" value="小部分"/>
+							<div>小部分</div>
+						</label>
+						<label>
+							<input type="radio" name="understand" value="不理解"/>
+							<div>不理解</div>
+						</label>
+					</div>
+				</td>
+				
+			</tr>
+			
+			<tr>
+				<td class="border-fade">对工作帮助大么？</td>
+				<td colspan="4" class="border-fade">
+					<div class="label_box">
+						<label>
+							<input type="radio"  checked="checked" name="helpful" value="很大"/>
+							<div>很大</div>
+						</label>
+						<label>
+							<input type="radio" name="helpful" value="较大"/>
+							<div>较大</div>
+						</label>
+						<label>
+							<input type="radio" name="helpful" value="一般"/>
+							<div>一般</div>
+						</label>
+						<label>
+							<input type="radio" name="helpful" value="无帮助"/>
+							<div>无帮助</div>
+						</label>
+					</div>
+				</td>
+			</tr>
+			
+			
+
+
+			<!-- 培训讲师 -->
+			<tr>
+				<td rowspan="3">培训讲师</td>
+				<td class="border-fade">符合实际企业需要</td>
+				<td colspan="4" class="border-fade">
+					<div class="label_box">
+						<label>
+							<input type="radio"  checked="checked" name="enterpriseNeed" value="很好"/>
+							<div>很好</div>
+						</label>
+						<label>
+							<input type="radio" name="enterpriseNeed" value="良好"/>
+							<div>良好</div>
+						</label>
+						<label>
+							<input type="radio" name="enterpriseNeed" value="一般"/>
+							<div>一般</div>
+						</label>
+						<label>
+							<input type="radio" name="enterpriseNeed" value="不好"/>
+							<div>不好</div>
+						</label>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				
+				<td class="border-fade">语言、思路清晰明确</td>
+				<td colspan="4" class="border-fade">
+					<div class="label_box">
+						<label>
+							<input type="radio" checked="checked"  name="langClear" value="很好"/>
+							<div>很好</div>
+						</label>
+						<label>
+							<input type="radio" name="langClear" value="良好"/>
+							<div>良好</div>
+						</label>
+						<label>
+							<input type="radio" name="langClear" value="一般"/>
+							<div>一般</div>
+						</label>
+						<label>
+							<input type="radio" name="langClear" value="不好"/>
+							<div>不好</div>
+						</label>
+					</div>
+				</td>
+			</tr>
+		
+			<tr>
+				<td class="border-fade">针对性、系统性强</td>
+				<td colspan="4" class="border-fade">
+					<div class="label_box">
+						<label>
+							<input type="radio" checked="checked"  name="isSystem" value="很好"/>
+							<div>很好</div>
+						</label>
+						<label>
+							<input type="radio" name="isSystem" value="良好"/>
+							<div>良好</div>
+						</label>
+						<label>
+							<input type="radio" name="isSystem" value="一般"/>
+							<div>一般</div>
+						</label>
+						<label>
+							<input type="radio" name="isSystem" value="不好"/>
+							<div>不好</div>
+						</label>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td rowspan="3">最终评价</td>
+				<td class="border-fade">以后有机会还愿意来学么？</td>
+				<td colspan="4" class="border-fade">
+					<div class="label_box">
+						<label>
+							<input type="radio" checked="checked"  name="studyAgain" value="很愿意"/>
+							<div>很愿意</div>
+						</label>
+						<label>
+							<input type="radio" name="studyAgain" value="愿意"/>
+							<div>愿意</div>
+						</label>
+						<label>
+							<input type="radio" name="studyAgain" value="一般"/>
+							<div>一般</div>
+						</label>
+						<label>
+							<input type="radio" name="studyAgain" value="不愿意"/>
+							<div>不愿意</div>
+						</label>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="border-fade">本次学习还满意吗？</td>
+				<td colspan="4" class="border-fade">
+					<div class="label_box">
+						<label>
+							<input type="radio" checked="checked"  name="satis" value="很满意"/>
+							<div>很满意</div>
+						</label>
+						<label>
+							<input type="radio" name="satis" value="满意"/>
+							<div>满意</div>
+						</label>
+						<label>
+							<input type="radio" name="satis" value="一般"/>
+							<div>一般</div>
+						</label>
+						<label>
+							<input type="radio" name="satis" value="不满意"/>
+							<div>不满意</div>
+						</label>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				
+				<td class="border-fade">达到学习目的了么？</td>
+				<td class="border-fade">
+					<div class="label_box">
+						<label>
+							<input type="radio" checked="checked"  name="purpose" value="是的"/>
+							<div>是的</div>
+						</label>
+						<label>
+							<input type="radio" name="purpose" value="一般"/>
+							<div>一般</div>
+						</label>
+						<label>
+							<input type="radio" name="purpose" value="没有"/>
+							<div>没有</div>
+						</label>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="border-fade" colspan="6" height="100px" >
+					<textarea style="width:100%;height:100%;resize:none;outline:none;" id="textarea" name="suggestion" placeholder="您宝贵的建议是我们进步的阶梯！"></textarea>
+				</td>
+			</tr>
+		</table>
+	</form>
+							<center><button id="subtn" class="login-button" >提交今日评价</button></center>
+  </div>
+
+  <script>
+
+      layui.form.render("select");
+  </script>
+  </body>
+</html>

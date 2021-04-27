@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.jason.mapper.CourseMapper">
+    <resultMap id="courseMapper" type="cn.jason.bean.Course">
+        <id property="cid" column="cid" javaType="String"></id>
+        <result property="id" javaType="int" column="id"></result>
+        <result property="courseName" javaType="String" column="courseName"></result>
+        <result column="descri" property="descri" javaType="String"></result>
+        <result property="createtime" column="createtime" javaType="Date"></result>
+        <result property="status" column="status" javaType="int"></result>
+    </resultMap>
+
+    <sql id="base_column">
+        cid,id,courseName,descri,createtime,status
+    </sql>
+
+    <select id="findAll" resultMap="courseMapper">
+        select
+        <include refid="base_column"></include>
+        from t_course
+
+    </select>
+
+    <select id="findCourseByCid" parameterType="String" resultMap="courseMapper">
+        select <include refid="base_column"></include>
+        from t_course
+        where cid = #{cid}
+    </select>
+
+    <insert id="insertCourse" parameterType="cn.jason.bean.Course">
+        insert into t_course(cid,courseName,descri,createtime,status) values(#{cid},#{courseName},#{descri},#{createtime},#{status})
+    </insert>
+
+
+
+
+
+
+
+
+</mapper>

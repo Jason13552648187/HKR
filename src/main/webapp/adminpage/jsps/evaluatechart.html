@@ -1,0 +1,56 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+  <head>
+    <base href="<%=basePath%>">
+
+    <title>My JSP 'studentmanager.jsp' starting page</title>
+
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
+
+      <script type="text/javascript" src="<c:url value='/admin_jsps/js/evaluate_chart.js'/>"></script>
+      <script type="text/javascript" src="/js/build/dist/echarts-all.js"/>
+  </head>
+
+  <body>
+
+  <div id="echarts_main" style="width: 600px;height: 400px;"> </div>
+
+
+  <script type="text/javascript">
+
+      var myChart = echarts.init(document.getElementById("echarts_main"));
+
+      var option = {
+          title: "人员统计",
+          tooltip: {},
+          legend: {
+              data: ['年龄阶段']
+          },
+          xAxis: {
+              data: ['23', '24', '25', '26', '27', '28']
+          },
+          yAxis: {},
+          series: [{
+              name: "年龄阶段",
+              type: "bar",
+              data: [5, 3, 4, 5, 6, 1]
+          }]
+      };
+
+      myChart.setOption(option);
+
+  </script>
+  </body>
+</html>
