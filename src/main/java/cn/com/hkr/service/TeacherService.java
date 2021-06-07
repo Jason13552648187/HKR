@@ -1,11 +1,6 @@
 package cn.com.hkr.service;
 
-import cn.com.hkr.bean.Teacher;
-import cn.com.hkr.dao.TeacherDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @author jason
@@ -14,15 +9,5 @@ import java.util.List;
 @Service
 public class TeacherService {
 
-    @Autowired
-    private TeacherDao teacherDao;
-
-    public List<Teacher> findAllTeacher(){
-        return teacherDao.findAll();
-    }
-
-    public List<Teacher> findTeacherByValid(Integer status){
-        return teacherDao.findTeacherByValid(status);
-    }
 
 }

@@ -41,4 +41,13 @@ public class AesUtils {
             return null;
         }
     }
+
+    public static void main(String[] args){
+        String str = "jason";
+        String key = "admin";
+        System.out.println(decrypt(str,key));
+
+
+
+    }
 }

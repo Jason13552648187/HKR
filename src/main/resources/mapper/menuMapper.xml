@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.jason.mapper.MenuMapper">
-    <resultMap id="menuMapper" type="cn.jason.bean.Menu">
+<mapper namespace="cn.com.hkr.mapper.MenuMapper">
+    <resultMap id="menuMapper" type="cn.com.hkr.bean.Menu">
         <id property="id" column="id"  javaType="String"></id>
         <result property="text" column="text" javaType="String"></result>
         <result property="url" column="url" javaType="String"></result>
         <result property="pid" column="pid" javaType="String"></result>
+        <result property="rowid" column="rowid" javaType="String"></result>
+        <result property="iconCls" column="iconCls" javaType="String"></result>
     </resultMap>
 
     <sql id="base_column">
-        id,text,url,pid
+        id,text,iconCls,url,pid,rowid
     </sql>
 
     <!--工具，抓日志分析-->
@@ -40,5 +42,35 @@
     </select>
 
 
+    <!--通用查询-->
+    <select id="commonSelect" parameterType="cn.com.hkr.bean.Menu" resultMap="menuMapper">
+        select <include refid="base_column"/>
+        from t_menu where  1 = 1
+
+        <if test="id != null">
+            and id = #{id}
+        </if>
+
+        <if test="text != null">
+            and text = #{text}
+        </if>
+
+        <if test="iconCls != null">
+            and iconCls = #{iconCls}
+        </if>
+
+        <if test="url != null">
+            and url = #{url}
+        </if>
+
+        <if test="pid != null">
+            and pid = #{pid}
+        </if>
+
+        <if test="rowid != null">
+            and rowid = #{rowid}
+        </if>
+
+    </select>
 
 </mapper>

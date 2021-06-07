@@ -1,5 +1,7 @@
 package cn.com.hkr.bean;
 
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,7 +11,7 @@ import java.util.Date;
  * @author jason
  * @date 2020/10/26-15:58
  */
-
+@Component
 public class Evaluate implements Serializable {
     private String id;
     private String username;

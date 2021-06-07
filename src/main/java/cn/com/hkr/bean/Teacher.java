@@ -1,6 +1,7 @@
 package cn.com.hkr.bean;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.Date;
  * @author jason
  * @date 2020/10/28-9:36
  */
+@Component
 public class Teacher implements Serializable {
     private Integer id;
     private String tid;

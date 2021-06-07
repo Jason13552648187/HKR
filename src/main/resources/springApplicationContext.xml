@@ -38,12 +38,17 @@
 
         <!--mybatis的mapper文件扫描-->
         <bean id="mapperScannerConfigurer"  class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-            <property name="basePackage" value="cn.jason.mapper"></property>
+            <property name="basePackage" value="cn.com.hkr.mapper"></property>
         </bean>
 
         <!--事务管理-->
-        <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="dataSourceTransactionManager">
+        <bean name="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="dataSourceTransactionManager">
             <property name="dataSource" ref="datasource"></property>
         </bean>
+
+        <!-- 申明式事务  -->
+<!--        <tx:annotation-driven transaction-manager="transaction-manager" proxy-targer-class="true"/>-->
+
+
 
 </beans>

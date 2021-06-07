@@ -10,15 +10,23 @@ import java.util.Map;
 public class AjaxResult {
 
     private String msg;
-    private int code;
+    private Integer code;
     private Object data;
     private Boolean success;
     private Map<String,Object> result = new HashMap<String,Object>();
 
-    public AjaxResult(int errorCode, String dataTypeMsg, Object o) {
+    @Override
+    public String toString() {
+        return "AjaxResult{" +
+                "msg='" + msg + '\'' +
+                ", code=" + code +
+                ", data=" + data +
+                ", success=" + success +
+                ", result=" + result +
+                '}';
     }
 
-    public void put(String key,Object value){
+    public void put(String key, Object value){
         this.result.put(key,value);
     }
 
@@ -45,11 +53,11 @@ public class AjaxResult {
         this.msg = msg;
     }
 
-    public int getCode() {
+    public Integer getCode() {
         return code;
     }
 
-    public void setCode(int code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
@@ -70,10 +78,18 @@ public class AjaxResult {
         this.success = success;
     }
 
-    public AjaxResult( int code, String msg, Boolean success,Object data) {
+    public AjaxResult(Integer code, String msg, Boolean success,Object data) {
         this.msg = msg;
         this.code = code;
         this.data = data;
         this.success = success;
     }
+
+    public AjaxResult(Integer errorCode, String dataTypeMsg, Object o) {
+        this.code = errorCode;
+        this.msg = dataTypeMsg;
+        this.data =  o;
+        this.success = Boolean.FALSE;
+    }
+
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.jason.mapper.LogMapper">
-    <resultMap id="logMapper" type="cn.jason.bean.Log">
+<mapper namespace="cn.com.hkr.mapper.LogMapper">
+    <resultMap id="logMapper" type="cn.com.hkr.bean.Log">
 
         <result property="id" javaType="int" column="id"></result>
         <result property="username" javaType="String" column="username"></result>
@@ -19,7 +19,27 @@
         select
         <include refid="base_column"></include>
         from t_log
-
     </select>
+
+    <select id="findByProper" parameterType="cn.com.hkr.bean.Log" resultMap="logMapper">
+        select <include refid="base_column"/>
+        from t_log
+        where  1 = 1
+        <if test="role != null">
+            and role = #{role}
+        </if>
+
+        <if test="username != null">
+            and username = #{username}
+        </if>
+        <if test="operation != operation">
+            and operation = #{operation}
+        </if>
+        <if test="opera_time != opera_time">
+            and opera_time = #{opera_time}
+        </if>
+    </select>
+
+
 
 </mapper>

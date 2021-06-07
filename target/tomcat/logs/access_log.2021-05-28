@@ -1,0 +1,9 @@
+127.0.0.1 - - [28/May/2021:20:36:42 +0800] "POST /HKR/menu/add/Menu HTTP/1.1" 415 1048 http-bio-8080-exec-1 512
+0:0:0:0:0:0:0:1 - - [28/May/2021:20:37:22 +0800] "GET /HKR/menu/add/Menu?id=23asfe HTTP/1.1" 400 968 http-bio-8080-exec-4 16
+127.0.0.1 - - [28/May/2021:20:37:55 +0800] "POST /HKR/menu/add/Menu HTTP/1.1" 415 1048 http-bio-8080-exec-5 11
+127.0.0.1 - - [28/May/2021:20:39:15 +0800] "POST /HKR/menu/add/Menu HTTP/1.1" 200 171 http-bio-8080-exec-7 64
+127.0.0.1 - - [28/May/2021:20:47:17 +0800] "POST /HKR/menu/add/Menu HTTP/1.1" 200 115 http-bio-8080-exec-1 467
+127.0.0.1 - - [28/May/2021:21:09:40 +0800] "POST /HKR/menu/add/Menu HTTP/1.1" 200 171 http-bio-8080-exec-1 758
+0:0:0:0:0:0:0:1 - - [28/May/2021:21:47:42 +0800] "GET /HKR/menu/add/Menu?id=23asfe HTTP/1.1" 400 968 http-bio-8080-exec-2 204
+0:0:0:0:0:0:0:1 - - [28/May/2021:21:47:42 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [28/May/2021:21:47:49 +0800] "GET /HKR/menu/add/Menu HTTP/1.1" 400 968 http-bio-8080-exec-3 14

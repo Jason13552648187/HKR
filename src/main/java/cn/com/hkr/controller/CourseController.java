@@ -14,27 +14,29 @@ import java.util.List;
  * @date 2020/9/20-9:43
  */
 @Controller
+@RequestMapping("/course")
 public class CourseController extends BaseController {
+
+    @Autowired
+    private Course course;
 
     @Autowired
     private CourseService courseService;
 
     @RequestMapping("/getCourse")
     @ResponseBody
-    public  Object getScore(){
+    public Object getCourse(Course course){
 
-        try {
-            List<Course> list = courseService.findAll();
-            result.put("code",700);
-            result.put("msg","查询成功!");
-            result.put("success",true);
-            result.put("data",list);
-        } catch (Exception e) {
-            result.put("code",705);
-            result.put("msg","查询失败!" + e.getMessage());
-            result.put("success",false);
-            result.put("data",null);
-        }
+        List<Course> se = courseService.findByProper(course);
+
+        result.put("code",700);
+        result.put("msg","查询成功！");
+        result.put("data",se);
+        result.put("success",true);
+
+        System.out.println(course.getCid() + "-----" + se + "-----" + result);
+
         return result.getMap();
     }
+    
 }

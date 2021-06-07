@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.jason.mapper.UserMapper">
-    <resultMap id="userMapper" type="cn.jason.bean.User">
+<mapper namespace="cn.com.hkr.mapper.UserMapper">
+    <resultMap id="userMapper" type="cn.com.hkr.bean.User">
         <id property="uid" column="uid" javaType="String"></id>
         <result property="id" javaType="int" column="id"></result>
         <result property="username" javaType="String" column="username"></result>
@@ -16,21 +16,27 @@
         <result property="registerDate" column="registerDate" javaType="java.util.Date"></result>
         <result property="classname" column="classname" javaType="String"></result>
         <result property="carte" column="carte" javaType="String"></result>
+        <result property="status" column="status" javaType="int"></result>
     </resultMap>
 
     <sql id="base_column">
-        id,uid,loginname,username,password,age,sex,address,phoneNumber,email,graduation,registerDate,classname,carte
+        id,uid,status,loginname,username,password,age,sex,address,phoneNumber,email,graduation,registerDate,classname,carte
     </sql>
 
-    <select id="getUserById" parameterType="cn.jason.bean.User" resultMap="userMapper">
+    <insert id="addUser" parameterType="cn.com.hkr.bean.User">
+        insert into t_user(id,uid,password,phoneNumber,email,graduation,registerDate,status)
+        values (null,#{uid},#{password},#{phoneNumber},#{email},#{graduation},#{registerDate},#{status})
+    </insert>
+
+    <select id="getUserById" parameterType="cn.com.hkr.bean.User" resultMap="userMapper">
         select 
         <include refid="base_column"/>
         from t_user
-        where uid  = #{uid}
+        where uid = #{uid}
 
     </select>
 
-    <select id="getUserBySex" parameterType="cn.jason.bean.User" resultMap="userMapper">
+    <select id="getUserBySex" parameterType="cn.com.hkr.bean.User" resultMap="userMapper">
 
         select
         <include refid="base_column"></include>
@@ -60,6 +66,102 @@
     </select>
 
 
+    <update id="updateUser" parameterType="cn.com.hkr.bean.User">
+        update t_user set
+        <trim suffixOverrides=",">
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="loginname != null">
+                loginname = #{loginname},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
 
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+
+            <if test="address != null and address != ''">
+                address = #{address},
+            </if>
+
+            <if test="email != null">
+                email = #{email},
+            </if>
+
+            <if test="graduation != null">
+                graduation = #{graduation},
+            </if>
+
+            <if test="classname != null">
+                classname = #{classname},
+            </if>
+
+            <if test="carte != null">
+                carte  = #{carte}
+            </if>
+            <if test="status != null">
+                status = #{status}
+            </if>
+
+        </trim> where uid = #{uid}
+    </update>
+
+    <!--通用查询-->
+    <select id="selectCommon"  resultMap="userMapper">
+        select <include refid="base_column"/>
+        from t_user
+        where  1 = 1
+        <if test="username != null">
+            and username = #{username}
+        </if>
+        <if test="loginname != null">
+            and loginname = #{loginname}
+        </if>
+        <if test="password != null">
+           and password = #{password}
+        </if>
+        <if test="age != null">
+            and age = #{age}
+        </if>
+
+        <if test="sex != null">
+           and sex = #{sex}
+        </if>
+
+        <if test="address != null and address != ''">
+            and address = #{address}
+        </if>
+
+        <if test="email != null">
+            and email = #{email}
+        </if>
+
+        <if test="phoneNumber != null">
+            and phoneNumber = #{phoneNumber}
+        </if>
+
+        <if test="graduation != null">
+            and graduation = #{graduation}
+        </if>
+
+        <if test="classname != null">
+            and classname = #{classname}
+        </if>
+
+        <if test="carte != null">
+            and carte  = #{carte}
+        </if>
+
+        <if test="status != null">
+            and status  = #{status}
+        </if>
+
+    </select>
 
 </mapper>

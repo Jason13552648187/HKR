@@ -2,19 +2,17 @@ package cn.com.hkr.controller;
 
 import cn.com.hkr.bean.AjaxResult;
 import cn.com.hkr.bean.Evaluate;
-import cn.com.hkr.bean.Menu;
 import cn.com.hkr.bean.User;
+import cn.com.hkr.service.EvaluateService;
 import cn.com.hkr.service.LogService;
 import cn.com.hkr.service.MenuService;
 import cn.com.hkr.service.UserService;
 import cn.com.hkr.staticmsg.UserResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -25,7 +23,6 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -34,6 +31,7 @@ import java.util.Map;
  * @date 2020/9/18-15:06
  */
 @Controller
+@RequestMapping("/user")
 public class UserController extends BaseController{
 
     @Autowired
@@ -45,8 +43,12 @@ public class UserController extends BaseController{
     @Autowired
     private MenuService menuService;
 
-    @RequestMapping({"/",""})
-    public String index(HttpServletRequest request, HttpSession session) throws UnsupportedEncodingException {
+    @Autowired
+    private EvaluateService evaluateService;
+
+    @RequestMapping({"/"})
+    public String index(HttpServletRequest request, HttpSession session)
+            throws UnsupportedEncodingException {
 
         Cookie[] cookies = request.getCookies();
         Map map = getCookieValue(cookies, "uid");
@@ -56,147 +58,29 @@ public class UserController extends BaseController{
             System.out.println(new Date() + "\tCookie里面空空如也！！！！！！！");
         }
 
-        return "/view/index";
-    }
-
-    @RequestMapping("/UserLogin")
-    public Object UserLogin(@RequestParam String loginname,
-                              @RequestParam String password,
-                              HttpServletRequest request,
-                              HttpServletResponse response,
-                              HttpSession session,
-                              Model model) throws UnsupportedEncodingException {
-        ModelAndView modelView = null;
-
-        //username or phoneNumber or password is null or not?
-        if (null == loginname || null == password || loginname.trim().length() == 0 || password.trim().length() == 0) {
-            result.put("code", UserResult.LOGINNAME_PASSWORD_NULL_CODE);
-            result.put("msg", UserResult.USERNAME_NULL_MSG + UserResult.PASSWORD_NULL_MSG);
-            result.put("success", false);
-            result.put("data", null);
-            model.addAllAttributes(result.getMap());
-            modelView = new ModelAndView("/view/index");
-            return modelView;
-        }
-
-        //is  phone or loginname or not?
-
-        if (isPhone(loginname)) {
-            User user = userService.getUserByPhoneNumber(loginname);
-            if (null != user) {
-                // 0：未激活   1：已激活(activeted)   2：已毕业(graduted)   3：已退学(out of gradu)
-                int gradu = user.getGraduation();
-                //error status
-                if (gradu != 1) {
-                    result = getStatusResult(user);
-                    model.addAllAttributes(result.getMap());
-                    modelView = new ModelAndView();
-                    return modelView;
-                }
-
-                if (user.getPassword().equals(password)) {
-                    //login success!
-                    modelView = new ModelAndView("/page/user.html");
-                    session.setAttribute("loginname", loginname);
-                    session.setAttribute("uid", user.getUid());
-                    session.setAttribute("username", user.getUsername());
-                    addCookies(response, "uid", user.getUid());
-                    addCookies(response, "username", user.getUsername());
-                    addCookies(response, "classname", user.getClassname());
-                    return modelView;
-                } else { //password error
-                    result.put("code", UserResult.ERROR_CODE);
-                    result.put("msg", UserResult.PASSWORD_ERROR_MSG);
-                    result.put("success", false);
-                    result.put("data", user);
-                    model.addAttribute(result.getMap());
-                    modelView = new ModelAndView("/view/index");
-                    return modelView;
-                }
-            }
-        } else {
-            //and this time find  by username from  database! loginname find
-            User u = userService.getUserByNameAndPassword(loginname, password);
-            if (null != u) {
-                int gradu = u.getGraduation();
-                if (gradu != 1) {
-                    result = getStatusResult(u);
-                    model.addAllAttributes(result.getMap());
-                    modelView = new ModelAndView("/view/index");
-                    return modelView;
-                }
-                if (u.getPassword().equals(password)) {
-                    //login success
-                    modelView = new ModelAndView("/page/user.html");
-                    session.setAttribute("loginname", loginname);
-                    session.setAttribute("uid", u.getUid());
-                    session.setAttribute("username", u.getUsername());
-                    addCookies(response, "uid", u.getUid());
-                    addCookies(response, "username", u.getUsername());
-                    addCookies(response, "classname", u.getClassname());
-                    return modelView;
-                } else {
-                    result.put("code", UserResult.ERROR_CODE);
-                    result.put("msg", UserResult.PASSWORD_ERROR_MSG);
-                    result.put("success", false);
-                    result.put("data", u);
-                    modelView = new ModelAndView("/view/index");
-                    model.addAllAttributes(result.getMap());
-                    return modelView;
-                }
-            } else {
-                result.put("code", UserResult.ERROR_CODE);
-                result.put("msg", "账户或密码错误！");
-                result.put("success", false);
-                result.put("data", u);
-                modelView = new ModelAndView("/view/index");
-                model.addAllAttributes(result.getMap());
-                return modelView;
-            }
-        }
-        return null;
-    }
-
-    @RequestMapping("/getUserMenu")
-    @ResponseBody
-    public Object getUserMenu(HttpServletRequest request , HttpServletResponse response){
-        List<Menu> menus = menuService.getAllMenu();
-
-        result.put("code",700);
-        result.put("msg","查询成功！");
-        result.put("success",true);
-        result.put("data",menus);
-
-        return result.getMap();
-    }
-
-    @RequestMapping("/getLog")
-    @ResponseBody
-    public Object getLog(){
-        return logService.getAll();
+        return "index_raw";
     }
 
 
-
-    /**
+   /* *
      * 是否是手机
      * @param phone
      * @return
-     */
+*/
     private boolean isPhone(String phone){
-        String regex = "1[34578]\\d{9}$";
+        String regex = "^1[34578]\\d{9}$";
         if (null == phone) return false;
         if (phone.matches(regex)) return true;
         else return false;
     }
 
 
-    /**
+    /*
      * 获取cookies里的key的值
      * @param cookies
      * @param key
      * @return
-     */
+    */
     private Map<String,String> getCookieValue(Cookie[] cookies , String key) {
         if (null != cookies && cookies.length > 0){
             Map<String,String> map = new HashMap();
@@ -217,8 +101,8 @@ public class UserController extends BaseController{
     /**
      * 获取用户状态
      * @param user
-     * @return
-     */
+     * @return*/
+
     private AjaxResult getStatusResult(User user){
         int gradu = user.getGraduation();
         if (gradu == 0){
@@ -241,12 +125,12 @@ public class UserController extends BaseController{
     }
 
 
-    /**
+   /* *
      * 添加cookie
      * @param response
      * @param key
-     * @param value
-     */
+     * @param value*/
+
     private void addCookies(HttpServletResponse response, String key, String value){
         try {
             response.addCookie(new Cookie(key, URLEncoder.encode(value,"utf-8")));
@@ -268,12 +152,62 @@ public class UserController extends BaseController{
     }
 
 
+    /*注册操作*/
     @RequestMapping("/register")
-    public Object register(ModelAndView modelAndView){
+    @ResponseBody
+    public Object register(@RequestBody User user){
+        if (null ==  user){
+            result = new AjaxResult(780,"注册信息不能为空!",false,null);
+            return result;
+        }
 
-        modelAndView.setViewName("/view/register.html");
+        if (!check_email(user.getEmail())){
+            result = new AjaxResult(705,"邮箱不能空或者格式错误!",false);
+            return result;
+        }else if (!check_phone(user.getPhoneNumber())){
+            result = new AjaxResult(705,"手机号不能空或者格式错误!",false);
+            return result;
+        }
 
-        return modelAndView;
+        Map<String,Object> res = userService.register(user);
+        if (!(boolean)res.get("success")) {
+            result = new AjaxResult(706,(String) res.get("msg"),false);
+
+            return result;
+        }
+        result = new AjaxResult(760, "注册成功!", true, null);
+        return result;
+    }
+
+
+
+    /*登陆操作*/
+    @RequestMapping("/login")
+    @ResponseBody
+    public Object login(@RequestBody User user){
+        if (null ==  user){
+            result = new AjaxResult(780,"登陆信息不能为空!",false);
+            return result;
+        }
+
+        if (null != user.getEmail() && !check_email(user.getEmail())){
+            result = new AjaxResult(785,"邮箱不能为空或者邮箱格式错误!",false);
+            return result;
+        }
+
+        if (null == user.getPassword() && user.getPassword().trim().equals("")){
+            result = new AjaxResult(786,"密码不能为空!",false,null);
+            return result;
+        }
+
+        Map<String,Object> res = userService.login(user);
+        if (res.get("success").equals(false)){
+            result = new AjaxResult((Integer) res.get("code"),(String)res.get("msg"),false,null);
+            return result;
+        }
+        result = new AjaxResult(784,"登陆成功!",true,res.get("data"));
+        return result;
+
     }
 
 
@@ -293,7 +227,7 @@ public class UserController extends BaseController{
         response.addCookie(new Cookie("hello",null));
         session.invalidate();
 
-        return "/view/index";
+        return "user/index";
     }
 
 
@@ -301,13 +235,14 @@ public class UserController extends BaseController{
     @ResponseBody
     public Object submitEvaluate(Evaluate evaluate, String username, String uid){
 
-        System.out.println("---------------------" + evaluate);
-        System.out.println("---------------------" + username + "------" + uid);
-
-        if (uid != null &&  uid.trim().length() != 0){
-
+        if (null == uid ||  uid.trim().length() == 0){
+            result.put("code",705);
+            result.put("msg","UID is not exists！");
+            result.put("data",null);
+            result.put("success",false);
+            return result.getMap();
         }
-
+        evaluateService.addEvaluate(evaluate);
 
         result.put("code",700);
         result.put("msg","提交成功!");
@@ -318,4 +253,40 @@ public class UserController extends BaseController{
     }
 
 
+
+
+    @RequestMapping("/active")
+    @ResponseBody
+    public Object active(){
+        return result;
+    }
+
+    /*邮箱校验*/
+    private static Boolean check_email(String email){
+        String reg = "^\\w+@\\w+\\.[a-zA-Z]{2,4}$";
+        return email.matches(reg);
+    }
+
+
+    /*手机号校验*/
+    private static Boolean check_phone(String phone){
+        String reg = "^1[3-9]{1}\\d{9}$";
+        return phone.matches(reg);
+    }
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+

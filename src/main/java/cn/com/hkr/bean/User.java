@@ -13,24 +13,33 @@ import java.util.Date;
 @Component
 public class User implements Serializable {
 
-    private int id;
+    private Integer id;
     private String uid;
     private String loginname;
     private String address;
     private String phoneNumber;
     private String email;
-    private int graduation;
+    private Integer graduation;
     private String classname;
     private String carte;
     private String username;
-    @JsonIgnore
+    private Integer status;
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     private String password;
     private String sex;
-    private int age;
+    private Integer age;
     private Date registerDate;
 
-    public Date getRegisterDate() {
-        return registerDate;
+    public void setRegisterDate(Date registerDate) {
+        this.registerDate = registerDate;
     }
 
     @Override
@@ -53,11 +62,15 @@ public class User implements Serializable {
                 '}';
     }
 
-    public int getId() {
+    public Date getRegisterDate() {
+        return registerDate;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -101,11 +114,11 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public int getGraduation() {
+    public Integer getGraduation() {
         return graduation;
     }
 
-    public void setGraduation(int graduation) {
+    public void setGraduation(Integer graduation) {
         this.graduation = graduation;
     }
 
@@ -149,19 +162,18 @@ public class User implements Serializable {
         this.sex = sex;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 
     public User() {
-
     }
 
-    public User(int id, String uid, String loginname, String address, String phoneNumber, String email, int graduation, String classname, String carte, String username, String password, String sex, int age) {
+    public User(Integer id, String uid, String loginname, String address, String phoneNumber, String email, Integer graduation, String classname, String carte, String username, String password, String sex, Integer age, Date registerDate) {
         this.id = id;
         this.uid = uid;
         this.loginname = loginname;
@@ -175,6 +187,6 @@ public class User implements Serializable {
         this.password = password;
         this.sex = sex;
         this.age = age;
-        this.registerDate = new Date();
+        this.registerDate = registerDate;
     }
 }

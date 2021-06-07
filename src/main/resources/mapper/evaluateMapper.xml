@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.jason.mapper.EvaluateMapper">
-    <resultMap id="evaluateMapper" type="cn.jason.bean.Evaluate">
+<mapper namespace="cn.com.hkr.mapper.EvaluateMapper">
+    <resultMap id="evaluateMapper" type="cn.com.hkr.bean.Evaluate">
         <id property="id" column="id"  javaType="String"></id>
         <result property="username" column="username" javaType="String"></result>
         <result property="tname" column="tname" javaType="String"></result>
@@ -22,7 +22,7 @@
     </resultMap>
 
     <sql id="base_column">
-        id,username,tname,classname,lesson,understand,helpful,enterpriseNeed,langClear,isSystem,studyAgain,satis,purpose,suggestion,submitDate
+        id,username,classname,lesson,understand,helpful,enterpriseNeed,langClear,isSystem,studyAgain,satis,purpose,suggestion,submitDate,tname
     </sql>
 
     <!--工具，抓日志分析-->
@@ -33,6 +33,77 @@
         from t_evaluate
     </select>
 
+    <!--通过属性查找-->
+    <select id="findByProperties" parameterType="cn.com.hkr.bean.Evaluate" resultMap="evaluateMapper">
+        select
+            <include refid="base_column"/>
+        from t_evaluate
+        where 1 = 1
+
+        <if test="id != null">
+           and id = #{id}
+        </if>
+
+        <if test="username != null">
+            and username = #{username}
+        </if>
+
+        <if test="classname != null">
+            and classname = #{classname}
+        </if>
+
+        <if test="lesson != null">
+            and lesson = #{lesson}
+        </if>
+
+        <if test="understand != null">
+            and understand != #{understand}
+        </if>
+
+        <if test="helpful != null">
+            and helpful = #{helpful}
+        </if>
+
+        <if test="enterpriseNeed != null">
+            and enterpriseNeed = #{enterpriseNeed}
+        </if>
+
+        <if test="langClear != null">
+            and langClear = #{langClear}
+        </if>
+
+        <if test="isSystem != null">
+            and isSystem = #{isSystem}
+        </if>
+
+        <if test="studyAgain != null">
+            and studyAgain = #{studyAgain}
+        </if>
+
+        <if test="satis != null">
+            and satis =  #{satis}
+        </if>
+
+        <if test="suggestion != null">
+            and suggestion like '%${suggestion}%'
+        </if>
+
+        <if test="submitDate != null">
+            and submitDate = #{submitDate}
+        </if>
+
+        <if test="tname != null">
+            and tname = #{tname}
+        </if>
+
+
+    </select>
+
+    <insert id="addEvaluate" parameterType="cn.com.hkr.bean.Evaluate">
+        insert into t_evaluate(<include refid="base_column"/>)
+        values (null,#{username},#{classname},#{lesson},#{understand},#{helpful},#{enterpriseNeed},#{langClear},
+                #{isSystem},#{studyAgain},#{satis},#{purpose},#{suggestion},#{submitDate},#{tname})
+    </insert>
 
 
 

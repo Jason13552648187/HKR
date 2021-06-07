@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.jason.mapper.TeacherMapper">
-    <resultMap id="teacherMapper" type="cn.jason.bean.Teacher">
+<mapper namespace="cn.com.hkr.mapper.TeacherMapper">
+    <resultMap id="teacherMapper" type="cn.com.hkr.bean.Teacher">
         <id property="tid" column="tid" javaType="String"></id>
         <result property="id" javaType="int" column="id"></result>
         <result property="teacherName" javaType="String" column="teacherName"></result>
@@ -18,51 +18,70 @@
     </resultMap>
 
     <sql id="base_column">
-        id,tid,loginname,teacherName,password,age,sex,address,phoneNumber,email,registerDate,classname,status
+        id,tid,loginname,teacherName,age,sex,address,phoneNumber,email,registerDate,classname,status
     </sql>
 
-    <select id="getUserById" parameterType="String" resultMap="teacherMapper">
-        select
-
-        <include refid="base_column"/>
-
-        from t_teacher
-        where tid  = #{tid}
-
-    </select>
-
-    <select id="getUserBySex" parameterType="String" resultMap="teacherMapper">
-        select
-        <include refid="base_column"></include>
-        from t_teacher
-        where sex = #{sex}
-    </select>
-
-    <select id="getAllUser" resultMap="teacherMapper">
-        select
-        <include refid="base_column"></include>
-        from t_teacher
-    </select>
-
-
-    <select id="getUserByNameAndPassword" parameterType="java.lang.String" resultMap="teacherMapper">
-        select <include refid="base_column"></include>
-        from t_teacher
-        where loginname = #{loginname} and password  = #{password}
-    </select>
-
-    <select id="getUserByPhone" parameterType="String" resultMap="teacherMapper">
-        select <include refid="base_column"></include>
-        from t_teacher
-        where phoneNumber = #{phoneNumber}
-
-    </select>
 
     <select id="findTeacherByValid" parameterType="Integer" resultMap="teacherMapper">
-
         select <include refid="base_column"></include>
         from t_teacher
         where  status  = #{status}
+    </select>
+
+    <!--通用查询-->
+    <select id="commonSelect" parameterType="cn.com.hkr.bean.Teacher">
+        select <include refid="base_column"/>
+        from t_teacher
+        where   1 = 1
+        <if test="tid != null">
+            and tid = #{tid}
+        </if>
+
+        <if test="loginname != null">
+            and loginname = #{loginname}
+        </if>
+
+        <if test="teacherName != null">
+            and teacherName = #{teacherName}
+        </if>
+
+        <if test="password != null">
+            and password = #{password}
+        </if>
+
+        <if test="age != null">
+            and age = #{age}
+        </if>
+
+        <if test="sex != null">
+            and sex = #{sex}
+        </if>
+
+        <if test="address != null">
+            and address = #{address}
+        </if>
+
+        <if test="phoneNumber != null">
+            and phoneNumber = #{phoneNumber}
+        </if>
+
+        <if test="email != null">
+            and email = #{email}
+        </if>
+
+        <if test="registerDate != null">
+            and registerDate = #{registerDate}
+        </if>
+
+        <if test="classname != null">
+            and classname = #{classname}
+        </if>
+
+        <if test="status != null">
+            and status = #{status}
+        </if>
+
+
     </select>
 
 

@@ -1,11 +1,9 @@
 package cn.com.hkr.service;
 
 import cn.com.hkr.bean.Evaluate;
-import cn.com.hkr.dao.EvaluateDao;
+import cn.com.hkr.mapper.EvaluateMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @author jason
@@ -15,11 +13,10 @@ import java.util.List;
 public class EvaluateService {
  
     @Autowired
-    public EvaluateDao evaluateDao;
+    private EvaluateMapper evaluateMapper;
 
-    public List<Evaluate> getAllEvaluate(){
-
-        return evaluateDao.getAllEvaluate();
+    public void addEvaluate(Evaluate evaluate){
+        evaluateMapper.addEvaluate(evaluate);
     }
 
 

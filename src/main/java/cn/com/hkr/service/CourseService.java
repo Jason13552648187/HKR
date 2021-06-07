@@ -1,7 +1,7 @@
 package cn.com.hkr.service;
 
 import cn.com.hkr.bean.Course;
-import cn.com.hkr.dao.CourseDao;
+import cn.com.hkr.mapper.CourseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,21 +13,17 @@ import java.util.List;
  */
 @Service
 public class CourseService {
- 
+
     @Autowired
-    public CourseDao courseDao;
+    private CourseMapper courseMapper;
 
-
-
-    public List<Course> findAll(){
-        return courseDao.findAll();
+    public List<Course> findCourse(Course course){
+        return courseMapper.findByProper(course);
     }
 
-    public Course findCourseByCid(String cid){
-        return courseDao.findCourseByCid(cid);
+    public List<Course> findByProper(Course course){
+        return courseMapper.findByProper(course);
     }
 
-    public void addCourse(Course course){
-        courseDao.addCourse(course);
-    }
+
 }

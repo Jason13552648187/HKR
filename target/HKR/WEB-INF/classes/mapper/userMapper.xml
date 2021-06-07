@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.hkr.mapper.UserMapper">
+    <resultMap id="userMapper" type="cn.com.hkr.bean.User">
+        <id property="uid" column="uid" javaType="String"></id>
+        <result property="id" javaType="int" column="id"></result>
+        <result property="username" javaType="String" column="username"></result>
+        <result column="password" property="password" javaType="String"></result>
+        <result property="age" column="age" javaType="int"></result>
+        <result property="sex" column="sex" javaType="String"></result>
+        <result property="address" column="address" javaType="String"></result>
+        <result property="loginname" column="loginname" javaType="String"></result>
+        <result property="email" column="email" javaType="String"></result>
+        <result property="graduation" column="graduation" javaType="int"></result>
+        <result property="registerDate" column="registerDate" javaType="java.util.Date"></result>
+        <result property="classname" column="classname" javaType="String"></result>
+        <result property="carte" column="carte" javaType="String"></result>
+    </resultMap>
+
+    <sql id="base_column">
+        id,uid,loginname,username,password,age,sex,address,phoneNumber,email,graduation,registerDate,classname,carte
+    </sql>
+
+    <insert id="addUser" parameterType="cn.com.hkr.bean.User">
+        insert <include refid="base_column"/>
+        values (null,#{uid},#{loginname},#{username},#{password},#{age},#{sex},
+                #{address},#{phoneNumber},#{email},#{graduation},now(),#{classname},#{carte})
+    </insert>
+
+    <select id="getUserById" parameterType="cn.com.hkr.bean.User" resultMap="userMapper">
+        select 
+        <include refid="base_column"/>
+        from t_user
+        where uid = #{uid}
+
+    </select>
+
+    <select id="getUserBySex" parameterType="cn.com.hkr.bean.User" resultMap="userMapper">
+
+        select
+        <include refid="base_column"></include>
+        from t_user
+        where sex = #{sex}
+    </select>
+
+
+    <select id="getAllUser" resultMap="userMapper">
+        select
+        <include refid="base_column"></include>
+        from t_user
+    </select>
+
+
+    <select id="getUserByNameAndPassword" resultMap="userMapper">
+        select <include refid="base_column"></include>
+        from t_user
+        where loginname = #{loginname} and password  = #{password}
+    </select>
+
+    <select id="getUserByPhone" resultMap="userMapper">
+        select <include refid="base_column"></include>
+        from t_user
+        where phoneNumber = #{phoneNumber}
+
+    </select>
+
+
+    <update id="updateUser" parameterType="cn.com.hkr.bean.User">
+        update t_user set
+        <trim suffixOverrides=",">
+            <if test="username != null">
+                username = #{username},
+            </if>
+            <if test="loginname != null">
+                loginname = #{loginname},
+            </if>
+            <if test="password != null">
+                password = #{password},
+            </if>
+            <if test="age != null">
+                age = #{age},
+            </if>
+
+            <if test="sex != null">
+                sex = #{sex},
+            </if>
+
+            <if test="address != null and address != ''">
+                address = #{address},
+            </if>
+
+            <if test="email != null">
+                email = #{email},
+            </if>
+
+            <if test="graduation != null">
+                graduation = #{graduation},
+            </if>
+
+            <if test="classname != null">
+                classname = #{classname},
+            </if>
+
+            <if test="carte != null">
+                carte  = #{carte}
+            </if>
+
+        </trim> where uid = #{uid}
+    </update>
+
+
+
+</mapper>

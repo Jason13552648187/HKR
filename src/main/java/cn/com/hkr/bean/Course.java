@@ -1,5 +1,7 @@
 package cn.com.hkr.bean;
 
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -9,6 +11,7 @@ import java.util.Date;
  * @author jason
  * @date 2020/10/29-17:04
  */
+@Component
 public class Course implements Serializable {
 
     private Integer id;
@@ -16,12 +19,12 @@ public class Course implements Serializable {
     private String courseName;
     private String descri;
     private Date createtime;
-    private int status;
+    private Integer status;
 
     @Override
     public String toString() {
         return "Course{" +
-                "id='" + id + '\'' +
+                "id=" + id +
                 ", cid='" + cid + '\'' +
                 ", courseName='" + courseName + '\'' +
                 ", descri='" + descri + '\'' +
@@ -62,30 +65,27 @@ public class Course implements Serializable {
         this.descri = descri;
     }
 
-    public Date getCreateTime() {
+    public Date getCreatetime() {
         return createtime;
     }
 
-    public void setCreateTime(String createtime) {
-        try {
-            this.createtime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(createtime);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+    public void setCreatetime(Date createtime) {
+        this.createtime = createtime;
     }
 
-    public int getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
     public Course() {
     }
 
-    public Course(Integer id, String cid, String courseName, String descri, Date createtime, int status) {
+    public Course(Integer id, String cid, String courseName, String descri, Date createtime, Integer status) {
+
         this.id = id;
         this.cid = cid;
         this.courseName = courseName;

@@ -1,18 +1,22 @@
 package cn.com.hkr.controller;
 
+import org.apache.log4j.Logger;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 
 /**
  * @author jason
  * @date 2021/1/24-20:02
  */
+@Controller
+public class HomeController extends BaseController {
 
-public class HomeController {
+    public static Logger logger = Logger.getLogger(HomeController.class);
 
     @RequestMapping({"/index","/"})
-    @ResponseBody
     public String index(){
-        return "index.jsp";
+        logger.debug("--------------------------------访问了首页面!----------------------------------");
+        return "user/index";
     }
 }
