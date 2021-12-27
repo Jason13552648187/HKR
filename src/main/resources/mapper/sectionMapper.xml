@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.hkr.mapper.SectionMapper">
+
+
+    <sql id="selfcolumn">
+        secname , detailname,description
+    </sql>
+
+
+    <!--通过uid和sid来查询当前阶段的详细情况-->
+    <select id="selectSectionDetailByuidAndsid"  resultType="map">
+
+        SELECT u.uid,s.sid,did,evaluate,submanager,leavedays
+
+        FROM t_user u LEFT JOIN t_sec_detail sd ON  u.`uid` = sd.`uid`
+                      LEFT JOIN t_section s ON s.sid =  sd.`sid`
+        WHERE u.`uid` = #{uid} AND s.sid = #{sid}
+        order by  od asc
+
+    </select>
+
+
+
+    <!--通过uid和sid来查询当前阶段的违规记录-->
+    <select id="selectSectionRebelByuidAndsid" resultType="map">
+        SELECT u.uid,s.sid,evaluate,rid,secname
+        FROM t_user u JOIN  t_sec_rebel sr ON u.uid =  sr.`uid`
+                      JOIN t_section s ON sr.sid = s.`sid`
+        WHERE u.uid = #{uid}  AND  s.`sid` = #{sid}
+        order by  od asc
+
+    </select>
+
+
+    <!--获取用户详细进度表-->
+    <select id="getUserProcess" resultType="map">
+        SELECT  (u.`status`/tmp.secnum) process,status,secname,detailname
+        FROM (SELECT COUNT(*) secnum FROM t_section) tmp,t_user u ,t_section s
+        WHERE u.status = s.od
+        and uid = #{uid}
+    </select>
+
+
+
+    <!--通过uid获取用户经历了几个阶段-->
+    <select id="getUserAllSidByUid"  resultType="map">
+        select s.sid,secname,detailname,cursection
+        from t_user u join t_user_section us on u.uid = us.uid
+        join t_section s on s.sid  = us.sid
+        and u.uid = #{uid}
+    </select>
+
+
+    <select id="commonSelectSection" resultType="cn.com.hkr.bean.Section">
+        select sid,<include refid="selfcolumn"/>,od
+        from t_section
+        where 1 = 1
+        <if test="null != sid and sid  != ''">
+            and sid = #{sid}
+        </if>
+        <if test="null  != secname and secname != ''">
+            and secname = #{secname}
+        </if>
+        <if test="null != detailname and detailname != ''">
+            and detailname = #{detailname}
+        </if>
+        <if test="null != od">
+            and od = #{od}
+        </if>
+
+    </select>
+
+
+    <insert id="addSectionDetail" parameterType="map">
+        insert into t_sec_detail(sid,did,evaluate,leavedays,submanager,uid)
+        values(#{sid},#{did},#{evaluate},#{leavedays},#{submanager},#{uid})
+    </insert>
+
+    <insert id="addSectionRebel" parameterType="map">
+        insert into t_sec_rebel(sid,rid,evaluate,uid)
+        values(#{sid},#{rid},#{evaluate},#{uid})
+    </insert>
+    
+    
+
+
+    <select id="commonSelectUserSection" resultType="map">
+        select uid ,sid ,cursection
+        from t_user_section
+        where
+        <if test="null != uid and uid != ''">
+            uid  = #{uid}
+        </if>
+        <if test="null != sid and sid  != ''">
+            and sid = #{sid}
+        </if>
+        <if test="null  != cursection">
+            and cursection = #{cursection}
+        </if>
+    </select>
+
+
+    <insert id="addUserSection" parameterType="map">
+        insert into t_user_section(uid,sid,cursection)
+        values(#{uid},#{sid},#{cursection})
+    </insert>
+
+
+
+
+</mapper>

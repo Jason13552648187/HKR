@@ -20,7 +20,7 @@ public class Quotation implements Serializable {
     }
 
     public Quotation(String id, String qid, String qtitle, String qtxt) {
-        this.id = id;
+        this.id = id;   
         this.qid = qid;
         this.qtitle = qtitle;
         this.qtxt = qtxt;

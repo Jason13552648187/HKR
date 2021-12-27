@@ -1,5 +1,8 @@
 package cn.com.hkr.service;
 
+import cn.com.hkr.mapper.LogMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,5 +12,8 @@ import java.util.Map;
  */
 public class BaseService {
 
-    public Map<String,Object> msg = new HashMap<>();
+    public Map<String, Object> msg = new HashMap<>();
+
+    @Autowired
+    public LogMapper logMapper;
 }

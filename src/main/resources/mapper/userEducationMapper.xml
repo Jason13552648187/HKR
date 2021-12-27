@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.hkr.mapper.EducationMapper">
+    <resultMap id="educationMapper" type="cn.com.hkr.bean.UserEducation">
+        <id property="id" column="id"  javaType="Integer"></id>
+        <result property="uid"  column="uid" javaType="String"></result>
+        <result property="school"  column="school" javaType="String"></result>
+        <result property="professional"  column="professional" javaType="Integer"></result>
+        <result property="gradutime"  column="gradutime" javaType="Date"></result>
+        <result property="edulevel"   column="edulevel" javaType="String"></result>
+        <result property="educonfirm"   column="educonfirm" javaType="String"></result>
+        <result property="edutelnumber"  column="edutelnumber"  javaType="String"></result>
+
+    </resultMap>
+
+    <sql id="base_column">
+        uid,school,professional,gradutime,edulevel,educonfirm,edutelnumber
+    </sql>
+    <!--添加信息-->
+    <insert id="add" parameterType="cn.com.hkr.bean.UserEducation">
+        insert into t_user_education(<include refid="base_column"/>)
+        values (#{uid},#{school},#{professional},#{gradutime},#{edulevel},#{educonfirm},#{edutelnumber})
+    </insert>
+
+
+    <update id="updateData" parameterType="cn.com.hkr.bean.UserEducation">
+        update t_user_education
+        set
+        <trim suffixOverrides=",">
+            <if test="null != professional and professional != ''">
+                professional = #{professional},
+            </if>
+            <if test="null != gradutime">
+                gradutime = #{gradutime},
+            </if>
+            <if test="null != edulevel and edulevel != ''">
+                edulevel = #{edulevel},
+            </if>
+            <if test="null != educonfirm and educonfirm != ''">
+                educonfirm = #{educonfirm},
+            </if>
+            <if test="null != edutelnumber and edutelnumber != ''">
+                edutelnumber = #{edutelnumber},
+            </if>
+            <if test="null != school and school != ''">
+                school = #{school}
+            </if>
+        </trim> where uid =  #{uid}
+    </update>
+
+
+</mapper>

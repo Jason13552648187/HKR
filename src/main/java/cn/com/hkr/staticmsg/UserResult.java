@@ -24,7 +24,7 @@ public class UserResult implements Serializable {
     一些状态消息
      */
     public final  static String ERROR_MSG = "该用户不存在!";
-    public final  static String SUCCESS_MSG = "OK!";
+    public final  static String SUCCESS_MSG = "请求成功!";
     public final  static String USERNAME_NULL_MSG = "用户名不能为空!";
     public final  static String PASSWORD_NULL_MSG = "密码不能为空!";
     public final  static String ID_NULL_MSG = "查询ID不能为空!";
@@ -34,8 +34,9 @@ public class UserResult implements Serializable {
     public final  static String DATA_TYPE_MSG = "数据格式不支持!";
     public final  static String PASSWORD_ERROR_MSG = "密码错误!";
 
-    public final  static String GRADUATED_STATUS_MSG = "改学员已毕业!";
-    public final  static String GRADUATED_BACK_STATUS_MSG = "改学员已退学!";
+    public final  static String GRADUATED_STATUS_MSG = "已就业";
+    public final  static String GRADUATED_BACK_STATUS_MSG = "中途退学";
+    public final  static String GRADUATED_NOMAL = "在籍";
     public final  static String ACTIVE_STATUS_MSG = "该学员未激活!";
 
 

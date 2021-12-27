@@ -40,6 +40,11 @@
         </if>
     </select>
 
+    <insert id="addLog" parameterType="cn.com.hkr.bean.Log">
+        insert into t_log(<include refid="base_column"></include>)
+        value(role=#{role},username=#{username},operation=#{operation},opera_time=#{opera_time})
+    </insert>
+
 
 
 </mapper>

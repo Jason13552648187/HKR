@@ -47,7 +47,6 @@ public class MenuController extends BaseController {
             result = new AjaxResult(780,"添加异常，请稍后重试！",null);
             return result;
         }
-
     }
 }
 

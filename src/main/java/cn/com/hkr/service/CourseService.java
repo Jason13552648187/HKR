@@ -12,17 +12,19 @@ import java.util.List;
  * @date 2020/10/26-16:10
  */
 @Service
-public class CourseService {
+public class CourseService  extends BaseService{
 
     @Autowired
     private CourseMapper courseMapper;
 
+    /*通过cid查询课程*/
     public List<Course> findCourse(Course course){
-        return courseMapper.findByProper(course);
+        return courseMapper.commonSelect(course);
     }
 
+    /*公共查询课程功能*/
     public List<Course> findByProper(Course course){
-        return courseMapper.findByProper(course);
+        return courseMapper.commonSelect(course);
     }
 
 

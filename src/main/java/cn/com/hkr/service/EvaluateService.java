@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
  * @date 2020/10/26-16:10
  */
 @Service
-public class EvaluateService {
+public class EvaluateService  extends BaseService{
  
     @Autowired
     private EvaluateMapper evaluateMapper;

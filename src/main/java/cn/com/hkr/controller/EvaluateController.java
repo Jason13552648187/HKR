@@ -26,6 +26,7 @@ public class EvaluateController extends BaseController {
         result.put("success",true);
         result.put("data",list);
 */
+        logger.debug("----------------------------------获取所有课程数据!----------------------------------");
         return null;
 
     }

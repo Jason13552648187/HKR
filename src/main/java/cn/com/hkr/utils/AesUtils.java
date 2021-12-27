@@ -46,8 +46,5 @@ public class AesUtils {
         String str = "jason";
         String key = "admin";
         System.out.println(decrypt(str,key));
-
-
-
     }
 }

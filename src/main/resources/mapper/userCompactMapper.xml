@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.hkr.mapper.CompactMapper">
+    <sql id="base">
+        cid,uid,createtime
+    </sql>
+
+    <sql id="compact_column">
+        createtime,compactname
+    </sql>
+
+
+
+    <select id="selectBycompact" resultType="cn.com.hkr.bean.Compact">
+        select cid,compactname,compactstatus
+        from t_compact
+        where 1  = 1
+        <if test="null != cid and cid != ''">
+            and cid = #{cid}
+        </if>
+
+        <if test="null != compactname and compactname != ''">
+            and compactname = #{compactname}
+        </if>
+
+        <if test="null != compactstatus">
+            and compactstatus = #{compactstatus}
+        </if>
+
+
+    </select>
+
+
+
+    <select id="commonselect" resultType="map">
+        select u.uid ,c.cid, <include refid="compact_column"/>
+
+        from t_user u join t_user_compact uc on u.uid = uc.uid
+            join t_compact c on uc.cid  = c.cid
+        where 1 = 1
+        <if test="null != uid and uid !=''">
+            and u.uid = #{uid}
+        </if>
+        <if test="null != cid and cid !=''">
+            and c.cid = #{cid}
+        </if>
+        <if test="null != compactname and compactname != ''">
+            and compactname  = #{compactname}
+        </if>
+
+    </select>
+
+
+
+    <insert id="addCompactStatus">
+        insert into t_user_compact(<include refid="base"/>)
+        values(#{cid},#{uid},now())
+    </insert>
+
+
+    <update id="updateCompactStatus" parameterType="map">
+        update t_user_compact
+        set cid  = #{cid} where uid  = #{uid}
+    </update>
+
+
+</mapper>

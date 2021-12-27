@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <meta charset="UTF-8">
 <title>HKR  |  404</title>
 
-<link rel="stylesheet" href="<%=request.getContextPath()%>/error/404/css/style.css">
+  <link rel="stylesheet" href="<%=request.getContextPath()%>/error/404/css/style.css">
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
@@ -25,7 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div class="error">
   <span>您访问的资源没有找到！</span>
   <span>404</span>
-  <span><a class="layui-btn layui-btn-normal" href="<%=request.getContextPath()%>">返回首页</a></span>
+  <span><a class="layui-btn layui-btn-normal" onclick="window.location=<%=request.getContextPath()%>">返回首页</a></span>
 </div>
 
 <div class="sun"></div>
@@ -63,8 +63,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <div class="grass_tw"></div>
 </div>
 <div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';">
-<p>本系统只支持谷歌和火狐浏览器，请更换对应的浏览器进行使用！</p>
-<p></p>
+  <p>本系统只支持谷歌和火狐浏览器，请更换对应的浏览器进行使用！</p>
+  <p></p>
 </div>
 </body>
 </html>

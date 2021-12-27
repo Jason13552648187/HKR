@@ -26,6 +26,32 @@ public class Teacher implements Serializable {
     private Date registerDate;
     private String classname;
     private Integer status;
+    private Integer role_id;
+
+    public Teacher(Integer id, String tid, String loginname, String teacherName, String password, String sex, int age, String address, String phoneNumber, String email, Date registerDate, String classname, Integer status, Integer role_id) {
+        this.id = id;
+        this.tid = tid;
+        this.loginname = loginname;
+        this.teacherName = teacherName;
+        this.password = password;
+        this.sex = sex;
+        this.age = age;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.registerDate = registerDate;
+        this.classname = classname;
+        this.status = status;
+        this.role_id = role_id;
+    }
+
+    public Integer getRole_id() {
+        return role_id;
+    }
+
+    public void setRole_id(Integer role_id) {
+        this.role_id = role_id;
+    }
 
     public Integer getStatus() {
         return status;

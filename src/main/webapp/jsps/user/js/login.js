@@ -4,10 +4,10 @@ function check_email(ele){
     // var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
     var reg = /^\w+@\w+\.[a-zA-Z]{2,4}$/
     if(value.length == 0){
-        layer.msg("邮箱不能为空哦!别瞎弄!");
+        layer.msg("邮箱不能为空!",{icon:5});
         return false;
     }else if (!reg.test(value)){
-        layer.msg("你确定你这是邮箱吗？都跟你说了别瞎弄!");
+        layer.msg("邮箱格式不正确？",{icon:5});
         return false;
     }
     return true;
@@ -16,7 +16,7 @@ function check_email(ele){
 function check_pass(ele){
     var password = $(ele).val().trim();
     if (password.length == 0){
-        layer.msg("密码不能为空!")
+        layer.msg("密码不能为空!",{icon:5})
         return false;
     }
     return true;
@@ -27,10 +27,10 @@ function check_phone(ele){
     var value = $(ele).val().trim();
     var reg = /^1[3-9]{1}\d{9}$/
     if (value.length == 0){
-        layer.msg("请输入手机号!")
+        layer.msg("请输入手机号!",{icon:0})
         return false;
     }else if(!reg.test(value)){
-        layer.msg("手机号格式不正确!");
+        layer.msg("手机号格式不正确!",{icon:5});
         return false;
     }
     return true;
@@ -67,7 +67,7 @@ $(function (){
         /*异步访问后端服务器完成校验*/
         var index = layer.load(2,{time:100*1000});
         $.ajax({
-            url:"user/register",
+            url:"teacher/register",
             method:"post",
             async:false,
             dataType:"json",
@@ -85,7 +85,7 @@ $(function (){
                     });
                 }else{
                     layer.close(index);
-                    layer.msg(result.msg);
+                    layer.msg(result.msg,{icon:5});
                 }}
             });
     });
@@ -99,11 +99,11 @@ $(function (){
         if (!check_pass($("#login_passwd"))){
             return ;
         }
-        var index = layer.load(2,{timeout:10*1000});
+        var index = layer.load(2,{timeout:3*1000});
 
         /*异步传输请求到服务器进行登陆*/
         $.ajax({
-            url:"user/login",
+            url:"teacher/login",
             dataType: "json",
             method: "post",
             type:"json",
@@ -113,10 +113,10 @@ $(function (){
             success:function (result){
                 if (result.success){
                     layer.close(index);
-                    layer.msg("登陆成功,客官里面请...");
-                    /*转发到登陆成功页面*/
-                    window.location = "jsps/user/main.jsp"
-                    //
+                    layer.msg("登陆成功！",{icon:1},function () {
+                        /*转发到登陆成功页面*/
+                        window.location = "teacher/main"
+                    });
                 }else{
                     layer.close(index);
                     layer.alert(result.msg,{icon:5,title:"登陆失败!"})

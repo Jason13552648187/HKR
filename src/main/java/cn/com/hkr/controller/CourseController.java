@@ -26,7 +26,7 @@ public class CourseController extends BaseController {
     @RequestMapping("/getCourse")
     @ResponseBody
     public Object getCourse(Course course){
-
+        logger.debug("----------------------------------进行了课程查询功能的执行!----------------------------------");
         List<Course> se = courseService.findByProper(course);
 
         result.put("code",700);

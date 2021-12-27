@@ -10,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>HKR | 不支持</title>
+    <title>HKR | 浏览器不支持</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,8 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
 	<center>
 		对不起，本系统不支持IE浏览器。请更换其他浏览器以访问!<br/>
-		点击<a href="ftp://192.168.1.248//%E4%AF%C0%C0%C6%F7/%B9%C8%B8%E8/">谷歌</a>
-		或者<a href="ftp://192.168.1.248/%E4%AF%C0%C0%C6%F7/%BB%F0%BA%FC/">火狐</a>以下载该浏览器。
 	</center>
 
 

@@ -2,9 +2,6 @@ package cn.com.hkr.bean;
 
 import org.springframework.stereotype.Component;
 
-import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -12,7 +9,7 @@ import java.util.Date;
  * @date 2020/10/29-17:04
  */
 @Component
-public class Course implements Serializable {
+public class Course{
 
     private Integer id;
     private String cid;

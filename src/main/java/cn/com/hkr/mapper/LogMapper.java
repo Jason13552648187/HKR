@@ -15,4 +15,6 @@ public interface LogMapper {
     public List<Log> findAll();
 
     public List<Log> findByProper(Log log);
+
+    public void addLog(Log log);
 }

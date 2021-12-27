@@ -1,0 +1,11 @@
+{
+  "msg":"OK!",
+  "code":0,
+  "data":
+    [
+      {"birthday":1639151988000,"uid":"ebe6716a05b247a2bc890f612896d8f1","loginname":"jason","graduation":true,"email":"afadsfadsf@qq.com","username":"13552648187","registerDate":1595030400000,"status":1},
+      {"uid":"fc03932b4b654abab06d6984d6948bb1","loginname":"admin1","graduation":true,"username":"root","registerDate":1584921600000,"status":1}
+    ],
+  "success":true,
+  "count":2
+}

@@ -7,26 +7,53 @@
         <result property="id" javaType="int" column="id"></result>
         <result property="username" javaType="String" column="username"></result>
         <result column="password" property="password" javaType="String"></result>
-        <result property="age" column="age" javaType="int"></result>
-        <result property="sex" column="sex" javaType="String"></result>
-        <result property="address" column="address" javaType="String"></result>
+
         <result property="loginname" column="loginname" javaType="String"></result>
-        <result property="email" column="email" javaType="String"></result>
-        <result property="graduation" column="graduation" javaType="int"></result>
+        <result property="graduation" column="graduation" javaType="String"></result>
         <result property="registerDate" column="registerDate" javaType="java.util.Date"></result>
-        <result property="classname" column="classname" javaType="String"></result>
+
         <result property="carte" column="carte" javaType="String"></result>
+        <result property="status" column="status" javaType="int"></result>
     </resultMap>
 
     <sql id="base_column">
-        id,uid,loginname,username,password,age,sex,address,phoneNumber,email,graduation,registerDate,classname,carte
+        loginname,username,graduation,registerDate,carte,status
     </sql>
 
+    <sql id="education_column">
+        school,professional,gradutime,edulevel,educonfirm,edutelnumber
+    </sql>
+
+    <sql id="info_column">
+        sex,idcard,age,email,rawaddress,curprovince,curcity,curcounty,nationa,birthday,phoneNumber,wechat
+    </sql>
+    <sql id="workhis_column">
+        company,job,starttime,endtime,workdetail
+    </sql>
+
+    <sql id="contact_column">
+        contact,unit,workjob,telphone,relation
+    </sql>
+
+
     <insert id="addUser" parameterType="cn.com.hkr.bean.User">
-        insert <include refid="base_column"/>
-        values (null,#{uid},#{loginname},#{username},#{password},#{age},#{sex},
-                #{address},#{phoneNumber},#{email},#{graduation},now(),#{classname},#{carte})
+        insert into t_user(uid,loginname,username,password,graduation,registerDate,status)
+        values (#{uid},#{loginname},#{username},#{password},#{graduation},#{registerDate},#{status})
     </insert>
+
+    <select id="getAllUser" resultType="map">
+        select
+               u.uid,
+        <include refid="base_column"></include>,
+        <include refid="education_column"></include>,
+        <include refid="info_column"></include>,
+        <include refid="workhis_column"></include>
+
+        from t_user u LEFT OUTER join t_user_info i on u.uid = i.uid
+        LEFT OUTER join t_user_workhis w on u.uid =  w.uid
+        LEFT OUTER join t_user_education e  on u.uid = e.uid
+
+    </select>
 
     <select id="getUserById" parameterType="cn.com.hkr.bean.User" resultMap="userMapper">
         select 
@@ -44,14 +71,6 @@
         where sex = #{sex}
     </select>
 
-
-    <select id="getAllUser" resultMap="userMapper">
-        select
-        <include refid="base_column"></include>
-        from t_user
-    </select>
-
-
     <select id="getUserByNameAndPassword" resultMap="userMapper">
         select <include refid="base_column"></include>
         from t_user
@@ -65,6 +84,11 @@
 
     </select>
 
+    <update id="modifyPass" parameterType="String">
+        update t_user
+        set password  = #{password}
+        where email = #{email}
+    </update>
 
     <update id="updateUser" parameterType="cn.com.hkr.bean.User">
         update t_user set
@@ -78,36 +102,209 @@
             <if test="password != null">
                 password = #{password},
             </if>
-            <if test="age != null">
-                age = #{age},
-            </if>
 
-            <if test="sex != null">
-                sex = #{sex},
-            </if>
 
-            <if test="address != null and address != ''">
-                address = #{address},
-            </if>
-
-            <if test="email != null">
-                email = #{email},
-            </if>
-
-            <if test="graduation != null">
+            <if test="graduation != null and graduation != ''">
                 graduation = #{graduation},
             </if>
 
-            <if test="classname != null">
-                classname = #{classname},
-            </if>
-
             <if test="carte != null">
-                carte  = #{carte}
+                carte  = #{carte},
+            </if>
+            <if test="status != null">
+                status = #{status}
             </if>
 
         </trim> where uid = #{uid}
     </update>
+
+    <!--通用查询-->
+    <select id="selectCommonBase"  resultType="map">
+        select <include refid="base_column"/>
+        from t_user
+        where  1 = 1
+        <if test="username != null and username != ''">
+            and username = #{username}
+        </if>
+        <if test="loginname != null and loginname  != ''">
+            and loginname = #{loginname}
+        </if>
+        <if test="password != null and password  != ''">
+           and password = #{password}
+        </if>
+
+        <if test="graduation != null and graduation  != ''">
+            and graduation = #{graduation}
+        </if>
+
+        <if test="carte != null and carte != ''">
+            and carte  like '%#{carte}%'
+        </if>
+
+        <if test="status != null and status !=''">
+            and status  = #{status}
+        </if>
+
+    </select>
+
+    <!--通用查询-->
+    <select id="unionSelectCommon"  resultType="map">
+        select u.uid,
+        <include refid="base_column"></include>,
+        <include refid="education_column"></include>,
+        <include refid="info_column"></include>,
+        <include refid="workhis_column"></include>,
+        <include refid="contact_column"></include>
+        from t_user u LEFT OUTER join t_user_info i on u.uid = i.uid
+        LEFT OUTER join t_user_workhis w on u.uid =  w.uid
+        LEFT OUTER join t_user_education e  on u.uid = e.uid
+        LEFT OUTER join t_user_contact c  on u.uid = c.uid
+        where  1 = 1
+          <if test="uid != null and uid != ''">
+              and u.uid  = #{uid}
+          </if>
+        <if test="username != null and username != ''">
+            and username = #{username}
+        </if>
+        <if test="loginname != null and loginname  != ''">
+            and loginname = #{loginname}
+        </if>
+        <if test="password != null and password  != ''">
+            and password = #{password}
+        </if>
+
+        <if test="graduation != null and graduation  != ''">
+            and graduation = #{graduation}
+        </if>
+
+        <if test="carte != null and carte != ''">
+            and carte  like '%#{carte}%'
+        </if>
+
+        <if test="status != null and status !=''">
+            and status  = #{status}
+        </if>
+
+    </select>
+
+
+    <!--通用查询map-->
+    <select id="unionSelectCommonMap" parameterType="java.util.Map" resultType="map">
+        select u.uid,
+        <include refid="base_column"></include>,
+        <include refid="education_column"></include>,
+        <include refid="info_column"></include>,
+        <include refid="workhis_column"></include>,
+        <include refid="contact_column"></include>
+        from t_user u LEFT OUTER join t_user_info i on u.uid = i.uid
+        LEFT OUTER join t_user_workhis w on u.uid =  w.uid
+        LEFT OUTER join t_user_education e  on u.uid = e.uid
+        LEFT OUTER join t_user_contact c  on u.uid = c.uid
+        where  1 = 1
+        <if test="uid != null and uid != ''">
+            and u.uid  = #{uid}
+        </if>
+        <if test="username != null and username != ''">
+            and username like concat('%',#{username},'%')
+        </if>
+        <if test="loginname != null and loginname  != ''">
+            and loginname like concat('%',#{loginname},'%')
+        </if>
+        <if test="password != null and password  != ''">
+            and password = #{password}
+        </if>
+
+        <if test="graduation != null and graduation  != ''">
+            and graduation = #{graduation}
+        </if>
+
+        <if test="carte != null and carte != ''">
+            and carte  like concat('%',#{carte},'%')
+        </if>
+
+        <if test="wechat != null and wechat !=''">
+            and wechat  like  concat('%',#{wechat},'%')
+        </if>
+        <if test="phoneNumber != null and phoneNumber !=''">
+            and phoneNumber  like concat(#{phoneNumber},'%')
+        </if>
+        <if test="school != null and school !=''">
+            and school  like concat('%',#{school},'%')
+        </if>
+
+
+    </select>
+
+
+
+    <sql id="verify_column">
+        id,vid,uid,vcode,createtime,isVariable
+    </sql>
+    
+    <resultMap id="userVerifyMapper" type="HashMap">
+        <result column="id" property="id" javaType="int"></result>
+        <result column="vid" property="vid" javaType="String"></result>
+        <result column="uid" property="uid" javaType="String"></result>
+        <result column="vcode" property="vcode" javaType="String"></result>
+        <result column="createtime" property="createtime" javaType="Date"></result>
+        <result column="isVariable" property="isVariable" javaType="int"></result>
+        <result column="status" property="status" javaType="int"></result>
+
+    </resultMap>
+
+    <!--验证码插入和查询-->
+    <insert id="insertVerify">
+        insert into t_user_verify(<include refid="verify_column"/>)
+        values(null,#{vid},#{uid},#{vcode},now(),0)
+
+    </insert>
+
+    <!--公共查询用户的激活码-->
+    <select id="commonSelectVerify" parameterType="String" resultMap="userVerifyMapper">
+        select v.id,u.uid,vcode,createtime,v.isVariable,status
+        from t_user u join t_user_verify v on u.uid = v.uid
+        where vcode = #{vcode}
+    </select>
+
+    <!--通过链表和连表激活用户-->
+    <update id="updateUserStatus">
+        update t_user u ,t_user_verify
+        set status = #{status},isVariable = 1
+        where u.uid = #{uid}
+    </update>
+
+
+
+    <select id="findUserEndtime" resultType="map">
+        select graduation,enddate,leavetotal as leavedays,registerDate
+        from t_user u
+        where u.uid = #{uid}
+    </select>
+
+
+    <select id="updateUserMap">
+        update t_user
+            <trim prefix="SET" suffixOverrides=",">
+                <if test="null != enddate">
+                    enddate = #{enddate} ,
+                </if>
+                <if test="null != enddate">
+                    graduation = #{graduation},
+                </if>
+                <if test="null != enddate">
+                    leavetotal = #{leavetotal},
+                </if>
+                <if test="null != enddate">
+                    status = #{status}
+                </if>
+
+            </trim>
+
+            where uid = #{uid}
+    </select>
+
+
+
 
 
 

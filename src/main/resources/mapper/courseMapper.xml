@@ -15,38 +15,13 @@
         cid,id,courseName,descri,createtime,status
     </sql>
 
-    <!--通用查询-->
-    <select id="findByProper"  resultMap="courseMapper">
-        select <include refid="base_column"/>
-        from t_course
-        where  1 = 1
-        <if test="cid != null">
-            and cid = #{cid}
-        </if>
-
-        <if test="courseName != null">
-            and courseName = #{courseName}
-        </if>
-
-        <if test="descri != null">
-            and descri = #{descri}
-        </if>
-
-        <if test="createtime != null">
-            and createtime = #{createtime}
-        </if>
-
-        <if test="status != null">
-            and status = #{status}
-        </if>
-
-    </select>
-
+    <!--添加一个新的课程-->
     <insert id="addCourse" parameterType="cn.com.hkr.bean.Course">
         insert into t_course(cid,courseName,descri,createtime,status)
         values(#{cid},#{courseName},#{descri},#{createtime},#{status})
     </insert>
 
+    <!--通过cid来进行修改课程信息-->
     <update id="updateCourse" parameterType="cn.com.hkr.bean.Course">
         update t_course set
         <trim suffixOverrides=",">
@@ -63,5 +38,38 @@
             </if>
         </trim> where cid =  #{cid}
     </update>
+
+    <!--公共查询-->
+    <select id="commonSelect" parameterType="cn.com.hkr.bean.Course" resultMap="courseMapper">
+        select  <include refid="base_column"/>
+        from t_course
+        where 1 = 1
+        <if test="null != cid">
+            and cid = #{cid}
+        </if>
+
+        <if test="null != id">
+            and id = #{id}
+        </if>
+
+        <if test="null != courseName">
+            and courseName = #{courseName}
+        </if>
+
+        <if test="null != descri">
+            and descri = #{descri}
+        </if>
+
+        <if test="null != createtime">
+            and createtime = #{createtime}
+        </if>
+
+        <if test="null != status">
+            and status = #{status}
+        </if>
+
+
+
+    </select>
 
 </mapper>

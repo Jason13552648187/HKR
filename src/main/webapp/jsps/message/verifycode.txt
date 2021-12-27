@@ -1,0 +1,246 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN">
+<html xmlns="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+ <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+ <title></title>
+ <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+ <style type="text/css">
+
+  /** RESET STYLES **/
+  p{margin:1em 0;} /*Yahoo paragraph fix*/
+  table td{border-collapse:collapse;} /*This resolves the Outlook 07, 10, and Gmail td padding issue fix*/ 
+  img, a img{border:0; height:auto; outline:none; text-decoration:none;} /* Remove the borders that appear when linking images with "border:none" and "outline:none" */
+  @-ms-viewport{width: device-width;}
+  h1, h2, h3, h4, h5, h6{display:block !important; margin:0 !important; padding:0 !important;}
+  body,{height:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100 margin:0; padding:0; width:100% !important;} /* Prevent Webkit and Windows Mobile platforms from changing default font sizes, while not breaking desktop design. */
+  linkfix a {color: #bababa !important; text-decoration: none;}
+  
+  /** CLIENT-SPECIFIC STYLE **/
+  img{-ms-interpolation-mode: bicubic;} /* Force IE to smoothly render resized images. */
+  table{mso-table-lspace:0pt; mso-table-rspace:0pt;} /* Remove spacing between tables in Outlook 2007 and up. */
+  .ReadMsgBody{width:100%;} .ExternalClass{width:100%;} /* Force Outlook.com to display emails at full width. */
+  p, a, li, td, blockquote{mso-line-height-rule:exactly;} /* Force Outlook to render line heights as they're originally set. */
+  a[href^="tel"], a[href^="sms"]{color:inherit; cursor:default; text-decoration:none;} /* Force mobile devices to inherit declared link styles. */
+  p, a, li, td, body, table, blockquote{-ms-text-size-adjust:100%; -webkit-text-size-adjust:100%;} /* Prevent Windows- and Webkit-based mobile platforms from changing declared text sizes. */
+  .ExternalClass, .ExternalClass p, .ExternalClass td, .ExternalClass div, .ExternalClass span, .ExternalClass font{line-height:100%;} /* Force Outlook.com to display line heights normally. */
+  
+  /** STRUCTURAL STYLES **/
+  
+  /** CONTENT STYLES **/
+  body {
+   width: 100%;
+   background-color: #e8e8e8; 
+   margin:0 auto;
+   padding:0; 
+   -webkit-font-smoothing: antialiased;
+   font-family:"Arial", sans-serif !important;
+  }
+  
+  /** MOBILE STYLES **/
+  @media only screen and (max-device-width: 480px), screen and (max-width: 480px) {
+   /* CLIENT-SPECIFIC STYLES */
+   /* Template Shell */
+   body[yahoo] {
+    width:100% !important; 
+    min-width:100% !important; 
+    margin: 0 auto !important;
+   } /* Force iOS Mail to render the email at full width & removes margins. */
+   
+   
+   /*** STRUCTURAL ***/
+   
+   body[yahoo] .container { width: 100% !important; max-width: 480px !important; }
+   body[yahoo] .mobileShow { display: block !important; margin:0 !important; padding:0 !important; overflow: visible !important; width: auto !important; max-height:inherit !important;}
+   body[yahoo] .mobileHide { display:none !important; }
+   body[yahoo] .photo img { width: 100% !important; max-width:100% !important; height: auto !important; } 
+   body[yahoo] .columnStack { width:100% !important; display: block !important;}
+   body[yahoo] .contentCenter, body[yahoo] .contentCenter img, body[yahoo] .contentCenter table { margin: 0 auto !important; }
+   body[yahoo] .textCenter { text-align: center !important; }
+   body[yahoo] .textLeft { text-align: left !important; }
+   body[yahoo] .nullBorder { border: none !important; }
+   body[yahoo] .alignTop { vertical-align: top !important;}
+   body[yahoo] .autoHeight {height: auto !important;}
+     
+   /*** PADDING ***/
+    
+   body[yahoo] .nullPad { padding: 0px !important; } 
+   body[yahoo] .mobilePad { padding-right: 30px !important; padding-left: 30px !important; }
+   body[yahoo] .bottomPad5 { padding-bottom: 5px !important; } 
+   body[yahoo] .topPad5 { padding-bottom: 5px !important; }
+   body[yahoo] .topPad10 { padding-top: 10px !important; }
+   body[yahoo] .bottomPad10 { padding-bottom: 10px !important; }
+   body[yahoo] .topPad15 { padding-top: 15px !important; }
+   body[yahoo] .bottomPad15 { padding-bottom: 15px !important; }
+   body[yahoo] .topPad20 { padding-top: 20px !important; }
+   body[yahoo] .bottomPad20 { padding-bottom: 20px !important; }
+   body[yahoo] .topPad25 { padding-top: 25px !important; }
+   body[yahoo] .bottomPad25 { padding-bottom: 25px !important; }
+   body[yahoo] .bottomPad30 { padding-bottom: 30px !important; }
+   body[yahoo] .rightPad30 { padding-right: 30px !important; }
+   
+   /*** FONT RESIZING ***/
+   
+   body[yahoo] .fontResize17 { font-size: 17px !important; }
+   
+  }   
+
+  
+</style>
+
+<!--[if gte mso 9]> <style>     /* Target Outlook 2007 and 2010 */    html, body { font-family: Arial, sans-serif !important; }      table { font-family: Arial, sans-serif !important; }      td { font-family: Arial, sans-serif !important; } </style> <![endif]-->
+
+</head>
+<body style="margin: 0px; -webkit-text-size-adjust:none; background-color: #dddddd;" yahoo="fix">
+ <!-- Start of: Header--> 
+ <table cellpadding="0" cellspacing="0" border="0" width="100%">
+  <tr>
+   <td align="center" bgcolor="#dddddd" style="padding: 0px 20px;" class="nullPad">
+    <table border="0" cellspacing="0" cellpadding="0" width="600" class="container">
+     <tr>
+      <td align="center" bgcolor="#ffffff">
+       <!-- Start of: HKR Header -->
+            <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                <tr>
+                    <td align="center" valign="middle" style="padding: 13px 40px;" class="mobilePad">
+                        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                            <tr>
+                                <td align="left" valign="middle">
+                                    <a href="https://click.e.ea.com/?qs=66b635df5dc828f310bb579644b26ec51c5ccf4326d1406d833a52f2f435581c24172b09686f889ddcc28b44f584aa65f7f727d6a36c68dce7635b53019a0354"  target="_blank"><img alt="HKR" src="http://image.e.ea.com/lib/fe8f13727664017572/m/1/Transactional_EA_Logo.png" width="53" height="53" border="0" style="display: block;" /></a>
+                                </td>
+                                <td align="right" valign="middle" style="font-family: 'Arial', sans-serif; font-size: 10px; line-height: 10px; color: #808285;" class="mobileHide">
+                                    <a href="https://view.e.ea.com/?qs=689dbf486ddbd460f595798ce828b57b4f1dda49f617fa8ea3fe2dd62df84639dc8a8865f2b0344e44ac8915d581a0e135b80eef074e58cdaf8f629d190191a51cb22fa3c42b062fce415f35bc95b36a"  target="_blank" style="color: #808285; text-decoration: underline;">点击此处在线查看。</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <!-- End of: HKR Header -->
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <!-- End of: Header -->
+ <!-- Start of: Content --> 
+ <table cellpadding="0" cellspacing="0" border="0" width="100%">
+  <tr>
+   <td align="center" bgcolor="#dddddd" style="padding: 0px 20px;" class="nullPad">
+    <table border="0" cellspacing="0" cellpadding="0" width="600" class="container">
+     <tr>
+      <td align="center" bgcolor="#ffffff">
+       <!-- Start of: Security Code -->
+            <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                <tr>
+                    <td align="left" valign="top" width="100%" style="font-family: 'Arial', sans-serif; font-size: 14px; mso-line-height-rule: exactly; line-height: 22px; color: #939598; padding: 30px 30px 30px;" class="mobilePad">
+                        <span style="color: #000000;"><b>您的HKR验证码为：</b></span><br><br>
+                        <span style="color: #000000;"><b>{0}</b></span><br><br>
+                        如果您本人没有通过登录验证请求此验证码，请立即前往“
+                        <a href="https://click.e.ea.com/?qs=d7e8008f77f9b892053bcff9452028377da5a83067deca8643a3a6fe52b326a598eb94c693d16b0fceaf1f3774ac1e3a534a3790345d2a0472d8d7b837f7e462"  target="_blank" style="color: #4dafd4; text-decoration: none;"><b>我的帐户</b></a>
+                         ”页面更改密码。 如果您需要支持，请联系 <a href="https://click.e.ea.com/?qs=0eb9a2230bf6037e67f93e5b763381377fb6c72c2bdd8dd9c95da554708abd95c4f286578e8342359151bd8908f483f6b2341ab46fd52d90648b4cf610993384"  target="_blank" style="color: #4dafd4; text-decoration: none;">
+                         <b>HKR帮助</b>
+                         </a>。<br><br>
+
+                        感谢您帮助我们一同维护您的帐户安全。<br><br>
+                        祝您游戏愉快，<br>HKR团队
+                    </td>
+                </tr>
+            </table>
+            <!-- End of: Security Code -->
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <!-- End of: Content -->
+   <table align="center" cellpadding="0" cellspacing="0" border="0" width="100%">
+  <tr>
+   <td align="center" bgcolor="#dddddd" style="padding: 0px 20px;" class="nullPad">
+    <table cellpadding="0" cellspacing="0" border="0" width="600" class="container">
+     <tr>
+      <td align="center" bgcolor="#ffffff" height="1" style="font-size: 0px; mso-line-height-rule: exactly; line-height: 1px; height: 1px; padding: 0px 30px;" class="mobilePad">
+       <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+         <td align="center" bgcolor="#dddddd" height="1" style="font-size: 0px; mso-line-height-rule: exactly; line-height: 1px; height: 1px;">&nbsp;
+          
+         </td>
+        </tr>
+       </table>
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <!-- Start of: Footer --> 
+ <table cellpadding="0" cellspacing="0" border="0" width="100%">
+  <tr>
+   <td align="center" bgcolor="#dddddd" style="padding: 0px 20px;" class="nullPad">
+    <table border="0" cellspacing="0" cellpadding="0" width="600" class="container">
+     <tr>
+      <td align="center" bgcolor="#ffffff">
+       <!-- Start of: HKR Footer-->
+            <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                <tr>
+                    <td align="left" valign="top" width="100%" style=" padding: 30px;" class="mobilePad">
+                        <table border="0" cellspacing="0" cellpadding="0" width="100%">
+                            <tr>
+                                <td align="left" valign="top" style="font-family: 'Arial', sans-serif; font-size: 11px; mso-line-height-rule: exactly; line-height: 12px; color: #939598; padding-bottom: 12px;">
+
+                                    如果您需要技术支持，请联系 <a href="https://click.e.ea.com/?qs=aab8a52ddfc6d2477b34d7f5493eaa9ecce0280181946cb53b215d17743e46b7e5c2d1969fff3347cecb8366d4c39cff06e6f1641461f4a046f94e03d4277534"  target="_blank" style="color: #4dafd4; text-decoration: none;"><b>HKR帮助中心</b></a>.<br>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top" style="font-family: 'Arial', sans-serif; font-size: 11px; mso-line-height-rule: exactly; line-height: 12px; color: #939598;">
+                                    我们的保密和Cookie协议将让您放心畅玩HKR游戏。如需查看完整的保密和Cookie协议，请前往 <a href="https://click.e.ea.com/?qs=3816654b810cc57c07ed34cb9475ac5a2b7b9af26b0d517f847ad9d1c0750e708e751106e4064c2446464cf81cb3a10ac0c19122028b2fce84dcfd323ed8693e"  target="_blank" style="color: #4dafd4; text-decoration: none;"><b>privacy.ea.com/sc</b></a> 或写信至：Privacy Policy Administrator, HKR Swiss Sarl, Place du Molard 8, Geneva 1204, Switzerland<br><br>                                                    <br>
+
+                                    <a href="https://click.e.ea.com/?qs=bc1e35f197d707accc1c6356478462ad0df562e21557d0da0d9dfe0bd7873197f6e62718ce185dd16fbd3c73978e28285760fffb984a833104da413b61dd8285"  target="_blank" style="color: #4dafd4; text-decoration: none;"><b>保密和Cookie协议</b></a> |
+
+                                    <a href="https://click.e.ea.com/?qs=a0ef962b7a62fa164a27caf7c1f71bb51ce5075f84bcdd0325319d390fc29c0bdee01210007ef6b58c5c654482721f3e7c4be19ef83932f48d17dd18679e176d"  target="_blank" style="color: #4dafd4; text-decoration: none;"><b>用户协议</b></a> |
+
+                                    <a href="https://click.e.ea.com/?qs=bc1e35f197d707acc289ac3a0ffa3ec11d012882ada73534db8116baf3bace879d6a92755aa598cac42a85a4bb7385efdfe8bdbbcd3e791ddae698832f7c2678"  target="_blank" style="color: #4dafd4; text-decoration: none;"><b>法律信息</b></a>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle" style="padding: 12px 0px">
+                                    <a href="https://click.e.ea.com/?qs=e3ce491c684a7669c88d0b61ff41b46e1ce756d9cace83367ef29bdbfe06da7b4081551a64998abf427af3c0a8afc02152b08fdd2b2565423f13fb2999458f2a"  target="_blank"><img alt="HKR | Origin" src="https://ea-newsletter-assets.s3.amazonaws.com/origin/rtm/images/Transactional_HKR_Origin_Footer_Logos.png" width="97" height="26" border="0" style="display: block;" /></a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="top" style="font-family: 'Arial', sans-serif; font-size: 11px; mso-line-height-rule: exactly; line-height: 12px; color: #939598; ">
+                                    Origin是HKR网络的一部分。
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <!-- End of: HKR Footer -->
+      </td>
+     </tr>
+    </table>
+   </td>
+  </tr>
+ </table>
+ <!-- End of: Footer -->
+ <table cellpadding="0" cellspacing="0" border="0" width="100%">
+  <tr>
+   <td align="center" bgcolor="#dddddd" height="50" style="font-size: 0px; mso-line-height-rule: exactly; line-height: 50px; height: 50px;">&nbsp;
+    
+   </td>
+  </tr>
+ </table>
+ <!-- Start of : keep gmail android from collapsing table -->
+ <table align="center" border="0" cellpadding="0" cellspacing="0" width="620" class="mobileHide">
+  <tr>
+   <td height="1" style="font-size: 1px; line-height: 1px; min-width: 620px;">&nbsp;</td>
+  </tr>
+ </table>
+  <img src="https://click.e.ea.com/open.aspx?ffcb10-fec217787161037f-fdf51570726c077b74127570-fe961372776d007c75-ff981675-fe181d77756d0275711c74-fe9a15757765067474&d=70160&bmt=0" width="1" height="1" alt="">
+ <!-- End of : keep gmail android from collapsing table -->
+</body>
+</html>

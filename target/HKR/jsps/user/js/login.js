@@ -1,80 +1,141 @@
-/**
- * 校验表单
- * @returns
- */
-function login_check(){
-	
-	var password = $("#password").val();
-	
-	var flag = ajax_uname_check();
-	
-	if (password.trim().length <= 0) {
-		$(msg_pwd).text("密码不能为空!");
-		$(msg_pwd).css({
-			"color":"red"
-		});
-		return false;
-	}
-	if (flag) return flag;
-	return true;
+/*邮箱格式检验*/
+function check_email(ele){
+    var value = $(ele).val().trim();
+    // var reg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/;
+    var reg = /^\w+@\w+\.[a-zA-Z]{2,4}$/
+    if(value.length == 0){
+        layer.msg("邮箱不能为空!",{icon:5});
+        return false;
+    }else if (!reg.test(value)){
+        layer.msg("邮箱格式不正确？",{icon:5});
+        return false;
+    }
+    return true;
+}
+/*专门检查密码*/
+function check_pass(ele){
+    var password = $(ele).val().trim();
+    if (password.length == 0){
+        layer.msg("密码不能为空!",{icon:5})
+        return false;
+    }
+    return true;
 }
 
+/*校验手机号*/
+function check_phone(ele){
+    var value = $(ele).val().trim();
+    var reg = /^1[3-9]{1}\d{9}$/
+    if (value.length == 0){
+        layer.msg("请输入手机号!",{icon:0})
+        return false;
+    }else if(!reg.test(value)){
+        layer.msg("手机号格式不正确!",{icon:5});
+        return false;
+    }
+    return true;
 
-
-/*
- * 异步校验用户名
- * @returns {Boolean}
-*/
-function ajax_uname_check(){
-	var loginname = $("#loginname").val();
-	
-	if (loginname.trim().length <= 0) {
-		$("#msg_uname").text("登录名或手机不能为空!别瞎弄!");
-		$("#msg_uname").css("color","red")
-		return false;
-	}
-	$.ajax({
-		url:"UserServlet",
-		dataType:"json",
-		data:{
-			"method":"ajaxCheckLoginname",
-			"loginname":loginname
-		},
-		success:function(result){
-			if (result) {
-				$("#msg_uname").text("√");
-				$("#msg_uname").css("color","green");
-				return true;
-			}else{
-				
-				$("#msg_uname").text("× 该用户不存在或手机号码格式不对!");
-				$("#msg_uname").css("color","red");
-				return false;
-			}
-		}
-	})
 }
 
-
-/**
- * ajax异步交互校验电话号码
- * @param phone
- */
-function ajax_phone_check(phone){
-	$.ajax({
-		url:"UserServlet",
-		dataType:"json",
-		method:"post",
-		data:{
-			"method":"ajaxCheckPhone",
-			"phone":phone
-		},
-		success:function(result){
-			if (result) {
-				return true;
-			}else{
-				return false;
-			}
-		}
-	})
+/*检验滑动验证*/
+function slide_check(){
+    if (!res){
+        layer.alert("请先滑动滑块完成验证!",{icon:5,title:"错误"});
+        return res;
+    }
+    return res;
 }
+
+$(function (){
+    /*注册按钮*/
+    $("#btn_reg").click(function (){
+        if(!check_email($("#reg_email"))){
+            return;
+        }
+        if (!check_pass($("#reg_passwd"))){
+            return;
+        }
+
+        if (!check_phone($("#reg_phone"))){
+            return;
+        }
+        if (!slide_check()) {
+            return;
+        }
+
+        /*可以在ajax中调用函数然后看逻辑是否关闭加载器。*/
+        /*异步访问后端服务器完成校验*/
+        var index = layer.load(2,{time:100*1000});
+        $.ajax({
+            url:"teacher/register",
+            method:"post",
+            async:false,
+            dataType:"json",
+            contentType:"application/json;charset=utf-8",
+            data:JSON.stringify({
+                email:$("#reg_email").val(),
+                phoneNumber:$("#reg_phone").val(),
+                password:$("#reg_passwd").val()
+            }),
+            success:function (result){
+                if (result.success && result.code == 760){
+                    layer.close(index);
+                    layer.alert("注册成功!已发送激活邮件到您的邮箱！请到您尽快激活！",{icon:6},function (){
+                        window.location.reload();
+                    });
+                }else{
+                    layer.close(index);
+                    layer.msg(result.msg,{icon:5});
+                }}
+            });
+    });
+
+    /*登陆按钮*/
+    $("#btn_login").click(function (){
+        if (!check_email($("#login_email"))){
+            return;
+        }
+
+        if (!check_pass($("#login_passwd"))){
+            return ;
+        }
+        var index = layer.load(2,{timeout:3*1000});
+
+        /*异步传输请求到服务器进行登陆*/
+        $.ajax({
+            url:"teacher/login",
+            dataType: "json",
+            method: "post",
+            type:"json",
+            contentType: "application/json",
+            sync:false,
+            data:JSON.stringify({"email":$("#login_email").val(),"password":$("#login_passwd").val()}),
+            success:function (result){
+                if (result.success){
+                    layer.close(index);
+                    layer.msg("登陆成功！",{icon:1},function () {
+                        /*转发到登陆成功页面*/
+                        window.location = "teacher/main"
+                    });
+                }else{
+                    layer.close(index);
+                    layer.alert(result.msg,{icon:5,title:"登陆失败!"})
+                }
+            }
+        });
+
+    });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+

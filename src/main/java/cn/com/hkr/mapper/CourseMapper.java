@@ -16,5 +16,7 @@ public interface CourseMapper {
 
     public void addCourse(Course course);
 
-    public List<Course> findByProper(Course course);
+    public List<Course> commonSelect(Course course);
+
+    public void updateCourse(Course course);
 }

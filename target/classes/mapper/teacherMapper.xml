@@ -15,10 +15,11 @@
         <result property="registerDate" column="registerDate" javaType="java.util.Date"></result>
         <result property="classname" column="classname" javaType="String"></result>
         <result property="status" column="status" javaType="int"></result>
+        <result property="role_id" column="role_id" javaType="int"></result>
     </resultMap>
 
     <sql id="base_column">
-        id,tid,loginname,teacherName,age,sex,address,phoneNumber,email,registerDate,classname,status
+        id,tid,loginname,teacherName,age,sex,address,phoneNumber,email,registerDate,classname,status,role_id
     </sql>
 
 
@@ -29,43 +30,43 @@
     </select>
 
     <!--通用查询-->
-    <select id="commonSelect" parameterType="cn.com.hkr.bean.Teacher">
+    <select id="selectCommon" parameterType="cn.com.hkr.bean.Teacher" resultMap="teacherMapper">
         select <include refid="base_column"/>
         from t_teacher
         where   1 = 1
-        <if test="tid != null">
+        <if test="tid != null and tid  != ''">
             and tid = #{tid}
         </if>
 
-        <if test="loginname != null">
+        <if test="loginname != null and loginname != ''">
             and loginname = #{loginname}
         </if>
 
-        <if test="teacherName != null">
+        <if test="teacherName != null and teacher != ''">
             and teacherName = #{teacherName}
         </if>
 
-        <if test="password != null">
+        <if test="password != null and password  != ''">
             and password = #{password}
         </if>
 
-        <if test="age != null">
+        <if test="age != null and age != ''">
             and age = #{age}
         </if>
 
-        <if test="sex != null">
+        <if test="sex != null and age  != ''">
             and sex = #{sex}
         </if>
 
-        <if test="address != null">
+        <if test="address != null  and address != ''">
             and address = #{address}
         </if>
 
-        <if test="phoneNumber != null">
+        <if test="phoneNumber != null and phoneNumber != ''">
             and phoneNumber = #{phoneNumber}
         </if>
 
-        <if test="email != null">
+        <if test="email != null and email != ''">
             and email = #{email}
         </if>
 
@@ -73,15 +74,29 @@
             and registerDate = #{registerDate}
         </if>
 
-        <if test="classname != null">
+        <if test="classname != null  and classname != ''">
             and classname = #{classname}
         </if>
 
         <if test="status != null">
             and status = #{status}
         </if>
+        <if test="role_id != null  and role_id != ''">
+            and role_id = #{role_id}
+        </if>
 
 
+    </select>
+
+
+    <!--通过tid查询经理端信息-->
+    <select id="findByTid" resultType="map">
+        select <include refid="base_column"/>
+        from t_teacher
+        where 1 = 1
+        <if test="null != tid and tid != ''">
+            and tid  = #{tid}
+        </if>
     </select>
 
 

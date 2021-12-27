@@ -3,4 +3,4 @@
 <link rel="shortcut icon" href="<%=request.getContextPath()%>/favicon.ico" />
 <script src="<%=request.getContextPath()%>/jsps/js/jquery-1.7.2.min.js" type="text/javascript"></script>
 <script src="<%=request.getContextPath()%>/jsps/layui/layui.all.js" type="text/ javascript"></script>
-
+<script src="<%=request.getContextPath()%>/jsps/layui/layui.js" type="text/ javascript"></script>

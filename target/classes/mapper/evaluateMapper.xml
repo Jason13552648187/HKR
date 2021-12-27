@@ -26,7 +26,6 @@
     </sql>
 
     <!--工具，抓日志分析-->
-
     <select id="getAllEvaluate" resultMap="evaluateMapper">
         select
         <include refid="base_column"></include>

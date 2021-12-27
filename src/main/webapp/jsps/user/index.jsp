@@ -7,19 +7,29 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <title>HKR  |  Employees[员工]</title>
+    <title>HKR  |  Employee[登陆/注册]</title>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
-    <meta http-equiv="keywords" content="狼腾测试员,教师管理,学生管理,汉科软">
-    <meta http-equiv="description" content="狼腾测试员--内部管理系统">
+    <meta http-equiv="keywords" content="汉科软,综合服务平台">
+    <meta http-equiv="description" content="汉科软综合服务平台">
+
+    <meta http-equiv = "X-UA-Compatible" content = "IE=7,IE=9" >
+    <meta http-equiv = "X-UA-Compatible" content = "IE=7,9">
+    <meta http-equiv = "X-UA-Compatible" content = "IE=Edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+    <meta http-equiv = "X-UA-Compatible" content = "IE=7" >
+    <meta http-equiv = "X-UA-Compatible" content = "IE=8" >
+    <meta http-equiv = "X-UA-Compatible" content = "IE=edge" >
+
+
     <link rel="stylesheet" href="jsps/user/css/reset.min.css">
     <link rel="stylesheet" href="jsps/user/css/style.css">
     <link rel="stylesheet" href="jsps/layui/css/layui.css">
     <link rel="stylesheet" href="jsps/user/css/slide.css">
 
     <link rel="shortcut icon" href="<%=request.getContextPath()%>/favicon.ico" />
-
+    <%@include file="/jsps/common/IE_NOT_SUPPORT.jsp" %>
     <script src="<%=request.getContextPath()%>/jsps/js/jquery-3.3.1.js" type="text/javascript"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/jsps/layui/layui.js"></script>
 
@@ -28,23 +38,25 @@
 <body>
 <section class="user">
     <div class="user_options-container">
-        <div class="user_options-text">
+<%--        <div class="user_options-text">
             <div class="user_options-unregistered">
                 <h2 class="user_unregistered-title">没有账号？</h2>
-                <p class="user_unregistered-text">点击按钮注册成为会员.</p>
+                <p class="user_unregistered-text">点击按钮注册</p>
                 <button class="user_unregistered-signup" id="signup-button">注册</button>
             </div>
 
             <div class="user_options-registered">
                 <h2 class="user_registered-title">已有账号?</h2>
-                <p class="user_registered-text">点击按钮会员登录.</p>
+                <p class="user_registered-text">点击按钮登录</p>
                 <button class="user_registered-login" id="login-button">登录</button>
             </div>
-        </div>
+        </div>--%>
 
         <div class="user_options-forms" id="user_options-forms">
             <div class="user_forms-login">
-                <h2 class="forms_title">登录</h2>
+                <div>
+                    <h2 class="forms_title">登录</h2>
+                </div>
 <%--                <form class="forms_form" action="<c:url  value="/user/register"/>" method="post">--%>
                     <fieldset class="forms_fieldset">
                         <div class="forms_field">
@@ -55,7 +67,7 @@
                         </div>
                     </fieldset>
                     <div class="forms_buttons">
-                        <button type="button" id="btn_forgetpass" class="forms_buttons-forgot">忘记密码?</button>
+                        <%--<a type="button" href="jsps/user/forgetpasswd.jsp" id="btn_forgetpass" class="forms_buttons-forgot">忘记密码?</a>--%>
                         <input type="submit" value="登录" id="btn_login" class="forms_buttons-action">
                     </div>
 <%--                </form>--%>
@@ -91,21 +103,7 @@
 <script type="text/javascript">
     var layer = layui.layer;
     var form = layui.form;
-    var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
-    var isIE = userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1; //判断是否IE<11浏览器
-    var isEdge = userAgent.indexOf("Edge") > -1 && !isIE; //判断是否IE的Edge浏览器
-    var isIE11 = userAgent.indexOf("Trident") > -1 || userAgent.indexOf("rv:11.0") > -1;
-    if(isIE11){
-        window.location = "<c:url value='/error/browser.jsp'/>";
-    }
-    if(isIE) {
-        var reIE = new RegExp("MSIE (\\d+\\.\\d+);");
-        reIE.test(userAgent);
-        var fIEVersion = parseFloat(RegExp["$1"]);
-        if(fIEVersion == 7 || fIEVersion == 8 || fIEVersion == 9 || fIEVersion == 10 || fIEVersion < 7) {
-            window.location = "<%=request.getContextPath()%>/error/browser.jsp";
-        }
-    }
+
     var layer,laydate,form;
     layui.use(["layer","laydate"],function (){
        layer = layui.layer;
@@ -138,9 +136,7 @@
             slideVerify.resetVerify();//可以重置 插件 回到初始状态
         })
         $('#resetBtn').addClass('prohibit')
-
     })
-
 
 </script>
 

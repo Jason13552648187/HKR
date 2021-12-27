@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/HKR/jsps/layui/css/layui.css">
+    <script type="text/javascript" src="/HKR/jsps/layui/layui.js"></script>
+    <script type="text/javascript" src="/HKR/jsps/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" href="/HKR/jsps/font-awesome-4.7.0/css/font-awesome.css">
+</head>
+<body>
+
+<!--表单开始-->
+
+<div id="processform" class="layui-form  layui-form-pane" style="margin: 30px 10px;" lay-filter="processform">
+
+
+
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">项目阶段</label>
+            <div class="layui-input-inline">
+<!--                <input class="layui-input" name="status" id="status" lay-verify="required" type="text" autocomplete="off"/>-->
+                <select readonly="readonly" name="secname" lay-filter="secname" lay-verify="required" id="secname">
+                    <option value=""></option>
+                    <option value="第一阶段">第一阶段（综合项目测试）</option>
+                    <option value="第二阶段">第二阶段（金融专题项目测试）</option>
+                    <option value="第三阶段">第三阶段（Python自动化测试）</option>
+                    <option value="第四阶段">第四阶段（接口自动化测试）</option>
+                    <option value="第五阶段">第五阶段（性能测试）</option>
+                </select>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label">请填写项目评价</label>
+        <div class="layui-input-block">
+            <textarea placeholder="请输入内容" id="evaluate" name="evaluate" class="layui-textarea"></textarea>
+        </div>
+    </div>
+
+    <div class="layui-form-item">
+        <div class="layui-input-block">
+            <button class="layui-btn" lay-submit lay-filter="formDemo">提交</button>
+        </div>
+    </div>
+</div>
+<script>
+
+
+    //根据QueryString参数名称获取值
+    //获取传入这个html的uid的参数
+    function getQueryStringByName(name){
+
+        var result = location.search.match(new RegExp("[\?\&]" + name+ "=([^\&]+)","i"));
+        if(result == null || result.length < 1){
+            return "";
+        }
+        return result[1];
+
+    }
+    function getNowFormatDate() {
+        var date = new Date();
+        var seperator1 = "-";
+        var seperator2 = ":";
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+            + " " + date.getHours() + seperator2 + date.getMinutes()
+            + seperator2 + date.getSeconds();
+        return currentdate;
+    }
+    var today = getNowFormatDate();
+
+    $(document).ready(function () {
+
+
+        /*给表单注册登录事件*/
+        layui.use(["form","layer",'laydate'],function(){
+            form = layui.form;
+            layer = layui.layer;
+            laydate = layui.laydate;
+
+
+
+
+            form.on("submit(formDemo)",function(data){
+
+                var da = data.field;
+
+
+                da["uid"]=getQueryStringByName("uid");
+
+                console.log(JSON.stringify(da))
+                $.ajax({
+                    url:"/HKR/teacher/addSecDetail",
+                    type:"post",
+                    contentType:"application/json",
+                    async:false,
+                    data:JSON.stringify(da),
+                    success:function (res) {
+                        console.log(res);
+                        if(res.success){
+                            layer.msg("提交成功!")
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                            parent.location.reload();
+                        }else{
+                            layer.alert(res.msg,{icon:5,title:"错误"});
+                            return false;
+                        }
+                    },
+                    error:function () {
+                        layer.alert("提交失败！")
+                    }
+                });
+                return false;
+            });
+        });
+    })
+</script>
+
+
+</body>
+</html>
