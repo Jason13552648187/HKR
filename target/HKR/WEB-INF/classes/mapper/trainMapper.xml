@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.hkr.mapper.TrainMapper">
+
+    <sql id="base_column">
+        tid,uid,tcompany,tstarttime,tendtime,learntitle
+    </sql>
+
+
+
+    <!--新增资源-->
+    <insert id="addTrain" parameterType="map">
+        insert into t_user_train(<include refid="base_column"></include>)
+        value(#{tid},#{uid},#{tcompany},#{tstarttime},#{tendtime},#{learntitle})
+    </insert>
+
+</mapper>

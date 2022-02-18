@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.hkr.mapper.StaffInfoMapper">
+    <resultMap id="infoMapper" type="cn.com.hkr.bean.UserInfo">
+        <id property="id" column="id"  javaType="Integer"></id>
+        <result property="uid" column="uid" javaType="String"></result>
+        <result property="sex" column="sex" javaType="String"></result>
+        <result property="age" column="age" javaType="Integer"></result>
+        <result property="idcard" column="idcard" javaType="String"></result>
+        <result property="email" column="email" javaType="String"></result>
+        <result property="rawaddress" column="rawaddress" javaType="String"></result>
+        <result property="curprovince" column="curprovince" javaType="String"></result>
+        <result property="curcity" column="curcity" javaType="String"></result>
+        <result property="curcounty" column="curcounty" javaType="String"></result>
+        <result property="nationa" column="nationa" javaType="String"></result>
+        <result property="phoneNumber" column="phoneNumber" javaType="String"></result>
+        <result property="wechat" column="wechat" javaType="String"></result>
+        <result property="birthday" column="birthday" javaType="String"></result>
+    </resultMap>
+
+    <sql id="base_column">
+        uid,sex,age,idcard,email,rawaddress,curprovince,curcity,curcounty,nationa,phoneNumber,wechat,birthday
+    </sql>
+    <!--添加信息-->
+    <insert id="add">
+        insert into t_user_info(<include refid="base_column"/>)
+        values (#{uid},#{sex},#{age},#{idcard},#{email},#{rawaddress},#{curprovince},#{curcity},#{curcounty},#{nationa},#{phoneNumber},#{wechat},#{birthday})
+    </insert>
+
+
+    <select id="selectCommon" resultType="map">
+        select <include refid="base_column"/>
+        from t_user_info
+        where  1 = 1
+
+        <if test="null != uid and uid != ''">
+            and uid = #{uid}
+        </if>
+        <if test="null != sex and sex != ''">
+            and sex = #{sex}
+        </if>
+        <if test="null != idcard and idcard != ''">
+            and idcard = #{idcard}
+        </if>
+        <if test="null != email and email != ''">
+            and email = #{email}
+        </if>
+        <if test="null != rawaddress and rawaddress != ''">
+            and rawaddress = #{rawaddress}
+        </if>
+        <if test="null != curprovince and curprovince != ''">
+            and curprovince = #{curprovince}
+        </if>
+        <if test="null != curcity and curcity != ''">
+            and curcity = #{curcity}
+        </if>
+        <if test="null != curcounty and curcounty != ''">
+            and curcounty = #{curcounty}
+        </if>
+        <if test="null != nationa and nationa != ''">
+            and nationa = #{nationa}
+        </if>
+        <if test="null != phoneNumber and phoneNumber != ''">
+            and phoneNumber = #{phoneNumber}
+        </if>
+        <if test="null != wechat and wechat != ''">
+            and wechat = #{wechat}
+        </if>
+        <if test="null != birthday and birthday != ''">
+            and birthday = #{birthday}
+        </if>
+    </select>
+
+
+    <update id="updateData" parameterType="cn.com.hkr.bean.UserInfo">
+        update t_user_info
+        set
+        <trim suffixOverrides=",">
+
+            <if test="null != sex and sex != ''">
+                sex = #{sex},
+            </if>
+            <if test="null != idcard and idcard != ''">
+                idcard = #{idcard},
+            </if>
+            <if test="null != email and email != ''">
+               email = #{email},
+            </if>
+            <if test="null != rawaddress and rawaddress != ''">
+                rawaddress = #{rawaddress},
+            </if>
+            <if test="null != curprovince and curprovince != ''">
+                curprovince = #{curprovince},
+            </if>
+            <if test="null != curcity and curcity != ''">
+                curcity = #{curcity},
+            </if>
+            <if test="null != curcounty and curcounty != ''">
+                curcounty = #{curcounty},
+            </if>
+            <if test="null != nationa and nationa != ''">
+                nationa = #{nationa},
+            </if>
+            <if test="null != phoneNumber and phoneNumber != ''">
+                phoneNumber = #{phoneNumber},
+            </if>
+            <if test="null != wechat and wechat != ''">
+                wechat = #{wechat},
+            </if>
+            <if test="null != birthday">
+                birthday = #{birthday}
+            </if>
+        </trim> where uid =  #{uid}
+    </update>
+
+
+</mapper>

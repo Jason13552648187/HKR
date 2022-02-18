@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>项目进度详情</title>
+    <link rel="stylesheet" href="/HKR/jsps/layui/css/layui.css">
+    <script type="text/javascript" src="/HKR/jsps/layui/layui.js"></script>
+    <script type="text/javascript" src="/HKR/jsps/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" href="/HKR/jsps/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="/HKR/jsps/user/css/bootstrap.css">
+    <link rel="stylesheet" href="/HKR/jsps/user/css/process.css">
+    <style>
+        a{
+            color: #005980;
+        }
+        .widget-small{
+            background-color: #FFFFFF;
+            overflow: hidden;
+            text-align: center;
+            border-radius: 2px;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+        }
+        .widget-small .fa{
+            float: left;
+            width: 29%;
+            line-height: 80px;
+            color: #FFFFFF;
+        }
+        .widget-user .fa{
+            background-color: #029789;
+        }
+        .widget-visit .fa{
+            background-color: #17a2b8;
+        }
+        .widget-message .fa{
+            background-color: #fbad4c;
+        }
+        .widget-like .fa{
+            background-color: #ff646d;
+        }
+        .widget-small-info{
+            float: left;
+            text-align: left;
+            width: 40%;
+            margin-left: 20px;
+            margin-top: 18px;
+            line-height: 24px;
+        }
+        .widget-small-info h4{
+            font-size: 18px;
+        }
+        .widget-small-info span{
+            font-size: 16px;
+        }
+        .project-introduce{
+            min-height: 466px;
+        }
+        .project-introduce h4{
+            font-weight: bold;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+        .project-introduce li{
+            list-style: decimal;
+            margin-left: 28px;
+        }
+        .alert {
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        .alert-info {
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+        }
+    </style>
+    <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<!--用户画像开始-->
+<div class="layui-row layui-col-space15" style="margin:30px 0px;">
+    <div class="layui-col-md3 layui-col-sm6 layui-col-xs12">
+        <div class="widget-small widget-user">
+            <i class="icon fa fa-calendar-check-o fa-3x"></i>
+            <div class="widget-small-info">
+                <h4>开始时间</h4>
+                <span id="registerDate"></span>
+            </div>
+        </div>
+    </div>
+    <div class="layui-col-md3 layui-col-sm6 layui-col-xs12">
+        <div class="widget-small widget-visit">
+            <i class="icon fa fa-hourglass fa-3x"></i>
+            <div class="widget-small-info">
+                <h4>结束时间</h4>
+                <span id="enddate"></span>
+            </div>
+        </div>
+    </div>
+    <div class="layui-col-md3 layui-col-sm6 layui-col-xs12">
+        <div class="widget-small widget-message">
+            <i class="icon fa fa-calendar-times-o fa-3x"></i>
+            <div class="widget-small-info">
+                <h4>请假天数</h4>
+                <span id="leavedays"></span>
+            </div>
+        </div>
+    </div>
+    <div class="layui-col-md3 layui-col-sm6 layui-col-xs12">
+        <div class="widget-small widget-like">
+            <i class="icon fa fa-graduation-cap fa-3x"></i>
+            <div class="widget-small-info">
+                <h4>学籍状态</h4>
+                <span id="graduation"></span>
+            </div>
+        </div>
+    </div>
+
+    <!--修改按钮-->
+    <div  style="float: right;">
+        <div id="modify">
+
+        </div>
+    </div>
+
+</div>
+<!--用户画像结束-->
+
+
+<!--当前项目进度条显示-->
+<ul class="nav nav-pills nav-justified step step-progress" id="processmanager" data-step="1">
+    <li>
+        <a>综合项目<span class="caret"></span></a>
+    </li>
+    <li>
+        <a>专题项目<span class="caret"></span></a>
+    </li>
+    <li>
+        <a>Python自动化<span class="caret"></span></a>
+    </li>
+    <li>
+        <a>接口测试<span class="caret"></span></a>
+    </li>
+    <li>
+        <a>性能测试<span class="caret"></span></a>
+    </li>
+    <li>
+        <a>已完成<span class="caret"></span></a>
+    </li>
+</ul>
+<!--<div class="layui-progress layui-progress-big" style="margin:50px 10px;" lay-showPercent="true" lay-filter="process">
+    <div class="layui-progress-bar layui-bg-green" lay-percent="第一阶段" id="processbar" title="50%"></div>
+</div>-->
+
+<!--表单开始-->
+<div id="layform" class="layui-form  layui-form-pane"style="width: auto;" lay-filter="layform">
+
+    <fieldset class="layui-elem-field layui-field-title" style="margin: 20px 10px;">
+
+        <div style="padding: 20px; background-color: #F2F2F2;">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md6" id="secdetailparent">
+                    <div class="layui-card">
+                        <div class="layui-card-header">项目质量评价情况</div>
+                        <div class="layui-card-body" id="secdetailcontent">
+<!--                        <div>
+                                <div align="center">第一阶段（综合项目测试）</div>
+                                <div class="layui-collapse" lay-accordion id="section_detail">
+
+
+                                    <div class="layui-colla-item">
+                                        <div class="layui-colla-content layui-show">
+                                            <div>贾经理：学的不行</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-colla-item">
+
+                                        <div class="layui-colla-content layui-show">
+                                            <div>贾经理：学的不行</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div>
+                                <div align="center">第二阶段（专题项目测试）</div>
+                                <div class="layui-collapse" lay-accordion>
+                                    <div class="layui-colla-item">
+
+                                        <div class="layui-colla-content layui-show">内容区域</div>
+                                    </div>
+
+                                </div>
+                            </div>-->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="layui-col-md6"  id="secrebelparent">
+                    <div class="layui-card">
+                        <div class="layui-card-header">项目违规情况</div>
+                        <div class="layui-card-body" id="rebeldetailcontent">
+
+                            <!--
+                            <div>
+                                <div align="center">第一阶段（综合项目测试）</div>
+                                <div class="layui-collapse" lay-accordion>
+
+
+                                    <div class="layui-colla-item">
+                                        <div class="layui-colla-content layui-show">
+                                            <div style="color: red">违反了管理第三条，打游戏，处罚50元</div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="layui-colla-item">
+                                        <div class="layui-colla-content layui-show">
+                                            <div style="color: red">违反了管理第三条，打游戏，处罚50元</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div>
+                                <div align="center">第二阶段（综合项目测试）</div>
+
+                                <div class="layui-collapse" lay-accordion>
+
+                                    <div class="layui-colla-item">
+                                        <div class="layui-colla-content layui-show">
+                                            <div style="color: red">违反了管理第三条，打游戏，处罚50元</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="layui-colla-item">
+                                        <div class="layui-colla-content layui-show">
+                                            <div style="color: red">违反了管理第三条，打游戏，处罚50元</div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--项目进度显示-->
+
+    </fieldset>
+
+</div>
+<script type="text/javascript" src="/HKR/jsps/user/js/secdetail.js"></script>
+
+
+</body>
+</html>

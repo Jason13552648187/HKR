@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.hkr.mapper.SourceMapper">
+
+
+    <sql id="base_column">
+        fid,sourcefrom,status,rescode
+    </sql>
+
+
+    <select id="selectSource" parameterType="map" resultType="map">
+        select <include refid="base_column"/>
+        from t_res_from trf
+        where 1 = 1
+        <if test="fid != null and fid != ''">
+            and fid  = #{fid}
+        </if>
+
+        <if test="sourcefrom != null and sourcefrom != ''">
+            and sourcefrom  = #{sourcefrom}
+        </if>
+
+        <if test="status != null">
+            and status  = #{status}
+        </if>
+
+        <if test="rescode != null">
+            and rescode  = #{rescode}
+        </if>
+
+    </select>
+
+    <!--新增资源-->
+    <insert id="addSource" parameterType="map">
+        insert into t_res_from(<include refid="base_column"></include>)
+        value(#{fid},#{sourcefrom},#{status},#{rescode})
+    </insert>
+
+
+
+    <!--新增用户来源-->
+    <insert id="addUserSource" parameterType="map">
+        insert into t_user_res(fid,uid,createtime)
+        value(#{fid},#{uid},now())
+    </insert>
+
+
+</mapper>

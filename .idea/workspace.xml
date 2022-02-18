@@ -1,0 +1,1419 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="29c3119e-74a8-4fb1-b319-30fb9dd5015c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/annotation/LogAnnotation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/Compact.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/CompactStatus.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/CourseStatus.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/Section.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/SectionStatus.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/TeacherStatus.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/Train.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/UserContact.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/UserEducation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/UserInfo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/UserStatus.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/UserWorkHistory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/controller/SectionController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/dingding/DingUrl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/exception/ParamException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/exception/SelectException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/exception/UpdateException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/filter/DomainExceptionHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/mapper/CompactMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/mapper/ContactMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/mapper/EducationMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/mapper/SectionMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/mapper/SourceMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/mapper/StaffInfoMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/mapper/TrainMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/mapper/WorkHistoryMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/service/BaseService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/service/CompactService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/service/DictionaryService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/service/SectionService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/test/DingTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/utils/DingTalkTokenUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/utils/JwtUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/utils/SendEmailUtils$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/utils/SendEmailUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/dingtalk.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mail.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mapper/sectionMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mapper/sourceMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mapper/trainMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mapper/userCompactMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mapper/userContactMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mapper/userEducationMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mapper/userInfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mapper/userWorkHistoryMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/lib/activation-1.1.1.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/lib/fastjson-1.2.70.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/lib/java-jwt-3.4.0.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/lib/javax.mail-1.6.2.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/lib/top-api-sdk-dev-ding-open-mc-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/error/404/404.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/error/404/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/error/browser.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/common/IE_NOT_SUPPORT.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/manager/forgetpasswd.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/message/simplecode.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/message/verifycode.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/add.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/adduser.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/css/info.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/css/process.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/css/register.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/css/reset.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/css/slide.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/data/data.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/data/datagrid.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/edit.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/img/backgroud.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/img/bg.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/img/bg1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/img/bg2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/img/bg3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/img/bg4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/img/picture.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/info.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/add.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/drag.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/edit.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/info.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/list.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/register/jquery.easing.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/register/register.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/register/register_box.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/search.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/secdetail.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/select.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/slideVerify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/list.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/main.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/section/addSecDetail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/section/addSecrebel.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/section/modifyprocess.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/section/section_detail.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/welcome.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/annotation/LogAnnotation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/Compact.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/CompactStatus.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/CourseStatus.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/Section.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/SectionStatus.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/TeacherStatus.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/Train.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/UserContact.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/UserEducation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/UserInfo.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/UserStatus.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/UserWorkHistory.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/controller/SectionController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/dingding/DingUrl.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/exception/ParamException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/exception/SelectException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/exception/UpdateException.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/filter/DomainExceptionHandler.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/mapper/CompactMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/mapper/ContactMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/mapper/EducationMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/mapper/SectionMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/mapper/SourceMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/mapper/StaffInfoMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/mapper/TrainMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/mapper/WorkHistoryMapper.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/service/CompactService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/service/DictionaryService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/service/SectionService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/test/DingTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/utils/DingTalkTokenUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/utils/JwtUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/utils/SendEmailUtils$1.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/utils/SendEmailUtils.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/dingtalk.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mail.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mapper/sectionMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mapper/sourceMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mapper/trainMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mapper/userCompactMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mapper/userContactMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mapper/userEducationMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mapper/userInfoMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/mapper/userWorkHistoryMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/tomcat/logs/access_log.2022-02-14" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/tomcat/logs/access_log.2022-02-15" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/tomcat/logs/access_log.2022-02-17" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/SESSIONS.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/org/apache/jsp/error/_404/_404_jsp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/org/apache/jsp/error/_404/_404_jsp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/org/apache/jsp/jsps/user/add_jsp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/org/apache/jsp/jsps/user/add_jsp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/org/apache/jsp/jsps/user/adduser_jsp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/org/apache/jsp/jsps/user/adduser_jsp.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/org/apache/jsp/jsps/user/edit_jsp.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/org/apache/jsp/jsps/user/edit_jsp.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="jsf" />
+        <option value="JavaScript File" />
+        <option value="Jsp File" />
+        <option value="HTML File" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>5.2.5.RELEASE</find>
+      <find>cn.jason</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>${spring.version}</replace>
+      <replace>cn.com.hkr</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--tags" />
+        <option name="title" value="All" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="jason" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/resources/db.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/userMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/template/ftl/index.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/template/ftl/index.ftl" />
+        <option value="$PROJECT_DIR$/src/main/resources/freemaker.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/resource/index.css" />
+        <option value="$PROJECT_DIR$/src/main/resources/spring-web.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/controller/HomeController.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/bean/Course.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis-generator.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/service/LogService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/service/CourseService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/controller/BaseController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/controller/CourseController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/controller/EvaluateController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/controller/TeacherController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/controller/UserTestController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/service/MenuService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/service/TeacherService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/dao/LogDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/dao/EvaluateDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/dao/MenuDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/dao/TeacherDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/dao/UserDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/utils/MybatisGenerator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/dao/CourseDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/com/hkr/service/EvaluateService.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="D:\ProgramFiles\apache-maven-3.6.0" />
+        <option name="userSettingsFile" value="D:\ProgramFiles\apache-maven-3.6.0\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="784" />
+  </component>
+  <component name="ProjectId" id="1osu4ztje15JojruUFaExiZJqBl" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="HKR_EVALUATE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKR_EVALUATE" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKR_EVALUATE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKR_EVALUATE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKR_EVALUATE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKR_EVALUATE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKR_EVALUATE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKR_EVALUATE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKR_EVALUATE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKR_EVALUATE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKR_EVALUATE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKR_EVALUATE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKR_EVALUATE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKR_EVALUATE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="hkr" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKR_EVALUATE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKR_EVALUATE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="hkr" type="462c0819:PsiDirectoryNode" />
+              <item name="bean" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKR_EVALUATE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKR_EVALUATE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="hkr" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKR_EVALUATE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKR_EVALUATE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="hkr" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKR_EVALUATE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKR_EVALUATE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="hkr" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKR_EVALUATE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKR_EVALUATE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cn" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="hkr" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKR_EVALUATE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKR_EVALUATE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKR_EVALUATE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKR_EVALUATE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKR_EVALUATE" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKR_EVALUATE" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DatabaseDriversLRU" value="mysql&#10;mongo" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="android.sdk.path" value="D:/ProgramFiles/android-sdk-windows" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/jsps/js/echarts" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.splitter.proportion" value="0.2562432" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\android\HKR_EVALUATE\src\main\webapp\jsps\js\echarts" />
+      <recent name="E:\android\HKR_EVALUATE\src\main\webapp\jsps\layui" />
+      <recent name="E:\android\HKR_EVALUATE\src\main\webapp\jsps\layui\font" />
+      <recent name="E:\android\HKR_EVALUATE\src\main\webapp\jsps\layui\css" />
+      <recent name="E:\android\HKR_EVALUATE\src\main\resources\mapper" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\android\HKR_EVALUATE\src\main\webapp\jsps\layui" />
+      <recent name="E:\android\HKR_EVALUATE\src\main\webapp\jsps\common_css" />
+      <recent name="E:\android\HKR_EVALUATE\src\main\webapp\jsps\manager" />
+      <recent name="E:\android\HKR_EVALUATE\src\main\webapp\jsps\user" />
+      <recent name="E:\android\HKR_EVALUATE\src\main\resources" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="cn.com.hkr.mapper" />
+      <recent name="cn.com.hkr.bean" />
+      <recent name="cn.com.hkr.exception" />
+      <recent name="cn.com.hkr.service" />
+      <recent name="cn.com.hkr.utils" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Maven.HKR_EVALUATE [tomcat7:run]">
+    <configuration name="AesUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.com.hkr.utils.AesUtils" />
+      <module name="HKR_EVALUATE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.com.hkr.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DingTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.com.hkr.test.DingTest" />
+      <module name="HKR_EVALUATE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.com.hkr.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FileTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.com.hkr.utils.FileTest" />
+      <module name="HKR_EVALUATE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.com.hkr.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SendEmailUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.com.hkr.utils.SendEmailUtils" />
+      <module name="HKR_EVALUATE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.com.hkr.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StaticUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.com.hkr.utils.StaticUtils" />
+      <module name="HKR_EVALUATE" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.com.hkr.utils.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HKR_EVALUATE [clean,compile,package]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="compile" />
+                <option value="package" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="HKR_EVALUATE [tomcat7:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="tomcat7:run" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.AesUtils" />
+      <item itemvalue="Application.SendEmailUtils" />
+      <item itemvalue="Application.FileTest" />
+      <item itemvalue="Application.StaticUtils" />
+      <item itemvalue="Application.DingTest" />
+      <item itemvalue="Maven.HKR_EVALUATE [clean,compile,package]" />
+      <item itemvalue="Maven.HKR_EVALUATE [tomcat7:run]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.StaticUtils" />
+        <item itemvalue="Application.AesUtils" />
+        <item itemvalue="Application.DingTest" />
+        <item itemvalue="Application.FileTest" />
+        <item itemvalue="Application.SendEmailUtils" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="29c3119e-74a8-4fb1-b319-30fb9dd5015c" name="Default Changelist" comment="" />
+      <created>1611309926354</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1611309926354</updated>
+      <workItem from="1611309930106" duration="3095000" />
+      <workItem from="1611413177453" duration="599000" />
+      <workItem from="1611460702540" duration="5615000" />
+      <workItem from="1611727287654" duration="3412000" />
+      <workItem from="1611731410135" duration="292000" />
+      <workItem from="1611813770509" duration="22000" />
+      <workItem from="1614087434726" duration="632000" />
+      <workItem from="1619516247977" duration="2423000" />
+      <workItem from="1619527220814" duration="997000" />
+      <workItem from="1619583487652" duration="367000" />
+      <workItem from="1619599326287" duration="1831000" />
+      <workItem from="1619668994423" duration="2164000" />
+      <workItem from="1619682983129" duration="10000" />
+      <workItem from="1620204401893" duration="2368000" />
+      <workItem from="1620263123437" duration="960000" />
+      <workItem from="1620292028101" duration="2192000" />
+      <workItem from="1620352537266" duration="3220000" />
+      <workItem from="1620376426214" duration="6721000" />
+      <workItem from="1620442894404" duration="4438000" />
+      <workItem from="1620458785663" duration="1566000" />
+      <workItem from="1620609055766" duration="1810000" />
+      <workItem from="1620632066128" duration="6279000" />
+      <workItem from="1620694783546" duration="10920000" />
+      <workItem from="1620716919507" duration="15664000" />
+      <workItem from="1620791311528" duration="11800000" />
+      <workItem from="1620874072015" duration="833000" />
+      <workItem from="1620877397452" duration="1648000" />
+      <workItem from="1620893896629" duration="3925000" />
+      <workItem from="1620966182760" duration="11605000" />
+      <workItem from="1621086188797" duration="1186000" />
+      <workItem from="1621176457468" duration="1532000" />
+      <workItem from="1621235665086" duration="3849000" />
+      <workItem from="1621241689932" duration="2522000" />
+      <workItem from="1621245262277" duration="4552000" />
+      <workItem from="1621322668822" duration="7001000" />
+      <workItem from="1621339389182" duration="3430000" />
+      <workItem from="1621393863576" duration="5926000" />
+      <workItem from="1621474167658" duration="12285000" />
+      <workItem from="1621495101649" duration="7281000" />
+      <workItem from="1621580788203" duration="590000" />
+      <workItem from="1621592377664" duration="5771000" />
+      <workItem from="1621675177961" duration="101000" />
+      <workItem from="1621689852274" duration="1371000" />
+      <workItem from="1621739258906" duration="123000" />
+      <workItem from="1621739597832" duration="74000" />
+      <workItem from="1621740225375" duration="2412000" />
+      <workItem from="1621767523973" duration="595000" />
+      <workItem from="1621773290772" duration="598000" />
+      <workItem from="1621774391254" duration="1707000" />
+      <workItem from="1621820624918" duration="8340000" />
+      <workItem from="1621840882129" duration="6003000" />
+      <workItem from="1621904846831" duration="4234000" />
+      <workItem from="1621915948381" duration="1954000" />
+      <workItem from="1621919244901" duration="41000" />
+      <workItem from="1621926139030" duration="9154000" />
+      <workItem from="1621997345739" duration="1800000" />
+      <workItem from="1622085063631" duration="4898000" />
+      <workItem from="1622102962644" duration="820000" />
+      <workItem from="1622174461530" duration="2393000" />
+      <workItem from="1622196039650" duration="890000" />
+      <workItem from="1622198125164" duration="8260000" />
+      <workItem from="1622370556640" duration="2325000" />
+      <workItem from="1622434203076" duration="4280000" />
+      <workItem from="1622439492225" duration="628000" />
+      <workItem from="1622443404434" duration="3838000" />
+      <workItem from="1622509272479" duration="3170000" />
+      <workItem from="1622520225229" duration="1641000" />
+      <workItem from="1622531643676" duration="6628000" />
+      <workItem from="1622605977319" duration="10949000" />
+      <workItem from="1622683463224" duration="3536000" />
+      <workItem from="1622710610732" duration="3677000" />
+      <workItem from="1622770855668" duration="2350000" />
+      <workItem from="1622795479249" duration="7335000" />
+      <workItem from="1622875592784" duration="25894000" />
+      <workItem from="1622989428350" duration="1572000" />
+      <workItem from="1623027582962" duration="5955000" />
+      <workItem from="1623045203473" duration="3163000" />
+      <workItem from="1623056107179" duration="5317000" />
+      <workItem from="1623063086559" duration="225000" />
+      <workItem from="1623078042123" duration="4545000" />
+      <workItem from="1623115224653" duration="5638000" />
+      <workItem from="1623124232977" duration="857000" />
+      <workItem from="1623139316041" duration="15175000" />
+      <workItem from="1623200095304" duration="1490000" />
+      <workItem from="1623206071159" duration="1031000" />
+      <workItem from="1623232125553" duration="4883000" />
+      <workItem from="1623251569949" duration="6623000" />
+      <workItem from="1623287082623" duration="6372000" />
+      <workItem from="1623300935927" duration="688000" />
+      <workItem from="1623311869543" duration="6764000" />
+      <workItem from="1623324804444" duration="9482000" />
+      <workItem from="1623402613064" duration="3250000" />
+      <workItem from="1623428301377" duration="595000" />
+      <workItem from="1623490633055" duration="7933000" />
+      <workItem from="1623517111344" duration="2830000" />
+      <workItem from="1623567679994" duration="3260000" />
+      <workItem from="1623572164867" duration="7870000" />
+      <workItem from="1623665917881" duration="292000" />
+      <workItem from="1623679311769" duration="1705000" />
+      <workItem from="1623719333073" duration="10069000" />
+      <workItem from="1623742583579" duration="2243000" />
+      <workItem from="1623750051078" duration="4490000" />
+      <workItem from="1623755958892" duration="6589000" />
+      <workItem from="1623806075135" duration="5584000" />
+      <workItem from="1623827754316" duration="4560000" />
+      <workItem from="1623899610808" duration="3981000" />
+      <workItem from="1623916080451" duration="1870000" />
+      <workItem from="1623925397014" duration="3186000" />
+      <workItem from="1623945560435" duration="590000" />
+      <workItem from="1624005400355" duration="3760000" />
+      <workItem from="1624039674615" duration="224000" />
+      <workItem from="1624077243105" duration="930000" />
+      <workItem from="1624084918191" duration="27000" />
+      <workItem from="1624115266217" duration="1063000" />
+      <workItem from="1624199389786" duration="3178000" />
+      <workItem from="1624280804923" duration="3491000" />
+      <workItem from="1624364240576" duration="3245000" />
+      <workItem from="1624456028009" duration="4269000" />
+      <workItem from="1624514759927" duration="970000" />
+      <workItem from="1624704080278" duration="624000" />
+      <workItem from="1624716257446" duration="2247000" />
+      <workItem from="1624893466518" duration="2004000" />
+      <workItem from="1624932517712" duration="1519000" />
+      <workItem from="1624972731885" duration="1290000" />
+      <workItem from="1625141211134" duration="755000" />
+      <workItem from="1625151442851" duration="2467000" />
+      <workItem from="1625212307815" duration="763000" />
+      <workItem from="1625230512714" duration="1302000" />
+      <workItem from="1625310397767" duration="4250000" />
+      <workItem from="1625360959803" duration="3844000" />
+      <workItem from="1625367540586" duration="5328000" />
+      <workItem from="1625381868749" duration="1714000" />
+      <workItem from="1625466789211" duration="1230000" />
+      <workItem from="1625633563710" duration="892000" />
+      <workItem from="1625648145748" duration="398000" />
+      <workItem from="1625819570392" duration="2958000" />
+      <workItem from="1626149918290" duration="590000" />
+      <workItem from="1626581435211" duration="321000" />
+      <workItem from="1626614479492" duration="3823000" />
+      <workItem from="1626659250767" duration="3606000" />
+      <workItem from="1626707182784" duration="1023000" />
+      <workItem from="1626846530472" duration="2304000" />
+      <workItem from="1626925770121" duration="1598000" />
+      <workItem from="1626934710090" duration="644000" />
+      <workItem from="1627009687053" duration="24000" />
+      <workItem from="1627009952656" duration="2192000" />
+      <workItem from="1627027506811" duration="7488000" />
+      <workItem from="1627114603160" duration="597000" />
+      <workItem from="1627219672529" duration="2881000" />
+      <workItem from="1627359694541" duration="241000" />
+      <workItem from="1627362073097" duration="2167000" />
+      <workItem from="1627375398626" duration="8296000" />
+      <workItem from="1627521175403" duration="43000" />
+      <workItem from="1627532070143" duration="1958000" />
+      <workItem from="1627538166673" duration="454000" />
+      <workItem from="1627545633351" duration="5311000" />
+      <workItem from="1627606400888" duration="592000" />
+      <workItem from="1627620017907" duration="1091000" />
+      <workItem from="1627781876545" duration="3809000" />
+      <workItem from="1627963123922" duration="2808000" />
+      <workItem from="1627982302138" duration="3643000" />
+      <workItem from="1628049280000" duration="1073000" />
+      <workItem from="1628057390690" duration="7529000" />
+      <workItem from="1628138253757" duration="4395000" />
+      <workItem from="1628144715915" duration="6542000" />
+      <workItem from="1628177514753" duration="2149000" />
+      <workItem from="1628211477993" duration="824000" />
+      <workItem from="1628233044545" duration="60000" />
+      <workItem from="1628240684219" duration="166000" />
+      <workItem from="1628241501200" duration="678000" />
+      <workItem from="1628319775946" duration="2327000" />
+      <workItem from="1628385418598" duration="2989000" />
+      <workItem from="1628396444351" duration="1349000" />
+      <workItem from="1628407962962" duration="1192000" />
+      <workItem from="1628438477058" duration="50000" />
+      <workItem from="1628849487625" duration="1224000" />
+      <workItem from="1629034659513" duration="1625000" />
+      <workItem from="1629126319401" duration="2560000" />
+      <workItem from="1629169466725" duration="7415000" />
+      <workItem from="1629217269864" duration="635000" />
+      <workItem from="1629253176767" duration="591000" />
+      <workItem from="1629259632684" duration="594000" />
+      <workItem from="1629359013290" duration="4524000" />
+      <workItem from="1629382774372" duration="2587000" />
+      <workItem from="1629785663494" duration="5762000" />
+      <workItem from="1629797941684" duration="1961000" />
+      <workItem from="1629859510946" duration="3256000" />
+      <workItem from="1629885339357" duration="2983000" />
+      <workItem from="1629950842469" duration="1802000" />
+      <workItem from="1630035293641" duration="1788000" />
+      <workItem from="1630136806058" duration="3218000" />
+      <workItem from="1630213927236" duration="2536000" />
+      <workItem from="1630239236755" duration="2026000" />
+      <workItem from="1630289963237" duration="1868000" />
+      <workItem from="1630292386403" duration="3099000" />
+      <workItem from="1630340744999" duration="590000" />
+      <workItem from="1630371504608" duration="6572000" />
+      <workItem from="1630404761233" duration="1136000" />
+      <workItem from="1630420701536" duration="1602000" />
+      <workItem from="1630469188390" duration="868000" />
+      <workItem from="1630509482781" duration="611000" />
+      <workItem from="1638936854910" duration="1306000" />
+      <workItem from="1638950993214" duration="1855000" />
+      <workItem from="1638957855263" duration="8462000" />
+      <workItem from="1638977325705" duration="3410000" />
+      <workItem from="1639020256526" duration="3874000" />
+      <workItem from="1639037139767" duration="10563000" />
+      <workItem from="1639060758835" duration="594000" />
+      <workItem from="1639099219174" duration="37422000" />
+      <workItem from="1639146534658" duration="9709000" />
+      <workItem from="1639184577055" duration="17264000" />
+      <workItem from="1639230181812" duration="1931000" />
+      <workItem from="1639299648334" duration="29412000" />
+      <workItem from="1639356754810" duration="1825000" />
+      <workItem from="1639367139255" duration="7975000" />
+      <workItem from="1639385797708" duration="8625000" />
+      <workItem from="1639452850272" duration="4657000" />
+      <workItem from="1639486208714" duration="5469000" />
+      <workItem from="1639494545928" duration="5886000" />
+      <workItem from="1639539245183" duration="4352000" />
+      <workItem from="1639576008860" duration="1029000" />
+      <workItem from="1639628371869" duration="1491000" />
+      <workItem from="1639731710204" duration="2367000" />
+      <workItem from="1639793893618" duration="13778000" />
+      <workItem from="1639820130821" duration="884000" />
+      <workItem from="1639833347220" duration="2082000" />
+      <workItem from="1639898247408" duration="15330000" />
+      <workItem from="1639921281427" duration="19210000" />
+      <workItem from="1639969856235" duration="4257000" />
+      <workItem from="1639979820322" duration="51000" />
+      <workItem from="1639983685014" duration="263000" />
+      <workItem from="1639987256797" duration="2334000" />
+      <workItem from="1639989854901" duration="20736000" />
+      <workItem from="1640015589643" duration="6974000" />
+      <workItem from="1640056289008" duration="595000" />
+      <workItem from="1640075979564" duration="16651000" />
+      <workItem from="1640101403769" duration="1860000" />
+      <workItem from="1640136096841" duration="1226000" />
+      <workItem from="1640144622391" duration="1881000" />
+      <workItem from="1640164060203" duration="4174000" />
+      <workItem from="1640169029707" duration="3102000" />
+      <workItem from="1640184752142" duration="2757000" />
+      <workItem from="1640229917440" duration="1778000" />
+      <workItem from="1640245116646" duration="17301000" />
+      <workItem from="1640270379429" duration="697000" />
+      <workItem from="1640307510431" duration="111000" />
+      <workItem from="1640307847121" duration="1588000" />
+      <workItem from="1640316563018" duration="69000" />
+      <workItem from="1640323551355" duration="35089000" />
+      <workItem from="1640394198677" duration="13468000" />
+      <workItem from="1640502782304" duration="19964000" />
+      <workItem from="1640577245161" duration="1339000" />
+      <workItem from="1640596892663" duration="7126000" />
+      <workItem from="1640662703029" duration="3499000" />
+      <workItem from="1640678072864" duration="6030000" />
+      <workItem from="1640740895748" duration="1543000" />
+      <workItem from="1640748980172" duration="2783000" />
+      <workItem from="1640765593384" duration="3788000" />
+      <workItem from="1640836894296" duration="594000" />
+      <workItem from="1640912189017" duration="898000" />
+      <workItem from="1640922108385" duration="5002000" />
+      <workItem from="1641028045617" duration="2981000" />
+      <workItem from="1641135202257" duration="1195000" />
+      <workItem from="1641207249392" duration="1765000" />
+      <workItem from="1641268687048" duration="3262000" />
+      <workItem from="1641289594922" duration="2912000" />
+      <workItem from="1641353627323" duration="2092000" />
+      <workItem from="1641374313525" duration="3097000" />
+      <workItem from="1641454844065" duration="5087000" />
+      <workItem from="1641479760394" duration="5984000" />
+      <workItem from="1641608642818" duration="6646000" />
+      <workItem from="1641699539001" duration="1777000" />
+      <workItem from="1641806112934" duration="2965000" />
+      <workItem from="1641895848675" duration="589000" />
+      <workItem from="1641963700445" duration="588000" />
+      <workItem from="1642068135430" duration="2531000" />
+      <workItem from="1642212614422" duration="9967000" />
+      <workItem from="1642312052819" duration="5433000" />
+      <workItem from="1642413140385" duration="2873000" />
+      <workItem from="1642584191076" duration="2694000" />
+      <workItem from="1642814301157" duration="6192000" />
+      <workItem from="1642840631902" duration="5195000" />
+      <workItem from="1642858332946" duration="1862000" />
+      <workItem from="1642908178195" duration="1091000" />
+      <workItem from="1643248436570" duration="10073000" />
+      <workItem from="1643975340031" duration="813000" />
+      <workItem from="1644051898528" duration="1819000" />
+      <workItem from="1644140695356" duration="3086000" />
+      <workItem from="1644201387584" duration="12330000" />
+      <workItem from="1644308406006" duration="6612000" />
+      <workItem from="1644324319496" duration="669000" />
+      <workItem from="1644368871634" duration="8749000" />
+      <workItem from="1644400987728" duration="675000" />
+      <workItem from="1644454368535" duration="7165000" />
+      <workItem from="1644502672430" duration="595000" />
+      <workItem from="1644543257613" duration="2427000" />
+      <workItem from="1644587479170" duration="14231000" />
+      <workItem from="1644626904672" duration="11724000" />
+      <workItem from="1644760248431" duration="7690000" />
+      <workItem from="1644801105768" duration="13420000" />
+      <workItem from="1644888484364" duration="5441000" />
+      <workItem from="1644930456472" duration="1783000" />
+      <workItem from="1645074365718" duration="590000" />
+      <workItem from="1645087732138" duration="4185000" />
+      <workItem from="1645157916787" duration="1403000" />
+    </task>
+    <task id="LOCAL-00001" summary="添加了用户的不同权限管理的功能，和数据查询和修改功能">
+      <created>1640601515794</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1640601515795</updated>
+    </task>
+    <task id="LOCAL-00002" summary="修复了阶段性bug">
+      <created>1645163872491</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1645163872491</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="13035000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="753" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26359516" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.47166666" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Spring" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Java Enterprise" order="11" />
+      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="Version Control" order="13" />
+      <window_info anchor="bottom" id="Messages" order="14" visible="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Theme Preview" order="8" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="添加了用户的不同权限管理的功能，和数据查询和修改功能" />
+    <MESSAGE value="修复了阶段性bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复了阶段性bug" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="MavenRunConfiguration">
+        <watch expression="promap" />
+      </configuration>
+    </watches-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.2.5.RELEASE/spring-web-5.2.5.RELEASE-sources.jar!/org/springframework/web/context/ContextLoaderListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/db.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="27" lean-forward="true" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/freemaker.properties" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/resource/index.css" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/userMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/spring-web.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/template/ftl/index.ftl" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/controller/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#318#319#0" expanded="true" />
+            <element signature="e#352#353#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="222" selection-start-line="222" selection-end-line="222" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/logMapper.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/bean/User.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/bean/Log.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/staticmsg/UserResult.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/bean/AjaxResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/bean/CourseInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/bean/Course.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/bean/Evaluate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/bean/UserInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/adminpage/js/need/laydate.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/adminpage/js/student_manager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/view/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="19" selection-start-line="21" selection-start-column="19" selection-end-line="21" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="37" column="41" selection-start-line="37" selection-start-column="41" selection-end-line="37" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/jsps/icon.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/cookie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-816">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/mapper/EvaluateMapper.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/mapper/CourseMapper.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis-generator.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/controller/BaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="34" lean-forward="true" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/controller/CourseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/controller/EvaluateController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/controller/TeacherController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="62" column="35" lean-forward="true" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/controller/UserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/controller/UserTestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3">
+          <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/service/CourseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/service/MenuService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/service/TeacherService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-21">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/utils/AesUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/utils/MybatisGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="22" column="21" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/service/LogService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#392#393#0" expanded="true" />
+            <element signature="e#430#431#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/dao/LogDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/dao/EvaluateDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/dao/CourseDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#411#412#0" expanded="true" />
+            <element signature="e#456#457#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/dao/MenuDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="33" column="7" selection-start-line="15" selection-start-column="6" selection-end-line="33" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/dao/TeacherDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/dao/UserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="38" selection-start-line="15" selection-start-column="5" selection-end-line="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/com/hkr/service/EvaluateService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>HKR_EVALUATE</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
