@@ -113,13 +113,13 @@ $(function (){
             success:function (result){
                 if (result.success){
                     layer.close(index);
-                    layer.msg("登陆成功！",{icon:1},function () {
+                    layer.msg("登录成功！",{icon:1},function () {
                         /*转发到登陆成功页面*/
                         window.location = "teacher/main"
                     });
                 }else{
                     layer.close(index);
-                    layer.alert(result.msg,{icon:5,title:"登陆失败!"})
+                    layer.alert(result.msg,{icon:5,title:"登录失败!"})
                 }
             }
         });

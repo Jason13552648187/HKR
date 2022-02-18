@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="css/info.css" />
+        <script type="text/javascript" src="/HKR/jsps/js/jquery-1.7.2.min.js"></script>
+        <script type="text/javascript" src="/HKR/jsps/layui/layui.js"></script>
+        <link rel="stylesheet" type="text/css" href="/HKR/jsps/common_css/scroll.css">
+	</head>
+<body>
+<!--
+	<div id="top">
+	    <span class="top-title">个人信息</span>
+	</div>-->
+<div id="wrapper">
+    <div class="header">
+        <div class="header-title">
+            <span class="author-name" id="username"><ind>空空如也！</ind></span>
+            <span class="author-intro" style="color: green;" id="resource"><ind>    </ind></span>
+        </div>
+
+        <div class="header-list">
+            <div class="header-left">
+
+                <ul>
+                    <li id="phoneNumber">联系方式： <ind>18888888888</ind></li>
+                    <li id="email">邮箱： <ind>xxxxxxx@qq.com</ind></li>
+                </ul>
+            </div>
+            <div class="header-right">
+                <ul>
+                    <li id="age">年龄： <ind>21</ind></li>
+                    <li id="city">期望城市： <ind>北京</ind></li>
+                    <li id="nationa">民族： <ind>汉族</ind></li>
+                </ul>
+            </div>
+            <div class="clear-fix"></div>
+        </div>
+    </div>
+
+    <div class="person-info">
+        <span class="icon"></span>
+        <span class="subtitle">个人信息</span>
+        <span class="long-line"></span>
+        <div class="detail-list">
+            <div class="info-left">
+                <span id="rawaddress">原居住地址： <ind>空空如也！</ind></span>
+               <span id="birthday">出生年月： <ind>空空如也！</ind></span>
+            </div>
+            <div class="info-right">
+                
+                <span id="wechat">微信号： <ind>空空如也！</ind></span>
+                <span id="idcard">身份证号：<ind>空空如也！</ind></span>
+            </div>
+            <div class="clear-fix"></div>
+        </div>
+    </div>
+    
+    <div class="person-info">
+        <span class="icon"></span>
+        <span class="subtitle">教育经历</span>
+        <span class="long-line"></span>
+        <div class="detail-list">
+            <div class="info-left">
+                <span id="school">学校： <ind>空空如也！</ind></span>
+                <span id="professional">专业：<ind>空空如也！</ind></span>
+                <span id="gradutime">毕业时间： <ind>空空如也！</ind></span>
+            </div>
+            <div class="info-right">
+                <span id="edulevel">学历水平： <ind>空空如也！</ind></span>
+                <span id="educonfirm">证明人： <ind>空空如也！</ind></span>
+                <span id="edutelnumber">证明人电话：<ind>空空如也！</ind></span>
+            </div>
+            <div class="clear-fix"></div>
+        </div>
+    </div>
+
+    <!--培训经历-->
+    <div class="person-info">
+        <span class="icon"></span>
+        <span class="subtitle">培训经历</span>
+        <span class="long-line"></span>
+        <div class="detail-list">
+            <div class="info-left">
+                <span id="tcompany">培训机构： <ind>空空如也！</ind></span>
+                <span id="tstarttime">开始时间：<ind>空空如也！</ind></span>
+
+            </div>
+            <div class="info-right">
+                <span id="tendtime">结束时间： <ind>空空如也！</ind></span>
+                <span id="learntitle">培训科目： <ind>空空如也！</ind></span>
+
+            </div>
+            <div class="clear-fix"></div>
+        </div>
+    </div>
+    
+    
+    <div class="person-info">
+        <span class="icon"></span>
+        <span class="subtitle">父母联系方式</span>
+        <span class="long-line"></span>
+        <div class="detail-list">
+        	<table style="width: 100%; text-align:center;" border="1px" cellspacing="0">
+        		<tr class="rel-head" style="color: darkgray;">
+        			<td>姓名</td>
+        			<td>关系</td>
+        			<td>工作单位</td>
+        			<td>职务</td>
+        			<td>电话</td>
+        		</tr>
+        		<tr id="myrelation">
+        			<td  id="contact"><ind>空空如也！</ind></td>
+        			<td  id="relation"><ind>空空如也！</ind></td>
+        			<td  id="unit"><ind>空空如也！</ind></td>
+        			<td  id="workjob"><ind>空空如也！</ind></td>
+        			<td  id="telphone"><ind>空空如也！</ind></td>
+        		</tr>
+        	</table>
+            
+        </div>
+    </div>
+
+    
+
+
+    <div class="work-experience">
+        <span class="icon"></span>
+        <span class="subtitle">工作经历</span>
+        <span class="long-line"></span>
+        <div class="detail-list" id="work_detail">
+            <div class="company">
+                <h2>
+                	<span id="company"><ind>中软国际</ind></span>
+                	<span>
+                		<strong id="starttime"><ind>2019-07</ind></strong>
+                		-
+                		<strong id="endtime"><ind>2021-07</ind></strong></span>
+                </h2>
+                <span class="tools" id="job">职务：<ind>软件测试工程师</ind></span>
+
+                <span class="project-title"><ind>工作内容</ind></span>
+                <span class="project-intro" id="workdetail">
+                    <ind>我在此项目负责了哪些工作，这个项目中，有什么里给我最深刻的印象，我最困难的问题是什么，我采取了什么措施，最后结果如何。这个项目中，我最自豪的技术细节是什么，为什么，实施前和实施后的数据对比如何，同事和领导对此的反应如何。
+                </ind>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var windowWidth =  document.body.clientWidth;
+    var templateWidth = 400;
+
+    if(windowWidth < 840) {
+        var calcFontSize = (windowWidth) / templateWidth * 14 + "px";
+
+        document.getElementsByTagName("html")[0].style.fontSize = calcFontSize;
+    }
+</script>
+
+<script type="text/javascript" src="/HKR/jsps/user/js/info.js"></script>
+
+</body>
+</html>

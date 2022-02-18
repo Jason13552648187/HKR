@@ -61,6 +61,12 @@ public class TeacherService extends BaseService{
     @Autowired
     private  SectionMapper sectionMapper;
 
+    @Autowired
+    private SourceMapper sourceMapper;
+
+    @Autowired
+    private TrainMapper trainMapper;
+
     static{
 
         //用于初始化读取邮件发送的模板数据
@@ -346,12 +352,13 @@ public class TeacherService extends BaseService{
     @Transactional
     public Map addStaff(HashMap map) {
         String  mapString = JSON.toJSONString(map);
-
+        System.out.println("--------------------" + mapString);
         //数据提取
         User user = JSON.parseObject(mapString, User.class);
 
         UserEducation userEducation = JSON.parseObject(mapString, UserEducation.class);
         UserInfo userInfo = JSON.parseObject(mapString, UserInfo.class);
+        Train train = JSON.parseObject(mapString,Train.class);
 
         System.out.println("-------------------" + userInfo);
         //判断之前是否已经添加过(电话号码和身份证)
@@ -378,7 +385,54 @@ public class TeacherService extends BaseService{
             msg.put("success",false);
 
             return msg;
+        }else if (!StaticUtils.verifyIDCard(userInfo.getIdcard())){
+            msg.put("code","787");
+            msg.put("msg","身份证号码非法！");
+            msg.put("data",null);
+            msg.put("success",false);
+
+            return msg;
         }
+
+        //判断用户来源是否合法sourcefrom
+        String sourcefrom = (String) map.get("sourcefrom");
+        if (sourcefrom == null ||  sourcefrom.equals("")){
+            msg.put("code","789");
+            msg.put("msg","用户来源非法！");
+            msg.put("data",null);
+            msg.put("success",false);
+
+            return msg;
+        }
+
+
+        List<Map> maps = sourceMapper.selectSource(map);// 直接从map中筛选sourcefrom字段
+        if (maps == null || maps.size() == 0){
+            msg.put("code","790");
+            msg.put("msg","用户来源不存在！");
+            msg.put("data",null);
+            msg.put("success",false);
+            return msg;
+        }
+
+        /*通过身份证号提取年龄，性别，出生日期
+         *
+         */
+        Map<String, String> birAgeSex = StaticUtils.getBirAgeSex(userInfo.getIdcard());
+        if (birAgeSex == null){
+            msg.put("code","787");
+            msg.put("msg","身份证号码非法！");
+            msg.put("data",null);
+            msg.put("success",false);
+
+            return msg;
+        }
+
+        //将提取的数据填充数据到userinfo
+        userInfo.setSex(birAgeSex.get("sexCode").equals("F") ? "男" : "女");
+        userInfo.setAge(Integer.valueOf(birAgeSex.get("age")));
+        userInfo.setBirthday(StaticUtils.getDateByString(birAgeSex.get("birthday")));
+        /////////////////////////////////////////////////
 
         UserWorkHistory userWorkHistory = JSON.parseObject(mapString, UserWorkHistory.class);
         UserContact userContact = JSON.parseObject(mapString, UserContact.class);
@@ -391,14 +445,14 @@ public class TeacherService extends BaseService{
 
 
 
-
         userEducation.setUid(uid);
         userInfo.setUid(uid);
         userWorkHistory.setUid(uid);
 
         userContact.setUid(uid);
         userContact.setCid(StaticUtils.getUUID());
-
+        train.setUid(uid);
+        train.setTid(StaticUtils.getUUID());
 
         //查询第一次添加的财务状态
         HashMap statusMap =  new HashMap();
@@ -421,6 +475,11 @@ public class TeacherService extends BaseService{
         compactmap.put("cid",cid);
 
 
+        //用户来源数据填充
+        Map sourcemap = new HashMap();
+        sourcemap.put("fid",maps.get(0).get("fid"));
+        sourcemap.put("uid",uid);
+
         //添加数据
         try {
             educationMapper.add(userEducation);
@@ -429,6 +488,9 @@ public class TeacherService extends BaseService{
             contactMapper.add(userContact);
             userMapper.addUser(user);
             compactMapper.addCompactStatus(compactmap);
+            sourceMapper.addUserSource(sourcemap);
+            trainMapper.addTrain(train);
+
 
             //单独更新结束时间和请假天数：这个问题后期要修改
             //      {"enddate":"2021-12-23","leavedays":"23","graduation":"已就业","uid":"3feb51be3eb44507b2d78f31796139e4","secname":"第一阶段"}
@@ -441,7 +503,6 @@ public class TeacherService extends BaseService{
             promap.put("leavetotal",0);
             promap.put("secname","第一阶段");
             updateProcess(promap);
-
 
         } catch (Exception e) {
             msg.put("code","785");
@@ -466,6 +527,7 @@ public class TeacherService extends BaseService{
     public List<Map> findDataByUser(Map map,Teacher teacher) {
         String  mapString = JSON.toJSONString(map);
 
+
         //数据提取
         User user = JSON.parseObject(mapString, User.class);
 
@@ -478,6 +540,19 @@ public class TeacherService extends BaseService{
         }
         List<Map> data = userMapper.unionSelectCommonMap(map);
         Integer role_id = teachers.get(0).getRole_id();
+
+        //查看当前用户是否有权限查看员工的来源和电话信息
+
+
+
+
+
+
+
+
+
+
+
         //若是行政或者根用户，可见财务状况
         if (role_id == TeacherStatus.PA || role_id == TeacherStatus.SYSTEMROLE){
             List<Map> commonselect = compactMapper.commonselect(map);
@@ -505,18 +580,17 @@ public class TeacherService extends BaseService{
     @Transactional
     public List<HashMap> updateStaff(Map map) {
         String  mapString = JSON.toJSONString(map);
-        System.out.println("要更新的数据为：" + mapString);
+//        System.out.println("要更新的数据为：" + mapString);
 
         //数据提取
         User user = JSON.parseObject(mapString, User.class);
         UserEducation userEducation = JSON.parseObject(mapString, UserEducation.class);
         UserInfo userInfo = JSON.parseObject(mapString, UserInfo.class);
 
-
         //查看修改的内容是否有compact财务状态
         Compact compact = JSON.parseObject(mapString,Compact.class);
 
-        System.out.println(compact);
+//        System.out.println(compact);
 
         //判断财务状态是否合法
         //在下面判断是否要修改这个人的财务状态
@@ -545,11 +619,11 @@ public class TeacherService extends BaseService{
         UserContact userContact = JSON.parseObject(mapString, UserContact.class);
 
         //填充数据
-        System.out.println("-----------------" + userInfo);
+//        System.out.println("-----------------" + userInfo);
         UserInfo userInfo1 = new UserInfo();
         userInfo1.setIdcard(userInfo.getIdcard());
         List<Map> maps  = staffInfoMapper.selectCommon(userInfo1);
-        System.out.println("-----------------" + maps);
+//        System.out.println("-----------------" + maps);
         if (null == maps || maps.size() == 0){
             throw new SelectException("参数错误！");
         }
@@ -773,7 +847,8 @@ public class TeacherService extends BaseService{
     @Transactional
     public void updateProcess(Map map) {
 
-        //{"enddate":"2021-12-23","leavedays":"23","graduation":"已就业","uid":"3feb51be3eb44507b2d78f31796139e4","secname":"第一阶段"}
+        //{"enddate":"2021-12-23","leavedays":"23","graduation":"已就业",
+        // "registerDate":"已就业","uid":"3feb51be3eb44507b2d78f31796139e4","secname":"第一阶段"}
         //t_user   t_sec_detail
         if (null == map || null == map.get("uid") || null ==  map.get("secname")) throw new UpdateException("进度参数异常!");
         //进行数据参数校验

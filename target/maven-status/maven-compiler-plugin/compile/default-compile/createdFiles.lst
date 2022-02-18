@@ -17,12 +17,14 @@ cn\com\hkr\controller\BaseController.class
 cn\com\hkr\service\TeacherService.class
 cn\com\hkr\bean\UserContact.class
 cn\com\hkr\mapper\MenuMapper.class
+cn\com\hkr\bean\Train.class
 cn\com\hkr\controller\CourseController.class
 cn\com\hkr\mapper\EducationMapper.class
 cn\com\hkr\service\LogService.class
 cn\com\hkr\mapper\EvaluateMapper.class
 cn\com\hkr\filter\DomainExceptionHandler.class
 cn\com\hkr\mapper\LogMapper.class
+cn\com\hkr\mapper\SourceMapper.class
 cn\com\hkr\mapper\StaffInfoMapper.class
 cn\com\hkr\bean\UserEducation.class
 cn\com\hkr\bean\Log.class
@@ -63,4 +65,5 @@ cn\com\hkr\bean\UserStatus.class
 cn\com\hkr\service\MenuService.class
 cn\com\hkr\mapper\SectionMapper.class
 cn\com\hkr\bean\SectionStatus.class
+cn\com\hkr\mapper\TrainMapper.class
 cn\com\hkr\utils\SendEmailUtils$1.class

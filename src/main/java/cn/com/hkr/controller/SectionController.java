@@ -17,20 +17,4 @@ public class SectionController extends  BaseController{
     private SectionService sectionService;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

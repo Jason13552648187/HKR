@@ -15,10 +15,11 @@
     <script type="text/javascript" src="<%=request.getContextPath()%>/jsps/layui/layui.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/jsps/js/jquery-1.7.2.min.js"></script>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/jsps/font-awesome-4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jsps/common_css/scroll.css">
 <%--    <%@include file="../common/common_head.jsp"%>--%>
+
 </head>
-<body style="width: auto;padding-left: 10px;">
+<body style="width: auto;padding: 8px;background-color: #eee;">
 
 <%
     Object trd = request.getSession().getAttribute("triod");
@@ -41,10 +42,10 @@
 </script>
 
     <blockquote class="layui-elem-quote " id="footer">
-        <input id ="username" name="username" class="layui-input layui-input-inline" style="width: 300px;" placeholder="用户名">
-        <input id ="wechat" name="wechat" class="layui-input layui-input-inline" style="width: 300px;" placeholder="微信号">
-        <input id ="phoneNumber" name="phoneNumber" class="layui-input layui-input-inline" style="width: 300px;" placeholder="手机号">
-        <input id ="school" name="school" class="layui-input layui-input-inline" style="width: 300px;" placeholder="毕业院校">
+        <input id ="username" name="username" class="layui-input layui-input-inline" style="width: 200px;" placeholder="用户名">
+        <input id ="wechat" name="wechat" class="layui-input layui-input-inline" style="width: 200px;" placeholder="微信号">
+        <input id ="phoneNumber" name="phoneNumber" class="layui-input layui-input-inline" style="width: 200px;" placeholder="手机号">
+        <input id ="school" name="school" class="layui-input layui-input-inline" style="width: 200px;" placeholder="毕业院校">
         <span id="search_btn" class="layui-btn   layui-btn-normal">查询</span>
     </blockquote>
     <table id="add" lay-even  lay-size="lg" class="layui-table"   lay-skin="nob" lay-filter="tabledata">
@@ -134,7 +135,7 @@
                                 return format(d.enddate,"yyyy-MM-dd");
                             }},
                         {field: "age", title: '年龄',sort:true, width: 80},
-                        {field: "idcard", title: '身份证', width: 120},
+                        // {field: "idcard", title: '身份证', width: 120},
                         {field: "phoneNumber", title: '电话号码', width: 120},
                         {field: "school", title: '学校', width: 100},
                         <%

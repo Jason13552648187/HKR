@@ -15,8 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <meta http-equiv="pragma" content="no-cache">
   <meta http-equiv="cache-control" content="no-cache">
   <meta http-equiv="expires" content="0">
-  <meta http-equiv="keywords" content="狼腾测试员,教师管理,学生管理,汉科软">
-  <meta http-equiv="description" content="狼腾测试员--内部管理系统">
+
   <%@include file="/jsps/common/common_head.jsp"%>
 
 </head>

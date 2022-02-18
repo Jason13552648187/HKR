@@ -11,8 +11,8 @@
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
-    <meta http-equiv="keywords" content="汉科软,综合服务平台">
-    <meta http-equiv="description" content="汉科软综合服务平台">
+    <meta http-equiv="keywords" content="集团客户信息综合服务平台">
+    <meta http-equiv="description" content="汉科软集团客户信息综合服务平台">
 
     <meta http-equiv = "X-UA-Compatible" content = "IE=7,IE=9" >
     <meta http-equiv = "X-UA-Compatible" content = "IE=7,9">

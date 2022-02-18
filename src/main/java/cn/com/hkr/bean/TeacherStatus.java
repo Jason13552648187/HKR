@@ -17,4 +17,11 @@ public final class TeacherStatus {
 
     //普通代理
     public final static Integer USER = 3;
+
+    //总代理
+    public final static Integer USER_PROXY = 101;
+
+    //宏软高科
+    public final static Integer USER_HONGRUAN =  102;
+
 }

@@ -15,7 +15,7 @@ public class SectionStatus {
     public static final String SECTION_THREE = "第三阶段";
     public static final String SECTION_FOUR = "第四阶段";
     public static final String SECTION_FIVE = "第五阶段";
-    public static final String SECTION_FINAL = "最后阶段";
+    public static final String SECTION_FINAL = "第六阶段";
 
     public static List<String> SECTIONS = null;
 

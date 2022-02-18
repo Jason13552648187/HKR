@@ -15,9 +15,12 @@ E:\android\HKR_EVALUATE\src\main\java\cn\com\hkr\filter\LoginFilter.java
 E:\android\HKR_EVALUATE\src\main\java\cn\com\hkr\bean\UserContact.java
 E:\android\HKR_EVALUATE\src\main\java\cn\com\hkr\bean\Compact.java
 E:\android\HKR_EVALUATE\src\main\java\cn\com\hkr\mapper\EducationMapper.java
+E:\android\HKR_EVALUATE\src\main\java\cn\com\hkr\bean\Train.java
 E:\android\HKR_EVALUATE\src\main\java\cn\com\hkr\bean\Log.java
 E:\android\HKR_EVALUATE\src\main\java\cn\com\hkr\staticmsg\UserResult.java
+E:\android\HKR_EVALUATE\src\main\java\cn\com\hkr\mapper\TrainMapper.java
 E:\android\HKR_EVALUATE\src\main\java\cn\com\hkr\exception\UpdateException.java
+E:\android\HKR_EVALUATE\src\main\java\cn\com\hkr\mapper\SourceMapper.java
 E:\android\HKR_EVALUATE\src\main\java\cn\com\hkr\setting\FreeMarkerConfig.java
 E:\android\HKR_EVALUATE\src\main\java\cn\com\hkr\mapper\MenuMapper.java
 E:\android\HKR_EVALUATE\src\main\java\cn\com\hkr\bean\CompactStatus.java

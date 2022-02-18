@@ -7,17 +7,15 @@
         <result property="id" javaType="int" column="id"></result>
         <result property="username" javaType="String" column="username"></result>
         <result column="password" property="password" javaType="String"></result>
-
         <result property="loginname" column="loginname" javaType="String"></result>
         <result property="graduation" column="graduation" javaType="String"></result>
         <result property="registerDate" column="registerDate" javaType="java.util.Date"></result>
-
         <result property="carte" column="carte" javaType="String"></result>
         <result property="status" column="status" javaType="int"></result>
     </resultMap>
 
     <sql id="base_column">
-        loginname,username,graduation,registerDate,carte,status
+        loginname,username,graduation,registerDate,carte,status,enddate
     </sql>
 
     <sql id="education_column">
@@ -33,6 +31,11 @@
 
     <sql id="contact_column">
         contact,unit,workjob,telphone,relation
+    </sql>
+
+
+    <sql id="train_column">
+        tcompany,tstarttime,tendtime,learntitle
     </sql>
 
 
@@ -64,7 +67,6 @@
     </select>
 
     <select id="getUserBySex" parameterType="cn.com.hkr.bean.User" resultMap="userMapper">
-
         select
         <include refid="base_column"></include>
         from t_user
@@ -96,13 +98,14 @@
             <if test="username != null">
                 username = #{username},
             </if>
+
             <if test="loginname != null">
                 loginname = #{loginname},
             </if>
+
             <if test="password != null">
                 password = #{password},
             </if>
-
 
             <if test="graduation != null and graduation != ''">
                 graduation = #{graduation},
@@ -111,6 +114,7 @@
             <if test="carte != null">
                 carte  = #{carte},
             </if>
+
             <if test="status != null">
                 status = #{status}
             </if>
@@ -187,7 +191,6 @@
 
     </select>
 
-
     <!--通用查询map-->
     <select id="unionSelectCommonMap" parameterType="java.util.Map" resultType="map">
         select u.uid,
@@ -195,11 +198,13 @@
         <include refid="education_column"></include>,
         <include refid="info_column"></include>,
         <include refid="workhis_column"></include>,
-        <include refid="contact_column"></include>
+        <include refid="contact_column"></include>,
+        <include refid="train_column"></include>
         from t_user u LEFT OUTER join t_user_info i on u.uid = i.uid
         LEFT OUTER join t_user_workhis w on u.uid =  w.uid
         LEFT OUTER join t_user_education e  on u.uid = e.uid
         LEFT OUTER join t_user_contact c  on u.uid = c.uid
+        LEFT OUTER join t_user_train t on u.uid  = t.uid
         where  1 = 1
         <if test="uid != null and uid != ''">
             and u.uid  = #{uid}
@@ -288,14 +293,17 @@
                 <if test="null != enddate">
                     enddate = #{enddate} ,
                 </if>
-                <if test="null != enddate">
+                <if test="null != graduation">
                     graduation = #{graduation},
                 </if>
-                <if test="null != enddate">
+                <if test="null != leavetotal">
                     leavetotal = #{leavetotal},
                 </if>
-                <if test="null != enddate">
-                    status = #{status}
+                <if test="null != status">
+                    status = #{status},
+                </if>
+                <if test="null != registerDate">
+                    registerDate = #{registerDate}
                 </if>
 
             </trim>

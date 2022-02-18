@@ -80,11 +80,20 @@ $(function(){
                     var status  = data["status"];
 
                     //设置进度条的名称和进度比
-                    $("#processbar").attr("lay-percent",secname + "(" + detailname + ")");
-                    element.progress("process",process*100 + "%");
-                    element.init();//重新渲染进度条
+                    // element.progress("process",process*100 + "%");
+                    if (process === 1){
+                        // $("#processbar").attr("lay-percent","已完成");
+                        $("#processmanager > li").each(function (){
+                            $(this).addClass("active");
+                        })
+                    }else{
+                        $("#processmanager > li:lt(" +  status + ")").each(function () {
+                            $(this).addClass("active");
+                        })
+                    }
+                    // $("#processbar").attr("lay-percent",secname + "(" + detailname + ")");
 
-
+                    // element.init();//重新渲染进度条
 
                     console.log("目前项目进度为：",secname,",",process,"名称：",detailname)
 
@@ -297,16 +306,16 @@ $(function(){
             layer.open({
                 title : "更新项目进度",
                 type:2,
-                area:['450px','400px'],
-                maxmin:false,
+                area:['450px','480px'],
+                maxmin:true,
                 shadeClose:false,
-                resize:false,
+                resize:true,
                 btnAlign:'C',
                 moveType:0,
                 zIndex:9999999,
                 content:"modifyprocess.html?uid=" + getQueryStringByName("uid"),
             })
-        }
+        };
 
     });
 

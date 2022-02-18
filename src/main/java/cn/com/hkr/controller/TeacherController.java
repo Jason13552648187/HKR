@@ -48,11 +48,15 @@ public class TeacherController extends BaseController {
     public String index(HttpServletRequest request, HttpSession session)
             throws UnsupportedEncodingException {
 
-
-
         return "index";
     }
 
+    @RequestMapping("/null")
+    @ResponseBody
+    public Object getNull(){
+        result = new AjaxResult(460,"你好",false,null);
+        return result;
+    }
 
     /**
      * 是否是手机
@@ -96,8 +100,8 @@ public class TeacherController extends BaseController {
      * 添加cookie
      * @param response
      * @param key
-     * @param value*/
-
+     * @param value
+     * */
     private void addCookies(HttpServletResponse response, String key, String value){
         try {
             response.addCookie(new Cookie(key, URLEncoder.encode(value,"utf-8")));

@@ -41,15 +41,16 @@ function  add(){
         title :"添加员工",
         type:2,
         closeBtn:false,
-        area:['98%','98%'],
+        area:['100%','100%'],
         shade:0.8,
         id:"id-add",
-        resize:false,
+        resize:true,
         btn:['关闭'],
         btnAlign:'C',
+
         moveType:0,
         maxmin:false,
-        zIndex:9999999,
+        zIndex:9999999999999,
         content:"adduser.jsp",
         end:function (val) {  //点击关闭后执行的事件
             table.reload("add");
@@ -57,8 +58,12 @@ function  add(){
         yes:function (index) {
             layer.close(index);
 
+        },
+        success:function (){
+            layer.full(index);
         }
     })
+
 }
 
 
@@ -87,12 +92,16 @@ layui.use(['form','laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 
 
     table.render({
             elem: "#add",
-            url :"/HKR/user/findAll",
+            // url :"/HKR/user/findAll",
+            url:"/HKR/teacher/null",
             title:"用户数据",
             // page:true,
             toolbar:'#tb',
             totalRow:true,
             width:"100%",
+            text:{
+                none:"请搜索！"
+            },
             parseData:function (res){
                 return {
                     "code":0,
@@ -111,9 +120,9 @@ layui.use(['form','laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 
                     }},
                 {field: "sex", title: '性别', width: 80},
                 {field: "age", title: '年龄',sort:true, width: 80},
-                {field: "idcard", title: '身份证', width: 80},
+                // {field: "idcard", title: '身份证', width: 80},
                 {field: "email", title: '邮箱', width: 80},
-                {field: "phoneNumber", title: '电话号码', width: 120},
+                // {field: "phoneNumber", title: '电话号码', width: 120},
                 {field: "wechat", title: '微信号', width: 80},
                 {field: "school", title: '学校', width: 80},
                 {field: "professional", title: '专业', width: 80},
@@ -155,7 +164,7 @@ layui.use(['form','laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 
         var evt = obj.event;
         switch (evt){
             case "edit":
-                layer.open({
+                index = layer.open({
                     title : "编辑员工信息",
                     type:2,
                     area:['100%','100%'],
@@ -165,7 +174,8 @@ layui.use(['form','laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 
                     btn:['关闭'],
                     btnAlign:'C',
                     moveType:0,
-                    zIndex:9999999,
+                    // zIndex:9999999,
+
                     content:"edit.jsp",
                     success:function (layero,index) {
                         console.log("详情页面打开成功！")
@@ -228,10 +238,11 @@ layui.use(['form','laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 
                     }
 
                 })
+                layer.full(index)
             break;
             case "sectiondetail":
                 console.log("项目进度详情:" +  data.uid);
-                layer.open({
+                var index = layer.open({
                     title : "项目进度详情",
                     type:2,
                     area:['100%','100%'],
@@ -241,7 +252,7 @@ layui.use(['form','laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 
                     btn:['关闭'],
                     btnAlign:'C',
                     moveType:0,
-                    zIndex:9999999,
+                    // zIndex:9999999,
                     content:"section/section_detail.html?uid=" + data.uid,
 /*                    success:function (layero,index) {
                         console.log("详情页面打开成功！")
@@ -270,22 +281,23 @@ layui.use(['form','laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 
                         });
                     }*/
                 });
+                layer.full(index)
 
             break;
             case "detail":
-                layer.open({
+                var index = layer.open({
                     title : "员工详情",
                     type:2,
                     area:['100%','100%'],
                     maxmin:false,
                     shadeClose:true,
                     resize:false,
-                    btn:['关闭'],
+                    // btn:['关闭'],
                     btnAlign:'C',
                     moveType:0,
-                    zIndex:9999999,
-                    content:"list.jsp",
-                    success:function (layero,index) {
+                    // zIndex:9999999,
+                    content:"info.html?uid=" + data.uid,
+/*                    success:function (layero,index) {
                         console.log("详情页面打开成功！")
                         //请求后端数据进行回显
                         $.ajax({
@@ -325,9 +337,10 @@ layui.use(['form','laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 
                             }
                         });
 
-                    }
+                    }*/
 
                 })
+                layer.full(index)
             break;
         }
     });

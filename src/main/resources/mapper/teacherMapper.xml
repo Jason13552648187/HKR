@@ -100,4 +100,9 @@
     </select>
 
 
+    <!--查询当前用户的是总代理和宏软高科-->
+    <select id="findAccess" resultType="map">
+
+    </select>
+
 </mapper>

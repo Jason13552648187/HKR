@@ -7,9 +7,15 @@
     <script type="text/javascript" src="/HKR/jsps/layui/layui.js"></script>
     <script type="text/javascript" src="/HKR/jsps/js/jquery-1.7.2.min.js"></script>
     <link rel="stylesheet" href="/HKR/jsps/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="/HKR/jsps/user/css/bootstrap.css">
+    <link rel="stylesheet" href="/HKR/jsps/user/css/process.css">
     <style>
         a{
             color: #005980;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
         }
         .widget-small{
             background-color: #FFFFFF;
@@ -78,9 +84,6 @@
 </head>
 <body>
 
-
-
-
 <!--用户画像开始-->
 <div class="layui-row layui-col-space15" style="margin:30px 0px;">
     <div class="layui-col-md3 layui-col-sm6 layui-col-xs12">
@@ -96,7 +99,7 @@
         <div class="widget-small widget-visit">
             <i class="icon fa fa-hourglass fa-3x"></i>
             <div class="widget-small-info">
-                <h3>预计结束时间</h3>
+                <h4>结束时间</h4>
                 <span id="enddate"></span>
             </div>
         </div>
@@ -118,8 +121,6 @@
                 <span id="graduation"></span>
             </div>
         </div>
-
-
     </div>
 
     <!--修改按钮-->
@@ -134,23 +135,34 @@
 
 
 <!--当前项目进度条显示-->
-
-<div class="layui-progress layui-progress-big" style="margin:50px 10px;" lay-showPercent="true" lay-filter="process">
+<ul class="nav nav-pills nav-justified step step-progress" id="processmanager" data-step="1">
+    <li>
+        <a>综合项目<span class="caret"></span></a>
+    </li>
+    <li>
+        <a>专题项目<span class="caret"></span></a>
+    </li>
+    <li>
+        <a>Python自动化<span class="caret"></span></a>
+    </li>
+    <li>
+        <a>接口测试<span class="caret"></span></a>
+    </li>
+    <li>
+        <a>性能测试<span class="caret"></span></a>
+    </li>
+    <li>
+        <a>已完成<span class="caret"></span></a>
+    </li>
+</ul>
+<!--<div class="layui-progress layui-progress-big" style="margin:50px 10px;" lay-showPercent="true" lay-filter="process">
     <div class="layui-progress-bar layui-bg-green" lay-percent="第一阶段" id="processbar" title="50%"></div>
-</div>
+</div>-->
 
 <!--表单开始-->
 <div id="layform" class="layui-form  layui-form-pane"style="width: auto;" lay-filter="layform">
 
-
     <fieldset class="layui-elem-field layui-field-title" style="margin: 20px 10px;">
-
-
-
-
-
-
-
 
         <div style="padding: 20px; background-color: #F2F2F2;">
             <div class="layui-row layui-col-space15">
@@ -158,7 +170,6 @@
                     <div class="layui-card">
                         <div class="layui-card-header">项目质量评价情况</div>
                         <div class="layui-card-body" id="secdetailcontent">
-
 <!--                        <div>
                                 <div align="center">第一阶段（综合项目测试）</div>
                                 <div class="layui-collapse" lay-accordion id="section_detail">
@@ -176,10 +187,6 @@
                                             <div>贾经理：学的不行</div>
                                         </div>
                                     </div>
-
-
-
-
                                 </div>
                             </div>
 
@@ -194,16 +201,9 @@
 
                                 </div>
                             </div>-->
-
-
-
-
-
                         </div>
                     </div>
-
                 </div>
-
 
                 <div class="layui-col-md6"  id="secrebelparent">
                     <div class="layui-card">
@@ -253,46 +253,12 @@
                                 </div>
                             </div>-->
 
-
-
-
-
-
                         </div>
                     </div>
-
-
                 </div>
-
-
-
-
             </div>
         </div>
-
-
         <!--项目进度显示-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     </fieldset>
 
