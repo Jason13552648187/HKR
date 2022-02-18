@@ -4,164 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="29c3119e-74a8-4fb1-b319-30fb9dd5015c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/annotation/LogAnnotation.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/Compact.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/CompactStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/CourseStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/Section.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/SectionStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/TeacherStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/Train.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/UserContact.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/UserEducation.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/UserInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/UserStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/bean/UserWorkHistory.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/controller/SectionController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/dingding/DingUrl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/exception/ParamException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/exception/SelectException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/exception/UpdateException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/filter/DomainExceptionHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/mapper/CompactMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/mapper/ContactMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/mapper/EducationMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/mapper/SectionMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/mapper/SourceMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/mapper/StaffInfoMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/mapper/TrainMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/mapper/WorkHistoryMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/service/BaseService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/service/CompactService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/service/DictionaryService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/service/SectionService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/test/DingTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/utils/DingTalkTokenUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/utils/JwtUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/utils/SendEmailUtils$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/cn/com/hkr/utils/SendEmailUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/dingtalk.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mail.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mapper/sectionMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mapper/sourceMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mapper/trainMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mapper/userCompactMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mapper/userContactMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mapper/userEducationMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mapper/userInfoMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/classes/mapper/userWorkHistoryMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/lib/activation-1.1.1.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/lib/fastjson-1.2.70.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/lib/java-jwt-3.4.0.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/lib/javax.mail-1.6.2.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/WEB-INF/lib/top-api-sdk-dev-ding-open-mc-SNAPSHOT.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/error/404/404.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/error/404/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/error/browser.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/common/IE_NOT_SUPPORT.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/manager/forgetpasswd.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/message/simplecode.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/message/verifycode.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/add.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/adduser.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/css/info.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/css/process.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/css/register.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/css/reset.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/css/slide.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/data/data.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/data/datagrid.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/edit.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/img/backgroud.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/img/bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/img/bg1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/img/bg2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/img/bg3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/img/bg4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/img/picture.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/info.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/add.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/drag.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/edit.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/info.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/list.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/register/jquery.easing.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/register/register.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/register/register_box.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/search.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/secdetail.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/select.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/js/slideVerify.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/list.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/main.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/section/addSecDetail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/section/addSecrebel.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/section/modifyprocess.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/section/section_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/HKR/jsps/user/welcome.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/annotation/LogAnnotation.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/Compact.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/CompactStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/CourseStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/Section.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/SectionStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/TeacherStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/Train.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/UserContact.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/UserEducation.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/UserInfo.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/UserStatus.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/bean/UserWorkHistory.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/controller/SectionController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/dingding/DingUrl.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/exception/ParamException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/exception/SelectException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/exception/UpdateException.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/filter/DomainExceptionHandler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/mapper/CompactMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/mapper/ContactMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/mapper/EducationMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/mapper/SectionMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/mapper/SourceMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/mapper/StaffInfoMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/mapper/TrainMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/mapper/WorkHistoryMapper.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/service/CompactService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/service/DictionaryService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/service/SectionService.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/test/DingTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/utils/DingTalkTokenUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/utils/JwtUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/utils/SendEmailUtils$1.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/cn/com/hkr/utils/SendEmailUtils.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/dingtalk.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mail.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/sectionMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/sourceMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/trainMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/userCompactMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/userContactMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/userEducationMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/userInfoMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/mapper/userWorkHistoryMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/tomcat/logs/access_log.2022-02-14" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/tomcat/logs/access_log.2022-02-15" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/tomcat/logs/access_log.2022-02-17" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/SESSIONS.ser" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/org/apache/jsp/error/_404/_404_jsp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/org/apache/jsp/error/_404/_404_jsp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/org/apache/jsp/jsps/user/add_jsp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/org/apache/jsp/jsps/user/add_jsp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/org/apache/jsp/jsps/user/adduser_jsp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/org/apache/jsp/jsps/user/adduser_jsp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/org/apache/jsp/jsps/user/edit_jsp.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/tomcat/work/Tomcat/localhost/HKR/org/apache/jsp/jsps/user/edit_jsp.java" afterDir="false" />
-    </list>
+    <list default="true" id="29c3119e-74a8-4fb1-b319-30fb9dd5015c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -922,7 +765,7 @@
       <workItem from="1644930456472" duration="1783000" />
       <workItem from="1645074365718" duration="590000" />
       <workItem from="1645087732138" duration="4185000" />
-      <workItem from="1645157916787" duration="1403000" />
+      <workItem from="1645157916787" duration="2187000" />
     </task>
     <task id="LOCAL-00001" summary="添加了用户的不同权限管理的功能，和数据查询和修改功能">
       <created>1640601515794</created>
@@ -938,7 +781,14 @@
       <option name="project" value="LOCAL" />
       <updated>1645163872491</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="修复了阶段性bug">
+      <created>1645164943868</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1645164943868</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
