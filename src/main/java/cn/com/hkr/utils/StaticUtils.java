@@ -2,6 +2,7 @@ package cn.com.hkr.utils;
 
 import org.springframework.util.DigestUtils;
 
+import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.text.MessageFormat;
 import java.text.ParsePosition;
@@ -206,14 +207,6 @@ public class StaticUtils {
         map.put("age", age);
         map.put("sexCode", sexCode);
         return map;
-    }
-
-
-    public static void main(String[] agrs){
-        String id = "11011520010921542X";
-        Map<String, String> birAgeSex = getBirAgeSex(id);
-        Date birthday = getDateByString(birAgeSex.get("birthday"));
-        System.out.println(birthday);
     }
 
 

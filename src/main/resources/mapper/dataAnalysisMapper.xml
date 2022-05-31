@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.hkr.mapper.DataAnalysisMapper">
+
+
+    <!--基础查询字段-->
+    <sql id="base_user">
+        uid,username,registerDate
+    </sql>
+    <!--通过开始日期和结束日期获取期间数据-->
+    <select id="getDataByDate" resultType="map">
+        select <include refid="base_user"/>
+        from t_user
+
+        <where>
+            <if test="null != startdate" >
+                AND registerDate &gt;= #{startdate}
+            </if>
+            <if test="null != eddate">
+                AND registerDate &lt;= #{eddate}
+            </if>
+        </where>
+    </select>
+
+
+    <!--获取近7天内的数据-->
+    <select id="getUserNeiSevenDay" resultType="map">
+        select username,registerDate,graduation,sex,age,school,edulevel
+        from t_user u join t_user_info ui on u.uid = ui.uid
+            join t_user_education ue on u.uid = ue.uid
+        where registerDate  &gt;=  DATE_SUB(curdate(),INTERVAL 7 DAY)
+        order by registerDate
+    </select>
+
+
+    <!--近6个月的入职人员数据-->
+    <select id="getNeiSixMonthUser" resultType="map">
+        SELECT registerDate AS dt,COUNT(*) AS nums FROM t_user
+        WHERE registerDate &gt;= DATE_FORMAT(DATE_SUB(CURDATE(),INTERVAL 6 MONTH),"%Y-%m")
+        GROUP BY DATE_FORMAT(registerDate,"%Y-%m")
+        ORDER BY registerDate
+    </select>
+
+
+
+    <!--今年：入职薪酬各阶段情况： 薪酬与人数-->
+    <select id="countSalaryNumbers" resultType="map">
+        SELECT sal as name,COUNT(*) value FROM (
+
+        SELECT salary,CASE WHEN (salary  &gt; 0  AND salary &lt; 5) OR salary = "" THEN "0-5k"
+        WHEN salary  &gt;= 5 AND  salary &lt; 7 THEN "5-7k"
+        WHEN salary &gt;= 7 AND salary &lt; 9  THEN "7-9k"
+        WHEN salary &gt;= 9 AND salary  &lt; 11  THEN  "9-11k"
+        WHEN salary &gt;= 11 THEN "11+k"
+        END  AS sal
+        FROM t_user_finish
+        ) t_sal
+        GROUP BY sal
+
+    </select>
+
+
+
+</mapper>

@@ -15,8 +15,9 @@
     <script type="text/javascript" src="<%=request.getContextPath()%>/jsps/layui/layui.js"></script>
     <script type="text/javascript" src="<%=request.getContextPath()%>/jsps/js/jquery-1.7.2.min.js"></script>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/jsps/font-awesome-4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/jsps/common_css/scroll.css">
 <%--    <%@include file="../common/common_head.jsp"%>--%>
+
 </head>
 <body style="width: auto;padding: 8px;background-color: #eee;">
 
@@ -134,9 +135,9 @@
                                 return format(d.enddate,"yyyy-MM-dd");
                             }},
                         {field: "age", title: '年龄',sort:true, width: 80},
-                        {field: "idcard", title: '身份证', width: 120},
-                        // {field: "phoneNumber", title: '电话号码', width: 120},
-                        {field: "school", title: '学校', width: 100},
+                        // {field: "idcard", title: '身份证', width: 120},
+                        {field: "phoneNumber", title: '电话号码', width: 120},
+                        {field: "school", title: '学校', width: 220},
                         <%
                             if(rid.equals("2")){ //编辑只有行政可见
                         %>

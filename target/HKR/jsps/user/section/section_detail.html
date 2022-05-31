@@ -13,6 +13,10 @@
         a{
             color: #005980;
         }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
         .widget-small{
             background-color: #FFFFFF;
             overflow: hidden;
@@ -75,6 +79,9 @@
             background-color: #d9edf7;
             border-color: #bce8f1;
         }
+        .modify{
+            cursor: text;
+        }
     </style>
     <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
@@ -87,7 +94,8 @@
             <i class="icon fa fa-calendar-check-o fa-3x"></i>
             <div class="widget-small-info">
                 <h4>开始时间</h4>
-                <span id="registerDate"></span>
+                <span  class="modify" id="registerDate"></span>
+                <a id="modstart" class="layui-btn layui-btn-xs layui-btn-normal">修改</a>
             </div>
         </div>
     </div>
@@ -96,7 +104,8 @@
             <i class="icon fa fa-hourglass fa-3x"></i>
             <div class="widget-small-info">
                 <h4>结束时间</h4>
-                <span id="enddate"></span>
+                <span class="modify" id="enddate"></span>
+                <a id="modend" class="layui-btn layui-btn-xs layui-btn-normal">修改</a>
             </div>
         </div>
     </div>
@@ -105,7 +114,8 @@
             <i class="icon fa fa-calendar-times-o fa-3x"></i>
             <div class="widget-small-info">
                 <h4>请假天数</h4>
-                <span id="leavedays"></span>
+                <span class="modify"  id="leavedays"></span>
+                <a id="modlevalday" class="layui-btn layui-btn-xs layui-btn-normal">修改</a>
             </div>
         </div>
     </div>
@@ -114,17 +124,18 @@
             <i class="icon fa fa-graduation-cap fa-3x"></i>
             <div class="widget-small-info">
                 <h4>学籍状态</h4>
-                <span id="graduation"></span>
+                <span class="modify" id="graduation"></span>
+                <a id="modstatus" class="layui-btn layui-btn-xs layui-btn-normal">修改</a>
             </div>
         </div>
     </div>
 
     <!--修改按钮-->
-    <div  style="float: right;">
+   <!-- <div  style="float: left;">
         <div id="modify">
 
         </div>
-    </div>
+    </div>-->
 
 </div>
 <!--用户画像结束-->
@@ -132,7 +143,7 @@
 
 <!--当前项目进度条显示-->
 <ul class="nav nav-pills nav-justified step step-progress" id="processmanager" data-step="1">
-    <li>
+   <!--<li od='1'>
         <a>综合项目<span class="caret"></span></a>
     </li>
     <li>
@@ -149,14 +160,14 @@
     </li>
     <li>
         <a>已完成<span class="caret"></span></a>
-    </li>
+    </li>-->
 </ul>
 <!--<div class="layui-progress layui-progress-big" style="margin:50px 10px;" lay-showPercent="true" lay-filter="process">
     <div class="layui-progress-bar layui-bg-green" lay-percent="第一阶段" id="processbar" title="50%"></div>
 </div>-->
 
 <!--表单开始-->
-<div id="layform" class="layui-form  layui-form-pane"style="width: auto;" lay-filter="layform">
+<div id="layform" class="layui-form  layui-form-pane" style="width: auto;" lay-filter="layform">
 
     <fieldset class="layui-elem-field layui-field-title" style="margin: 20px 10px;">
 

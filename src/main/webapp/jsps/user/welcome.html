@@ -1,10 +1,112 @@
 <html>
-<head></head>
+<head>
+    <title>集团客户信息综合服务平台[主信息板]</title>
+    <style type="text/css">
+        .layui-nav-tree .layui-nav-child a{
+            padding: 0 36px;
+        }
+        *{
+            line-height: 45px;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .layui-layer-title{
+            height: 40px;
+            line-height: 40px;
+        }
+        ::-webkit-scrollbar-button,
+        ::-webkit-scrollbar-button:vertical {
+            display: none;
+        }
+        ::-webkit-scrollbar-track,
+        ::-webkit-scrollbar-track:vertical {
+            background-color: black;
+        }
+        ::-webkit-scrollbar-track-piece {
+            background-color: #f5f5f5;
+        }
+        ::-webkit-scrollbar-thumb,
+        ::-webkit-scrollbar-thumb:vertical {
+            margin-right: 10px;
+            background-color: #a6a6a6;
+        }
+        ::-webkit-scrollbar-thumb:hover,
+        ::-webkit-scrollbar-thumb:vertical:hover {
+            background-color: #aaa;
+        }
+        ::-webkit-scrollbar-corner,
+        ::-webkit-scrollbar-corner:vertical {
+            background-color: #535353;
+        }
+
+
+    </style>
+    <link rel="stylesheet" href="/HKR/jsps/layui/css/layui.css">
+    <script type="text/javascript" src="/HKR/jsps/layui/layui.js"></script>
+    <script type="text/javascript" src="/HKR/jsps/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" href="/HKR/jsps/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="/HKR/jsps/user/css/bootstrap.css">
+    <link rel="stylesheet" href="/HKR/jsps/user/css/process.css">
+
+    <script src="../js/echarts/echarts.min.js"></script>
+    <script src="js/welcome.js"></script>
+</head>
 <body>
 
+<!--表单开始-->
+<div id="layform" class="layui-form  layui-form-pane" style="width: auto;" lay-filter="layform">
 
-<center>Welcome!</center>
+    <fieldset class="layui-elem-field layui-field-title" style="margin: 20px 10px;">
 
+        <div style="padding: 20px; background-color: #F2F2F2;">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md6">
+                    <div class="layui-card">
+                        <div class="layui-card-header" id="numtitle"></div>
+                        <div class="layui-card-body" id="container" style="height:450px;width: auto;">
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+               <div class="layui-col-md6">
+                    <div class="layui-card">
+                        <div class="layui-card-header">今年就业人员的薪酬范围情况</div>
+                        <div class="layui-card-body" id="salaryDetail" style="height:450px;width: auto;">
+
+
+
+                        </div>
+                    </div>
+
+               </div>
+
+
+
+
+                <div class="layui-col-md6"  id="secrebelparent">
+                    <div class="layui-card">
+                        <div class="layui-card-header">近七天内入职人员名单</div>
+                        <div class="layui-card-body" id="useritems">
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--项目进度显示-->
+
+    </fieldset>
+
+</div>
 
 </body>
 </html>

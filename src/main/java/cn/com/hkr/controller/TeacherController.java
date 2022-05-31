@@ -1,24 +1,31 @@
 package cn.com.hkr.controller;
 
-import cn.com.hkr.bean.*;
-import cn.com.hkr.exception.ParamException;
+import cn.com.hkr.bean.AjaxResult;
+import cn.com.hkr.bean.Evaluate;
+import cn.com.hkr.bean.Teacher;
+import cn.com.hkr.bean.User;
 import cn.com.hkr.service.*;
 import cn.com.hkr.staticmsg.UserResult;
 import cn.com.hkr.utils.JwtUtils;
 import cn.com.hkr.utils.StaticUtils;
 import com.alibaba.fastjson.JSON;
+import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
-import javax.servlet.http.*;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,6 +48,12 @@ public class TeacherController extends BaseController {
     @Autowired
     private EvaluateService evaluateService;
 
+    @Autowired
+    private DataValidateService dataValidateService;
+
+    @Autowired
+    private DataAnalysisService dataAnalysisService;
+
     /*
      * 所有程序入口
      * */
@@ -53,7 +66,8 @@ public class TeacherController extends BaseController {
 
     @RequestMapping("/null")
     @ResponseBody
-    public Object getNull(){
+    public Object getNull() throws InterruptedException {
+        Thread.sleep(1000);
         result = new AjaxResult(460,"你好",false,null);
         return result;
     }
@@ -71,7 +85,7 @@ public class TeacherController extends BaseController {
     }
 
 
-    /*
+    /* *
      * 获取cookies里的key的值
      * @param cookies
      * @param key
@@ -127,7 +141,7 @@ public class TeacherController extends BaseController {
     }
 
 
-    /*注册操作*//*
+    /*注册操作
     @RequestMapping("/register")
     @ResponseBody
     public Object register(@RequestBody User user,HttpServletRequest request){
@@ -181,7 +195,6 @@ public class TeacherController extends BaseController {
         final Teacher teacher = JSON.parseObject(mapString, Teacher.class);
 
         System.out.println("------------------" + teacher);
-
 
         if (null != teacher.getEmail() && !check_email(teacher.getEmail())){
             result = new AjaxResult(785,"邮箱不能为空或者邮箱格式错误!",false);
@@ -330,8 +343,6 @@ public class TeacherController extends BaseController {
             return new AjaxResult(816,"访问数据过期！",false,null);
         }
 
-
-
         //否则就是正常token
         String tid = JwtUtils.getData(token, "tid");
         String loginname = JwtUtils.getData(token, "loginname");
@@ -442,10 +453,12 @@ public class TeacherController extends BaseController {
 
         //必填项校验阶段
 
+
+        //必须要进行的校验
+
+
         //添加员工信息阶段
         Map map1 = teacherService.addStaff(map);
-
-
         return map1;
 
     }
@@ -651,9 +664,101 @@ public class TeacherController extends BaseController {
     }
 
 
+    /**
+     * 修改目前用户的目前阶段的进度
+     * @param map
+     * @param request
+     * @return
+     */
     @RequestMapping("/updateProcess")
     @ResponseBody
     public Object updateProcess(@RequestBody Map map,HttpServletRequest request){
+
+        //{"uid":"","od":2}
+        List<Map> map1 = null;
+        try {
+            String token = getCookieValue(request.getCookies(), "adminmanager");
+
+            if (null == token || token.equals("")) {
+                return new AjaxResult(816, "访问数据过期！", false, null);
+            }
+
+            //否则就是正常token
+            String tid = JwtUtils.getData(token, "tid");
+            String loginname = JwtUtils.getData(token, "loginname");
+
+
+            if (null == tid || null == loginname) {
+                result = new AjaxResult(814, "token无效！禁止查询", false, null);
+                return result;
+            }
+
+//            Teacher tea = new Teacher();
+//            tea.setTid(tid);
+
+            teacherService.updateProcess(map);
+            return new AjaxResult(700, "修改成功", true, null);
+        } catch (Exception e) {
+            return new AjaxResult(789, "修改失败！", e.getMessage());
+        }
+
+    }
+
+
+
+    /**
+     * 修改目前用户的目前阶段的开始和结束时间
+     * @param map
+     * @param request
+     * @return
+     */
+    @RequestMapping("/updateProcessStartAndEnd")
+    @ResponseBody
+    public Object updateProcessStartAndEnd(@RequestBody Map map,HttpServletRequest request){
+
+        //{"uid":"","od":2,startdate:'',enddate:""}
+        List<Map> map1 = null;
+        try {
+            String token = getCookieValue(request.getCookies(), "adminmanager");
+
+            if (null == token || token.equals("")) {
+                return new AjaxResult(816, "访问数据过期！", false, null);
+            }
+
+            //否则就是正常token
+            String tid = JwtUtils.getData(token, "tid");
+            String loginname = JwtUtils.getData(token, "loginname");
+
+
+            if (null == tid || null == loginname) {
+                result = new AjaxResult(814, "token无效！禁止查询", false, null);
+                return result;
+            }
+
+//            Teacher tea = new Teacher();
+//            tea.setTid(tid);
+
+            teacherService.updateProcessStartAndEnd(map);
+            return new AjaxResult(700, "修改成功", true, null);
+        } catch (Exception e) {
+            return new AjaxResult(789, "修改失败！", e.getMessage());
+        }
+
+    }
+
+
+
+
+
+    /**
+     * 修改项目的起始时间
+     * @param map
+     * @param request
+     * @return
+     */
+    @RequestMapping("/updateStartTime")
+    @ResponseBody
+    public Object updateStartTime(@RequestBody Map map,HttpServletRequest request){
 
         //{"enddate":"2021-12-23","leavedays":"23","graduation":"已就业","uid":"3feb51be3eb44507b2d78f31796139e4","status":"第二阶段"}
         List<Map> map1 = null;
@@ -674,17 +779,136 @@ public class TeacherController extends BaseController {
                 return result;
             }
 
-
 //            Teacher tea = new Teacher();
 //            tea.setTid(tid);
 
-            teacherService.updateProcess(map);
+            teacherService.updateStartTime(map);
             return new AjaxResult(700, "修改成功", true, null);
         } catch (Exception e) {
             return new AjaxResult(789, "修改失败！", e.getMessage());
         }
 
     }
+
+
+    /**
+     * 修改项目的结束时间
+     * @param map
+     * @param request
+     * @return
+     */
+    @RequestMapping("/updateEndTime")
+    @ResponseBody
+    public Object updateEndTime(@RequestBody Map map,HttpServletRequest request){
+
+        //{"enddate":"2021-12-23","leavedays":"23","graduation":"已就业","uid":"3feb51be3eb44507b2d78f31796139e4","status":"第二阶段"}
+        List<Map> map1 = null;
+        try {
+            String token = getCookieValue(request.getCookies(), "adminmanager");
+
+            if (null == token || token.equals("")) {
+                return new AjaxResult(816, "访问数据过期！", false, null);
+            }
+
+            //否则就是正常token
+            String tid = JwtUtils.getData(token, "tid");
+            String loginname = JwtUtils.getData(token, "loginname");
+
+
+            if (null == tid || null == loginname) {
+                result = new AjaxResult(814, "token无效！禁止查询", false, null);
+                return result;
+            }
+
+//            Teacher tea = new Teacher();
+//            tea.setTid(tid);
+
+            teacherService.updateEndTime(map);
+            return new AjaxResult(700, "修改成功", true, null);
+        } catch (Exception e) {
+            return new AjaxResult(789, "修改失败！", e.getMessage());
+        }
+
+    }
+
+
+    /**
+     * 修改项目的请假时间
+     * @param map
+     * @param request
+     * @return
+     */
+    @RequestMapping("/updateLevalDays")
+    @ResponseBody
+    public Object updateLevalDays(@RequestBody Map map,HttpServletRequest request){
+
+        //{"enddate":"2021-12-23","leavedays":"23","graduation":"已就业","uid":"3feb51be3eb44507b2d78f31796139e4","status":"第二阶段"}
+        List<Map> map1 = null;
+        try {
+            String token = getCookieValue(request.getCookies(), "adminmanager");
+
+            if (null == token || token.equals("")) {
+                return new AjaxResult(816, "访问数据过期！", false, null);
+            }
+
+            //否则就是正常token
+            String tid = JwtUtils.getData(token, "tid");
+            String loginname = JwtUtils.getData(token, "loginname");
+
+
+            if (null == tid || null == loginname) {
+                result = new AjaxResult(814, "token无效！禁止查询", false, null);
+                return result;
+            }
+
+//            Teacher tea = new Teacher();
+//            tea.setTid(tid);
+
+            teacherService.updateUserLevalDays(map);
+            return new AjaxResult(700, "修改成功", true, null);
+        } catch (Exception e) {
+            return new AjaxResult(789, "修改失败！", e.getMessage());
+        }
+
+    }
+
+
+    /**
+     * 修改项目的毕业状态
+     * @param map
+     * @param request
+     * @return
+     */
+    @RequestMapping("/updateGradution")
+    @ResponseBody
+    public Object updateGradution(@RequestBody Map map,HttpServletRequest request){
+
+        //{"enddate":"2021-12-23","leavedays":"23","graduation":"已就业","uid":"3feb51be3eb44507b2d78f31796139e4","status":"第二阶段"}
+        List<Map> map1 = null;
+        try {
+            String token = getCookieValue(request.getCookies(), "adminmanager");
+
+            if (null == token || token.equals("")) {
+                return new AjaxResult(816, "访问数据过期！", false, null);
+            }
+
+            //否则就是正常token
+            String tid = JwtUtils.getData(token, "tid");
+            String loginname = JwtUtils.getData(token, "loginname");
+
+
+            if (null == tid || null == loginname) {
+                result = new AjaxResult(814, "token无效！禁止查询", false, null);
+                return result;
+            }
+
+            teacherService.updateUserGraduation(map);
+            return new AjaxResult(700, "修改成功", true, null);
+        } catch (Exception e) {
+            return new AjaxResult(789, "修改失败！", e.getMessage());
+        }
+    }
+
 
 
     @RequestMapping("/addSecDetail")
@@ -760,11 +984,158 @@ public class TeacherController extends BaseController {
     }
 
 
+    @RequestMapping("/validateAll")
+    @ResponseBody
+    public Object validateAll(){
+        try {
+            List<Map> maps = dataValidateService.startValidateAll();
+            result.put("code",700);
+            result.put("msg","处理成功！");
+            result.put("success",true);
+            result.put("data",maps);
+            result.put("illgea",maps.size());
+            return result.getMap();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new AjaxResult(995, "修改失败", false);
+        }
+    }
 
 
 
 
 
+    @RequestMapping("/findAllFinish")
+    @ResponseBody
+    public Object findAllFinish(HttpServletRequest request){
+
+        //{"secname":"第二阶段","uid":"3feb51be3eb44507b2d78f31796139e4","evaluate":"还可以"}
+        List<Map> map1 = null;
+        try {
+            String token = getCookieValue(request.getCookies(), "adminmanager");
+
+            if (null == token || token.equals("")) {
+                return new AjaxResult(816, "访问数据过期！", false, null);
+            }
+
+            //否则就是正常token
+            String tid = JwtUtils.getData(token, "tid");
+            String loginname = JwtUtils.getData(token, "loginname");
+
+
+            if (null == tid || null == loginname) {
+                result = new AjaxResult(814, "token无效！禁止查询", false, null);
+                return result;
+            }
+
+            //必须要有当前经理的id和名称
+            Teacher tea = new Teacher();
+            tea.setTid(tid);
+
+            List<Map> users =  dataValidateService.findAllFinish(tea);
+
+
+
+            return new AjaxResult(720, "查询成功", true, users);
+        } catch (Exception e) {
+            return new AjaxResult(789, "查询失败！", e.getMessage());
+        }
+
+    }
+
+
+    /**
+     *  仅仅就是上传已经入场的人员数据
+     * @param file
+     * @return
+     */
+    @RequestMapping(value = "/uploadFinishUser",method = RequestMethod.POST)
+    @ResponseBody
+    public Object uploadFinishUser(@RequestParam("file")  CommonsMultipartFile file,HttpServletRequest request){
+
+        try {
+
+            DiskFileItem fileItem = (DiskFileItem) file.getFileItem();
+            InputStream inputStream = fileItem.getInputStream();
+            byte[] bytes = new byte[1024];
+
+            String path = request.getSession().getServletContext().getRealPath("/");
+
+            System.out.println("系统运行路径：---" + path);
+
+            //创建系统保存路径，如果没有files文件夹，自动创建，有则直接使用。
+            String fileName = path  + "files";
+            File finishFile = new File(fileName);
+            if(!finishFile.exists()){
+                finishFile.mkdirs();
+            }
+
+
+
+
+            fileName = fileName + File.separator + StaticUtils.getUUID() + ".xlsx";
+            FileOutputStream outputStream = new FileOutputStream(fileName);
+            int temp;
+            while ((temp = inputStream.read(bytes))!= -1){
+                outputStream.write(bytes,0,temp);
+            }
+
+            outputStream.flush();
+            inputStream.close();
+            outputStream.close();
+
+
+            //调用service层完成数据存入
+            dataValidateService.importFinishData(fileName);
+
+            return new AjaxResult(750,"成功",true,fileName);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new AjaxResult(755,e.getStackTrace().toString(),true,null);
+        }
+
+    }
+
+
+    /**
+     * 查询各个阶段的薪资情况
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/countSalaryDetail",method = RequestMethod.POST)
+    @ResponseBody
+    public Object countSalaryDetail(HttpServletRequest request){
+
+        List<Map> map1 = null;
+        try {
+            String token = getCookieValue(request.getCookies(), "adminmanager");
+
+            if (null == token || token.equals("")) {
+                return new AjaxResult(816, "访问数据过期！", false, null);
+            }
+
+            //否则就是正常token
+            String tid = JwtUtils.getData(token, "tid");
+            String loginname = JwtUtils.getData(token, "loginname");
+
+
+            if (null == tid || null == loginname) {
+                result = new AjaxResult(814, "token无效！禁止查询", false, null);
+                return result;
+            }
+
+            //必须要有当前经理的id和名称
+            Teacher tea = new Teacher();
+            tea.setTid(tid);
+
+            List<Map> users =  dataAnalysisService.countSalaryDetail();
+
+            return new AjaxResult(720, "查询成功", true, users);
+        } catch (Exception e) {
+            return new AjaxResult(789, "查询失败！", e.getMessage());
+        }
+
+    }
 
 
 

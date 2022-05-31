@@ -16,12 +16,24 @@ public class SectionStatus {
     public static final String SECTION_FOUR = "第四阶段";
     public static final String SECTION_FIVE = "第五阶段";
     public static final String SECTION_FINAL = "第六阶段";
+    public static final String SECTION_SEVEN = "第七阶段";
+    public static final String SECTION_EIGHT = "第八阶段";
+
 
     public static List<String> SECTIONS = null;
 
 
     static {
-        String[] arrs = {SECTION_ONE,SECTION_TWO,SECTION_THREE,SECTION_FOUR,SECTION_FIVE,SECTION_FINAL};
+        String[] arrs = {
+                SECTION_ONE,
+                SECTION_TWO,
+                SECTION_THREE,
+                SECTION_FOUR,
+                SECTION_FIVE,
+                SECTION_FINAL,
+                SECTION_SEVEN,
+                SECTION_EIGHT
+        };
         SECTIONS = Arrays.asList(arrs);
 
     }

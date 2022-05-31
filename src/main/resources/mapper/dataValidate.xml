@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.com.hkr.mapper.DataValidateMapper">
+
+    <!--查询所有人的数据-->
+    <select id="findAllUser" resultType="map">
+        select uid,idcard,age,sex,birthday
+        from t_user_info
+    </select>
+
+
+    <update id="updateUserSex">
+        update t_user_info
+        set sex = #{sex}
+        where uid = #{uid}
+    </update>
+
+
+
+    <update id="updateAge">
+        update t_user_info
+        set age = #{age}
+        where uid = #{uid}
+    </update>
+
+
+    <update id="updateBirthday">
+        update t_user_info
+        set birthday = #{birthday}
+        where uid = #{uid}
+    </update>
+
+
+    <select id="findByIdcard" resultType="map">
+        select IFNULL(username,"无名") username,idcard,ui.uid
+        from t_user u  right join t_user_info ui
+        on u.uid = ui.uid
+        where idcard = #{idcard}
+    </select>
+
+
+
+    <!--入场数据表数据-->
+    <insert id="addFinishUser">
+        insert into t_user_finish(username,company,salary,reportTime,title,status,ps,operatime)
+        values(#{username},#{company},#{salary},#{reportTime},#{title},#{status},#{ps},now())
+    </insert>
+
+    <delete id="deleteAlldata">
+        delete  from t_user_finish
+    </delete>
+
+
+    <!--查询所有人的数据-->
+    <select id="findAllFinishUser" resultType="map">
+        select username,company,salary,reportTime,title,status,ps
+        from t_user_finish
+        order by status asc
+    </select>
+
+
+</mapper>

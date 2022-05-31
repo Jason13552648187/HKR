@@ -130,6 +130,7 @@
         <if test="username != null and username != ''">
             and username = #{username}
         </if>
+
         <if test="loginname != null and loginname  != ''">
             and loginname = #{loginname}
         </if>
@@ -148,6 +149,8 @@
         <if test="status != null and status !=''">
             and status  = #{status}
         </if>
+
+
 
     </select>
 
@@ -188,6 +191,8 @@
         <if test="status != null and status !=''">
             and status  = #{status}
         </if>
+
+        limit 10
 
     </select>
 
@@ -236,6 +241,7 @@
         <if test="school != null and school !=''">
             and school  like concat('%',#{school},'%')
         </if>
+        limit 10
 
 
     </select>
@@ -287,7 +293,7 @@
     </select>
 
 
-    <select id="updateUserMap">
+    <update id="updateUserMap">
         update t_user
             <trim prefix="SET" suffixOverrides=",">
                 <if test="null != enddate">
@@ -309,11 +315,44 @@
             </trim>
 
             where uid = #{uid}
+    </update>
+
+
+
+    <!--通过uid查询用户状态-->
+    <select id="findUserStatus" resultType="int">
+        select status
+        from t_user u
+        where u.uid = #{uid}
     </select>
 
+<!--
 
 
+    <update id="updateUserStartTime">
+        update t_user set registerDate = #{registerDate}
+        where uid = #{uid}
+    </update>
 
+
+    <update id="updateUserEndTime">
+        update t_user set enddate = #{enddate}
+        where uid = #{uid}
+    </update>
+
+
+    <update id="updateUserlevalDay">
+        update t_user set leavetotal = #{leavetotal}
+        where uid = #{uid}
+    </update>
+
+
+    <update id="updateUserGraduation">
+        update t_user set graduation = #{graduation}
+        where uid = #{uid}
+    </update>
+
+-->
 
 
 </mapper>

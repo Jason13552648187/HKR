@@ -7,7 +7,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <title>HKR  |  main</title>
+    <title>集团客户信息综合服务平台[主页]</title>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
@@ -73,7 +73,6 @@
 </head>
 <body class="layui-layout-body">
 
-
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header" style="height:45px;">
         <div class="layui-logo">
@@ -100,12 +99,12 @@
     <div class="layui-side  layui-bg-black" style="top: 45px;">
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                <%--<li class="layui-nav-item layui-this">
-                    <a href="javascript:;" lay-url="/index" lay-icon="true">
-                        <i class="layui-icon layui-icon-home"></i>
-                        <span class="layui-nav-title">主页</span>
+                <li class="layui-nav-item layui-this">
+                    <a href="javascript:;" data-id="2"  lay-icon="true" data-title="主信息板" data-url="<%=request.getContextPath()%>/jsps/user/welcome.html"  class="manager">
+                            <i class="layui-icon layui-icon-home"></i>
+                            <span class="layui-nav-title">主信息板</span>
                     </a>
-                </li>--%>
+                </li>
                 <li class="layui-nav-item">
                     <a href="javascript:;">
                         <i class="fa fa-cog"></i>
@@ -113,17 +112,35 @@
                     </a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a data-title="员工信息" data-url="<%=request.getContextPath()%>/jsps/user/add.jsp" class="manager" target="body">
+                            <a data-title="员工信息" data-id="1" data-url="<%=request.getContextPath()%>/jsps/user/add.jsp" class="manager" >
                                 <span class="layui-nav-title">员工信息</span>
                             </a>
                         </dd>
-                        <%--
-                        <dd>
-                            <a href="javascript:;"  id="selectUser" target="body">查询员工信息</a>
-                        </dd>--%>
+
                     </dl>
                 </li>
 
+
+
+                <%--就业信息和阶段--%>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">
+                            <i class="fa fa-cog"></i>
+                            <span class="layui-nav-title">就业管理</span>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a data-title="面试进度信息" data-id="3"  data-url="<%=request.getContextPath()%>/jsps/user/job/process.html" class="manager" target="body">
+                                    <span class="layui-nav-title">面试进度信息</span>
+                                </a>
+                            </dd>
+                            <dd>
+                                <a data-title="就业信息" data-id="4" data-url="<%=request.getContextPath()%>/jsps/user/job/finish.html" class="manager" target="body">
+                                    <span class="layui-nav-title">就业信息</span>
+                                </a>
+                            </dd>
+                        </dl>
+                    </li>
             </ul>
         </div>
     </div>
@@ -204,8 +221,12 @@
                 element.tabChange('box',dataid.attr("data-id"));
             }
 
+        });
 
-        })
+
+        var index = 2;
+        tabs.tabAdd(index,"<%=request.getContextPath()%>/jsps/user/welcome.html","主信息板");
+        element.tabChange('box',index);
     });
 
 

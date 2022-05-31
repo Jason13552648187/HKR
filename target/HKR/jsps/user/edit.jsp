@@ -10,10 +10,16 @@
 		<meta charset="UTF-8">
 		<title>编辑信息</title>
 		<link rel="stylesheet" href="<%=request.getContextPath()%>/jsps/layui/css/layui.css">
+
 		<script type="text/javascript" src="<%=request.getContextPath()%>/jsps/layui/layui.js"></script>
 		<script type="text/javascript" src="<%=request.getContextPath()%>/jsps/js/jquery-1.7.2.min.js"></script>
-
-
+		<link type="text/css" href="<%=request.getContextPath()%>/jsps/common_css/scroll.css"/>
+		<style>
+			::-webkit-scrollbar {
+				width: 6px;
+				height: 6px;
+			}
+		</style>
 
 	</head>
 	<body>
@@ -240,7 +246,6 @@
 							<input  type="text" readonly="readonly"  class="layui-input" name="endtime"  id="endtime" />
 						</div>
 					</div>
-
 					
 			</div>
 			<div class="layui-form-item layui-form-text" style="width:90%">

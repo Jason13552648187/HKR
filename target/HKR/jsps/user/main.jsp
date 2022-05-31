@@ -7,7 +7,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <title>HKR  |  main</title>
+    <title>集团客户信息综合服务平台[主页]</title>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
@@ -23,26 +23,58 @@
     <meta http-equiv = "X-UA-Compatible" content = "IE=edge" >
     <link rel="stylesheet" href="<%=request.getContextPath()%>/jsps/layui/css/layui.css">
 
-    <script type="text/javascript" src="<%=request.getContextPath()%>/jsps/layui/layui.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/jsps/layui/layui.min.js"></script>
 
     <link rel="stylesheet" href="<%=request.getContextPath()%>/jsps/font-awesome-4.7.0/css/font-awesome.min.css">
     <%@include file="../common/common_head.jsp"%>
     <script type="text/javascript" src="<%=request.getContextPath()%>/jsps/user/js/add.js"></script>
+    <style type="text/css">
+        .layui-nav-tree .layui-nav-child a{
+            padding: 0 36px;
+        }
+        *{
+            line-height: 45px;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .layui-layer-title{
+            height: 40px;
+            line-height: 40px;
+        }
+        ::-webkit-scrollbar-button,
+        ::-webkit-scrollbar-button:vertical {
+            display: none;
+        }
+        ::-webkit-scrollbar-track,
+        ::-webkit-scrollbar-track:vertical {
+            background-color: black;
+        }
+        ::-webkit-scrollbar-track-piece {
+            background-color: #f5f5f5;
+        }
+        ::-webkit-scrollbar-thumb,
+        ::-webkit-scrollbar-thumb:vertical {
+            margin-right: 10px;
+            background-color: #a6a6a6;
+        }
+        ::-webkit-scrollbar-thumb:hover,
+        ::-webkit-scrollbar-thumb:vertical:hover {
+            background-color: #aaa;
+        }
+        ::-webkit-scrollbar-corner,
+        ::-webkit-scrollbar-corner:vertical {
+            background-color: #535353;
+        }
+
+
+    </style>
 </head>
 <body class="layui-layout-body">
-    <script type="text/javascript">
-        var layer,form,element,table,dropdown;
-        $(function(){
-            layer=layui.layer;
-            form=layui.form;
-            element = layui.element;
-            table =  layui.table;
-            dropdown = layui.dropdown;
-        })
-    </script>
 
 <div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
+    <div class="layui-header" style="height:45px;">
         <div class="layui-logo">
             <i></i>
              <strong id="user"></strong>
@@ -64,40 +96,63 @@
     </div>
 
   <%--  左侧栏--%>
-    <div class="layui-side  layui-bg-black">
+    <div class="layui-side  layui-bg-black" style="top: 45px;">
         <div class="layui-side-scroll">
             <ul class="layui-nav layui-nav-tree" lay-filter="test">
-
-                <li class="layui-nav-item  layui-nav-itemed">
+                <li class="layui-nav-item layui-this">
+                    <a href="javascript:;" data-id="2"  lay-icon="true" data-title="主信息板" data-url="<%=request.getContextPath()%>/jsps/user/welcome.html"  class="manager">
+                            <i class="layui-icon layui-icon-home"></i>
+                            <span class="layui-nav-title">主信息板</span>
+                    </a>
+                </li>
+                <li class="layui-nav-item">
                     <a href="javascript:;">
                         <i class="fa fa-cog"></i>
                         <span class="layui-nav-title">员工管理</span>
                     </a>
                     <dl class="layui-nav-child">
                         <dd>
-                            <a data-title="员工信息" data-url="<%=request.getContextPath()%>/jsps/user/add.jsp" class="manager" target="body">
+                            <a data-title="员工信息" data-id="1" data-url="<%=request.getContextPath()%>/jsps/user/add.jsp" class="manager" >
                                 <span class="layui-nav-title">员工信息</span>
                             </a>
                         </dd>
-                        <%--
-                        <dd>
-                            <a href="javascript:;"  id="selectUser" target="body">查询员工信息</a>
-                        </dd>--%>
+
                     </dl>
                 </li>
 
+
+
+                <%--就业信息和阶段--%>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;">
+                            <i class="fa fa-cog"></i>
+                            <span class="layui-nav-title">就业管理</span>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a data-title="面试进度信息" data-id="3"  data-url="<%=request.getContextPath()%>/jsps/user/job/process.html" class="manager" target="body">
+                                    <span class="layui-nav-title">面试进度信息</span>
+                                </a>
+                            </dd>
+                            <dd>
+                                <a data-title="就业信息" data-id="4" data-url="<%=request.getContextPath()%>/jsps/user/job/finish.html" class="manager" target="body">
+                                    <span class="layui-nav-title">就业信息</span>
+                                </a>
+                            </dd>
+                        </dl>
+                    </li>
             </ul>
         </div>
     </div>
     <%--左侧栏结束 --%>
 
-   <div class="layui-body" id="table" style="padding-bottom: 0px;">
-        <div class="layui-tab layui-tab-brief" lay-filter="box" lay-allowclose="true">
+   <div class="layui-body" id="table" style="padding-bottom: 0px;top:45px;">
+        <div class="layui-tab layui-tab-brief" lay-filter="box" lay-allowclose="true" style="margin:0px;">
             <ul class="layui-tab-title">
 
             </ul>
 
-            <div class="layui-tab-content">
+            <div class="layui-tab-content" style="padding:0px;">
 
             </div>
 
@@ -115,15 +170,7 @@
 </div>
 
 <script>
-    var tabs  = {
-        tabAdd:function(id,url,title){
-            element.tabAdd('box',{
-                title:title,
-                content:'<iframe z-index="-999" data-frameid="' + id + '" scrolling="auto" frameborder="0" src="' + url + '" style="margin:auto auto;width:100%;height:90%;"></iframe>',
-                id:id
-            })
-        }
-    }
+
     var uname =  getCookie("username");
     if(uname == null || uname.length == 0 || uname === ""){
         window.location = "/HKR"
@@ -142,11 +189,26 @@
     //JavaScript代码区域
     layui.use('element', function() {
         var element = layui.element;
+        var layer = layui.layer;
         /*element.on("tab(box)",function(data){
             layer.tips(data.index + this.innerHTML,this,{tips:3});
         });*/
+        var tabs  = {
+
+            tabAdd:function(id,url,title){
+                var index = layer.load({icon:2});
+                element.tabAdd('box',{
+                    title:title,
+                    content:'<iframe z-index="-999" data-frameid="' + id + '" scrolling="auto" frameborder="0" src="' + url + '" style="margin:auto auto;width:100%;height:100%;"></iframe>',
+                    id:id
+                })
+                layer.close(index);
+            }
+
+        }
 
         $(".manager").on("click",function(){
+
             var dataid =  $(this);
             console.log(dataid.attr("data-id"),dataid.attr("data-url"),dataid.attr("data-title"));
 
@@ -159,8 +221,12 @@
                 element.tabChange('box',dataid.attr("data-id"));
             }
 
+        });
 
-        })
+
+        var index = 2;
+        tabs.tabAdd(index,"<%=request.getContextPath()%>/jsps/user/welcome.html","主信息板");
+        element.tabChange('box',index);
     });
 
 

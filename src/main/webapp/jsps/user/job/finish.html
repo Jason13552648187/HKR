@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/HKR/jsps/layui/css/layui.css">
+    <script type="text/javascript" src="/HKR/jsps/layui/layui.js"></script>
+    <script type="text/javascript" src="/HKR/jsps/js/jquery-1.7.2.min.js"></script>
+    <link rel="stylesheet" href="/HKR/jsps/font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="/HKR/jsps/user/css/bootstrap.css">
+    <link rel="stylesheet" href="/HKR/jsps/user/css/process.css">
+    <style>
+        a{
+            color: #005980;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .widget-small{
+            background-color: #FFFFFF;
+            overflow: hidden;
+            text-align: center;
+            border-radius: 2px;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+        }
+        .widget-small .fa{
+            float: left;
+            width: 29%;
+            line-height: 80px;
+            color: #FFFFFF;
+        }
+        .widget-user .fa{
+            background-color: #029789;
+        }
+        .widget-visit .fa{
+            background-color: #17a2b8;
+        }
+        .widget-message .fa{
+            background-color: #fbad4c;
+        }
+        .widget-like .fa{
+            background-color: #ff646d;
+        }
+        .widget-small-info{
+            float: left;
+            text-align: left;
+            width: 40%;
+            margin-left: 20px;
+            margin-top: 18px;
+            line-height: 24px;
+        }
+        .widget-small-info h4{
+            font-size: 18px;
+        }
+        .widget-small-info span{
+            font-size: 16px;
+        }
+        .project-introduce{
+            min-height: 466px;
+        }
+        .project-introduce h4{
+            font-weight: bold;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+        .project-introduce li{
+            list-style: decimal;
+            margin-left: 28px;
+        }
+        .alert {
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        .alert-info {
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+        }
+        .modify{
+            cursor: text;
+        }
+    </style>
+    <link rel="stylesheet" href="../../font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body  style="width: auto;padding: 8px;background-color: #eee;">
+<blockquote class="layui-elem-quote " id="footer">
+    上传已经入场的人员excel名单
+    <button type="button" class="layui-btn" id="uploadFinish">
+        <i class="layui-icon">&#xe67c;</i>上传入场人员名单
+    </button>
+    <a style="float: right;">公告：目前offer展示、 新增、编辑、修改功能正在开发中........</a>
+</blockquote>
+
+
+<!--编辑，删除，和查看详情按钮-->
+
+<!--<script type="text/html" id="tabledata">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+</script>-->
+
+
+<div id="users" lay-filter="users">
+
+
+</div>
+
+    <script>
+
+
+        /*毫秒时间格式化*/
+        var format = function(time, format){
+            if(time === undefined){
+                return "";
+            }
+            var t = new Date(time);
+            var tf = function(i){return (i < 10 ? '0' : '') + i};
+            return format.replace(/yyyy|MM|dd|HH|mm|ss/g, function(a){
+                switch(a){
+                    case 'yyyy':
+                        return tf(t.getFullYear());
+                        break;
+                    case 'MM':
+                        return tf(t.getMonth() + 1);
+                        break;
+                    case 'mm':
+                        return tf(t.getMinutes());
+                        break;
+                    case 'dd':
+                        return tf(t.getDate());
+                        break;
+                    case 'HH':
+                        return tf(t.getHours());
+                        break;
+                    case 'ss':
+                        return tf(t.getSeconds());
+                        break;
+                }
+            })
+        }
+
+
+        layui.use(["laydate","layer","upload","util"],function (){
+            var upload = layui.upload,
+                element = layui.element,
+                table = layui.table,
+                layer = layui.layer,
+                util = layui.util
+
+            //上传
+            var index ;
+            upload.render({
+                elem: '#uploadFinish'
+                ,url: '/HKR/teacher/uploadFinishUser' //改成您自己的上传接口
+                ,accept:'file',
+                exts:'xls|xlsx|xlsm|xlt|xltx|xltm'
+                ,before:function () {
+                    //正在处理中的加载动画
+                    index = layer.load(2);
+                }
+                ,done: function(res){
+                    //处理完excel表格后关闭加载动画，并刷新整体界面
+                    layer.close(index);
+                    window.location.reload();
+                }
+            });
+
+            /*显示入场人员数据*/
+            table.render({
+                elem: "#users",
+                url:"/HKR/teacher/findAllFinish",
+                title:"用户数据",
+                // page:true,
+                toolbar:'#tb',
+                totalRow:true,
+                width:"100%",
+                parseData:function (res){
+                    return {
+                        "code":0,
+                        "data": res.data,//需求改变，默认不显示所有数据2.0的需求是只有查询后才能显示出所有数据
+                        // "data":res.data, //这个需求是打开表格默认就显示所有数据
+                        "msg":res.msg,
+                    }
+                },
+                cols: [[
+                    {type: 'checkbox', fixed: 'left',hide:false},
+                    {type: "numbers",fixed:"left",title:"编号",align:"center",width:60},
+                    {field: "username", title: '姓名', width: 90,fixed:'left'},
+                    {field: "reportTime", title: '入职日期',edit:"text",sort:true, width: 110,templet:function (d) {
+                            return format(d.reportTime,"yyyy-MM-dd");
+                        }},
+                    {field: "company", title: '入职公司', width: 120,edit:"text"},
+                    {field: "salary", title: '薪资',edit:"text",width: 80,templet:function (d){
+                            return d == null?"":d.salary + "k";
+                        }},
+                    // {field: "idcard", title: '身份证', width: 80},
+                    {field: "title", title: '职位',edit:"text", width: 100},
+                    // {field: "phoneNumber", title: '电话号码', width: 120},
+                    {field: "status", title: '办理状态',edit:"text", width: 100,templet:function (d) {
+                            return d.status == 1? "已办理":"未办理";
+                        }},
+                    {field: "ps", title: '备注',edit:"text", width: 220},
+                    // {title : "操作",width:200,align:"center",toolbar:"#tabledata",fixed: 'right'}
+
+                ]],
+                done:function (res, curr, coutn) {
+                    console.log("-------------")
+                }
+            })
+
+            /*
+            * 监听表格的编辑
+            * */
+            table.on("edit(users)",function (obj) {
+                console.log(obj.data);  //更新的这一行的所有数据
+                console.log(obj.field);//哪个字段更新了
+                console.log("[id:" + obj.data.id + "]" + obj.field + "更新后为:" + util.escape(obj.value))
+
+                var load = layer.load(1);
+
+                $.ajax({
+                    url:"/HKR/teacher/null",
+                    contentType:"application/json",
+                    type:"post",
+                    data:{},
+                    success:function (res) {
+                        layer.close(load);
+                        layer.msg("更新成功！")
+                    }
+                })
+
+            })
+
+        })
+
+    </script>
+</body>
+</html>

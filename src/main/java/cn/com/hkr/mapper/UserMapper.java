@@ -48,6 +48,14 @@ public interface UserMapper {
 
 
     public void  updateUserMap(Map map);
+/*
+    public void  updateUserStartTime(Map map);
+    public void  updateUserEndTime(Map map);
+    public void  updateUserlevalDay(Map map);
+    public void  updateUserGraduation(Map map);
+*/
+
+    public Integer findUserStatus(Map map);
 
 
 }

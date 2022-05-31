@@ -78,6 +78,10 @@
         set
         <trim suffixOverrides=",">
 
+            <if test="null != age and age != ''">
+                age = #{age},
+            </if>
+
             <if test="null != sex and sex != ''">
                 sex = #{sex},
             </if>
@@ -113,6 +117,4 @@
             </if>
         </trim> where uid =  #{uid}
     </update>
-
-
 </mapper>

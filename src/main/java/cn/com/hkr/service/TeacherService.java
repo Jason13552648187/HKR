@@ -51,7 +51,6 @@ public class TeacherService extends BaseService{
     @Autowired
     private StaffInfoMapper staffInfoMapper;
 
-
     @Autowired
     private SendEmailUtils sendEmailUtils;
 
@@ -66,6 +65,8 @@ public class TeacherService extends BaseService{
 
     @Autowired
     private TrainMapper trainMapper;
+
+    private static SimpleDateFormat  sfd = new SimpleDateFormat("yyyy-MM-dd");
 
     static{
 
@@ -87,6 +88,7 @@ public class TeacherService extends BaseService{
 
 
     public List<Teacher> findAll() {
+        // 用于查询员工的所有数据
         return teacherMapper.selectCommon(null);
     }
 
@@ -429,7 +431,7 @@ public class TeacherService extends BaseService{
         }
 
         //将提取的数据填充数据到userinfo
-        userInfo.setSex(birAgeSex.get("sexCode").equals("F") ? "男" : "女");
+        userInfo.setSex(birAgeSex.get("sexCode").equals("F") ?  "女":"男" );
         userInfo.setAge(Integer.valueOf(birAgeSex.get("age")));
         userInfo.setBirthday(StaticUtils.getDateByString(birAgeSex.get("birthday")));
         /////////////////////////////////////////////////
@@ -442,8 +444,6 @@ public class TeacherService extends BaseService{
         user.setGraduation(UserStatus.USER_ACTIVE);
         user.setRegisterDate(new Date());
         user.setStatus(1);
-
-
 
         userEducation.setUid(uid);
         userInfo.setUid(uid);
@@ -499,10 +499,68 @@ public class TeacherService extends BaseService{
             promap.put("graduation","在籍");
             Calendar cale = Calendar.getInstance();
             cale.add(Calendar.MONTH,3);
-            promap.put("enddate",new SimpleDateFormat("yyyy-MM-dd").format(cale.getTime()));
+            promap.put("enddate",sfd.format(cale.getTime()));
             promap.put("leavetotal",0);
-            promap.put("secname","第一阶段");
+            promap.put("od",1);
+//            promap.put("secname","第一阶段");
             updateProcess(promap);
+
+
+
+            //向t_user_section表中添加8条进度:批量插入
+            List<Section> allSections = sectionMapper.commonSelectSection(null);
+
+            /*
+             * timeadd = [
+                    [1,12],  # 综合项目
+                    [13,21], # 专题项目时间
+                    [22,47], # python自动化
+                    [48,51], # 接口项目
+                    [52,55], # 性能测试
+                    [56,61], # 答辩时间
+                    [62,74], # 面试时间
+                    [75,76] # 入职时间
+                ]
+             */
+            int[][] arr  = {
+                    {1, 12},
+                    {13, 21},
+                    {22, 47},
+                    {48, 51},
+                    {52, 55},
+                    {56, 61},
+                    {62, 74},
+                    {75, 76}
+                };
+            Map secmap;
+            for(Section section : allSections){
+
+                 secmap = new HashMap();
+                 secmap.put("uid",uid);
+                 secmap.put("sid",section.getSid());
+                 secmap.put("cursection",section.getDetailname());
+
+                 Calendar c1 = Calendar.getInstance();
+                 c1.add(Calendar.DATE,arr[section.getOd()-1][0]);
+                 String string=  sfd.format(c1.getTime());
+                 secmap.put("startdate",string);
+
+                 Calendar c2 = Calendar.getInstance();
+                 c2.add(Calendar.DATE,arr[section.getOd()-1][1]);
+                 secmap.put("enddate",sfd.format(c2.getTime()));
+
+                 secmap.put("status",1);
+                 secmap.put("od",section.getOd());
+
+                sectionMapper.addUserSection(secmap);
+
+            }
+
+
+
+
+
+
 
         } catch (Exception e) {
             msg.put("code","785");
@@ -681,46 +739,17 @@ public class TeacherService extends BaseService{
 
         //获取用户经历了几个阶段 {sid,secname,detailname,cursection}{sid,secname,detailname,cursection}
         List<Map> sectionMap = sectionMapper.getUserAllSidByUid(uid);
-        Map evalauteList = new HashMap();
         Map result = new HashMap();
-        for(Map m : sectionMap){
 
-            String sid = (String) m.get("sid");
-            Map secMap = new HashMap();
-            List<Map> maps = selectSectionDetailByuidAndsid(uid, sid);//[{},{}]
-            List<Map> maps1 = selectSectionRebelByuidAndsid(uid, sid);//[{},{}]
 
-            int j  = 0;
-            Map rebelList = new HashMap();
+        //获取当前用户的所有质量评价和违规评价
+        List<Map> allSection = sectionMapper.getUserAllSection(uid);
+        List<Map> allRebel = sectionMapper.getUserAllRebel(uid);
 
-            Map<String,Map> managerMap = new HashMap();
-            for (Map p  :  maps){
-                String manager = (String) p.get("submanager");
-                int i  = 0;
-                if (managerMap.containsKey(manager)){
-                    managerMap.get(manager).put(StaticUtils.getUUID().substring(0,15),p.get("evaluate"));
-                }else{
-                    Map li = new HashMap();
-                    li.put(StaticUtils.getUUID().substring(0,15),p.get("evaluate"));
-                    managerMap.put(manager,li);
-                }
-            }
 
-            for(Map rp : maps1){
-                rebelList.put(StaticUtils.getUUID().substring(0,15),rp.get("evaluate"));
-            }
+        result.put("allSection",allSection);
+        result.put("allRebel",allRebel);
 
-            //单独目前详情
-            Map curMap  = new HashMap();
-            curMap.put("evaluate",managerMap);
-            curMap.put("rebel",rebelList);
-            curMap.put("secname",m.get("secname"));
-
-            secMap.put("curProcess",curMap);
-            secMap.put("sid",m.get("sid"));
-
-            evalauteList.put(m.get("sid"),secMap);
-        }
 
         //查询用户是否用权限修改学籍状态：[除了代理：3之外，项目经理:1，行政:2，根用户:0]
         Map teacher = teacherMapper.findByTid(tea);
@@ -732,12 +761,16 @@ public class TeacherService extends BaseService{
             result.put("auth",true);
         }
 
-        //查询用户的进度表
-        Map processMap = new HashMap();
-        processMap.put("uid",uid);
-        Map userProcess = sectionMapper.getUserProcess(processMap);
-        result.put("curProcess",userProcess);
-        result.put("allDetail",evalauteList);
+
+        //加载这个人的选择课程
+        List<Map> userSections = sectionMapper.getUserSection(map);
+        result.put("sections",userSections);
+
+
+
+        //查看目前的进度
+        Integer status = userMapper.findUserStatus(map);
+        result.put("status",status);
 
         return result;
 
@@ -847,28 +880,14 @@ public class TeacherService extends BaseService{
     @Transactional
     public void updateProcess(Map map) {
 
-        //{"enddate":"2021-12-23","leavedays":"23","graduation":"已就业",
-        // "registerDate":"已就业","uid":"3feb51be3eb44507b2d78f31796139e4","secname":"第一阶段"}
-        //t_user   t_sec_detail
-        if (null == map || null == map.get("uid") || null ==  map.get("secname")) throw new UpdateException("进度参数异常!");
-        //进行数据参数校验
-        if (!SectionStatus.SECTIONS.contains((String)map.get("secname"))){
-            throw new ParamException("阶段状态非法！");
-        }
+        //{uid,od} 或者 {uid,graduation,endate}
+        if (null == map || null == map.get("uid") || null == map.get("od")) throw new UpdateException("HKR-005:[参数异常]");
 
-        List<Section> sections = sectionMapper.commonSelectSection(map);
-        if (sections != null){ //去数据库库查询“第xx阶段对应的数据编号od”
-            Integer od = sections.get(0).getOd();
-            map.put("status",od); //在把数据编号加到map里，status:od
-        }else{
-            throw new ParamException("阶段名称不合法！");
-        }
+//        sectionMapper.updateSection(map);
 
+        map.put("status",map.get("od"));
 
         userMapper.updateUserMap(map);
-
-
-
 
     }
 
@@ -879,10 +898,6 @@ public class TeacherService extends BaseService{
      */
     @Transactional
     public void addSecDetail(Map map, Teacher tea) {
-
-
-        System.out.println("********************************" + map);
-        System.out.println("********************************" + tea);
 
         if (null == map || null == map.get("uid") || null ==  map.get("secname")) throw new UpdateException("添加项目记录异常!");
         //进行数据参数校验
@@ -903,10 +918,6 @@ public class TeacherService extends BaseService{
         map.put("did",StaticUtils.getUUID());
         map.put("leavedays",0);
 
-        Map map1 = sectionMapper.commonSelectUserSection(map);
-        if (null == map1 || map1.size() == 0){
-            sectionMapper.addUserSection(map);
-        }
         sectionMapper.addSectionDetail(map);
 
 
@@ -943,12 +954,76 @@ public class TeacherService extends BaseService{
         String teacherName = (String) teacherMapper.findByTid(tea).get("teacherName");
 
         map.put("rid",StaticUtils.getUUID());
-        Map map1 = sectionMapper.commonSelectUserSection(map);
-        if (null == map1 || map1.size() == 0){
-            sectionMapper.addUserSection(map);
-        }
+
         sectionMapper.addSectionRebel(map);
 
 
     }
+
+    /**
+     * 修改用户开始时间
+     * @param map
+     */
+    public void updateStartTime(Map map) {
+
+
+        userMapper.updateUserMap(map);
+
+
+    }
+
+
+    /**
+     * 修改用户结束时间
+     * @param map
+     */
+    public void updateEndTime(Map map) {
+
+
+        userMapper.updateUserMap(map);
+
+
+
+    }
+
+
+    /**
+     * 修改用户请假天数时间
+     * @param map
+     */
+    public void updateUserLevalDays(Map map) {
+
+        userMapper.updateUserMap(map);
+    }
+
+
+
+    /**
+     * 修改用户的状态数据
+     * @param map
+     */
+    public void updateUserGraduation(Map map) {
+
+        userMapper.updateUserMap(map);
+    }
+
+    /**
+     * 更新用户的当前od状态的起始和结束时间
+     * @param map
+     */
+    public void updateProcessStartAndEnd(Map map) {
+
+        //校验数据参数，否则抛出状态和参数异常
+        if (null == map.get("uid") || null == map.get("od") || null == map.get("startdate")||
+            null == map.get("enddate")){
+            throw new ParamException("HKR-541：参数数量异常！");
+        }
+
+        sectionMapper.updateProcessStartAndEnd(map);
+
+
+
+    }
+
+
 }

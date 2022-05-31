@@ -7,7 +7,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-    <title>HKR  |  Employee[登陆/注册]</title>
+    <title>集团客户信息综合服务平台[登陆/注册]</title>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
@@ -27,6 +27,9 @@
     <link rel="stylesheet" href="jsps/user/css/style.css">
     <link rel="stylesheet" href="jsps/layui/css/layui.css">
     <link rel="stylesheet" href="jsps/user/css/slide.css">
+
+    <link rel="stylesheet" href="jsps/user/css/index/all.min.css">
+<%--    <link rel="stylesheet" href="jsps/user/css/index/style.css">--%>
 
     <link rel="shortcut icon" href="<%=request.getContextPath()%>/favicon.ico" />
     <%@include file="/jsps/common/IE_NOT_SUPPORT.jsp" %>

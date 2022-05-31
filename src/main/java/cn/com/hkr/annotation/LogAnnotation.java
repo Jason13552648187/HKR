@@ -12,6 +12,7 @@ import java.lang.annotation.*;
 @Documented
 public @interface LogAnnotation {
 
-    String operationType();  //记录日志的操作类型
+    String operationType() default "";  //记录日志的操作类型
+    String value() default "";
 
 }

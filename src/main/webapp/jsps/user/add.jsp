@@ -137,7 +137,7 @@
                         {field: "age", title: '年龄',sort:true, width: 80},
                         // {field: "idcard", title: '身份证', width: 120},
                         {field: "phoneNumber", title: '电话号码', width: 120},
-                        {field: "school", title: '学校', width: 100},
+                        {field: "school", title: '学校', width: 220},
                         <%
                             if(rid.equals("2")){ //编辑只有行政可见
                         %>

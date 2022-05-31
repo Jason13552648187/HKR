@@ -9,7 +9,7 @@
     </sql>
 
 
-    <!--通过uid和sid来查询当前阶段的详细情况-->
+    <!--查询某个阶段的项目质量情况-->
     <select id="selectSectionDetailByuidAndsid"  resultType="map">
 
         SELECT u.uid,s.sid,did,evaluate,submanager,leavedays
@@ -23,7 +23,7 @@
 
 
 
-    <!--通过uid和sid来查询当前阶段的违规记录-->
+    <!--查询某个阶段违规记录-->
     <select id="selectSectionRebelByuidAndsid" resultType="map">
         SELECT u.uid,s.sid,evaluate,rid,secname
         FROM t_user u JOIN  t_sec_rebel sr ON u.uid =  sr.`uid`
@@ -41,6 +41,29 @@
         WHERE u.status = s.od
         and uid = #{uid}
     </select>
+
+
+
+
+
+    <!--获取用户所有项目质量评价-->
+    <select id="getUserAllSection" parameterType="String" resultType="map">
+        SELECT sd.sid,secname,detailname,submanager,createtime,evaluate FROM
+        t_section  s,t_sec_detail sd,t_user  u
+        WHERE u.uid =  sd.`uid` AND sd.sid = s.sid
+          AND u.uid = #{uid}
+    </select>
+
+
+    <!--获取用户当前所有违规评价-->
+    <select id="getUserAllRebel" parameterType="String" resultType="map">
+        SELECT sr.sid,secname,detailname,evaluate,createtime  FROM
+        t_section  s,t_sec_rebel sr,t_user  u
+        WHERE u.uid =  sr.`uid` AND sr.sid = s.sid
+          AND u.uid = #{uid}
+    </select>
+
+
 
 
 
@@ -69,6 +92,7 @@
         <if test="null != od">
             and od = #{od}
         </if>
+        order by od
 
     </select>
 
@@ -99,15 +123,56 @@
         <if test="null  != cursection">
             and cursection = #{cursection}
         </if>
+            and  `status` = 1
     </select>
 
 
     <insert id="addUserSection" parameterType="map">
-        insert into t_user_section(uid,sid,cursection)
-        values(#{uid},#{sid},#{cursection})
+        insert into t_user_section(uid,sid,cursection,startdate,enddate,status,od)
+        values(#{uid},#{sid},#{cursection},#{startdate},#{enddate},#{status},#{od})
     </insert>
 
+    <select id="getUserSection" resultType="map">
+        select uid ,sid ,cursection as detailname,startdate,enddate,od
+        from t_user_section
+        where
+        <if test="null != uid and uid != ''">
+            uid  = #{uid}
+        </if>
+        <if test="null != sid and sid  != ''">
+            and sid = #{sid}
+        </if>
+        <if test="null  != cursection">
+            and cursection = #{cursection}
+        </if>
+        and  `status` = 1
+        order by od
+    </select>
 
+
+
+
+    <update id="updateSection" >
+        update t_user_section
+
+        set status = 0
+
+        where  od > #{od} and uid  = #{uid}
+
+
+    </update>
+
+
+
+
+    <update id="updateProcessStartAndEnd">
+        update t_user_section
+        set startdate = #{startdate},
+            enddate = #{enddate}
+        where uid = #{uid} and od = #{od}
+
+
+    </update>
 
 
 </mapper>

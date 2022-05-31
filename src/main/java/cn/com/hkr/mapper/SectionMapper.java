@@ -54,5 +54,18 @@ public interface SectionMapper {
     public Map commonSelectUserSection(Map map);
 
 
+    public  List<Map> getUserAllSection(@Param("uid") String uid);
+
+    public List<Map>  getUserAllRebel(@Param("uid") String uid);
+
+
+    public List<Map> getUserSection(Map map);
+
+
+    public void updateSection(Map map);
+
+
+    public void  updateProcessStartAndEnd(Map map);
+
 
 }

@@ -7,14 +7,87 @@
     <script type="text/javascript" src="/HKR/jsps/layui/layui.js"></script>
     <script type="text/javascript" src="/HKR/jsps/js/jquery-1.7.2.min.js"></script>
     <link rel="stylesheet" href="/HKR/jsps/font-awesome-4.7.0/css/font-awesome.css">
+    <style>
+        a{
+            color: #005980;
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .widget-small{
+            background-color: #FFFFFF;
+            overflow: hidden;
+            text-align: center;
+            border-radius: 2px;
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
+        }
+        .widget-small .fa{
+            float: left;
+            width: 29%;
+            line-height: 80px;
+            color: #FFFFFF;
+        }
+        .widget-user .fa{
+            background-color: #029789;
+        }
+        .widget-visit .fa{
+            background-color: #17a2b8;
+        }
+        .widget-message .fa{
+            background-color: #fbad4c;
+        }
+        .widget-like .fa{
+            background-color: #ff646d;
+        }
+        .widget-small-info{
+            float: left;
+            text-align: left;
+            width: 40%;
+            margin-left: 20px;
+            margin-top: 18px;
+            line-height: 24px;
+        }
+        .widget-small-info h4{
+            font-size: 18px;
+        }
+        .widget-small-info span{
+            font-size: 16px;
+        }
+        .project-introduce{
+            min-height: 466px;
+        }
+        .project-introduce h4{
+            font-weight: bold;
+            margin-top: 12px;
+            margin-bottom: 8px;
+        }
+        .project-introduce li{
+            list-style: decimal;
+            margin-left: 28px;
+        }
+        .alert {
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+        .alert-info {
+            color: #31708f;
+            background-color: #d9edf7;
+            border-color: #bce8f1;
+        }
+        .modify{
+            cursor: text;
+        }
+    </style>
+
 </head>
 <body>
 
 <!--表单开始-->
 
 <div id="processform" class="layui-form  layui-form-pane" style="margin: 30px 10px;" lay-filter="processform">
-
-
 
     <div class="layui-form-item">
         <div class="layui-inline">
@@ -28,6 +101,9 @@
                     <option value="第三阶段">第三阶段（Python自动化测试）</option>
                     <option value="第四阶段">第四阶段（接口自动化测试）</option>
                     <option value="第五阶段">第五阶段（性能测试）</option>
+                    <option value="第六阶段">第六阶段（答辩阶段）</option>
+                    <option value="第七阶段">第七阶段（面试阶段）</option>
+                    <option value="第八阶段">第八阶段（入职阶段）</option>
                 </select>
 
             </div>

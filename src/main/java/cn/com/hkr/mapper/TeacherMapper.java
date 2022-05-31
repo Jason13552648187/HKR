@@ -33,7 +33,6 @@ public interface TeacherMapper {
 
     public User getUserBySex(String sex);
 
-
     public void addTeacher(Teacher user);
 
     public List<Teacher> selectCommon(Teacher teacher);

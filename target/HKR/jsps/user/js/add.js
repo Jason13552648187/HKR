@@ -124,7 +124,7 @@ layui.use(['form','laydate', 'laypage', 'layer', 'table', 'carousel', 'upload', 
                 {field: "email", title: '邮箱', width: 80},
                 // {field: "phoneNumber", title: '电话号码', width: 120},
                 {field: "wechat", title: '微信号', width: 80},
-                {field: "school", title: '学校', width: 80},
+                {field: "school", title: '学校', width: 160},
                 {field: "professional", title: '专业', width: 80},
                 {field: "gradutime", title: '毕业时间',sort:true, width: 100,templet:function (d) {
                         return format(d.gradutime,"yyyy-MM-dd")

@@ -195,7 +195,7 @@ input::placeholder {
   position: absolute;
   top: 50%;
   left: 30px;
-  width: calc(50% - 30px);
+  width: 384px;
   min-height: 420px;
   background-color: #fff;
   border-radius: 3px;
